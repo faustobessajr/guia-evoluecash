@@ -1,0 +1,226 @@
+{
+  "site": {
+    "title": "Guia EvolueCash — Movimente seu dinheiro com inteligência",
+    "description": "BRL, dólar e cripto na mesma conta. Pague no Brasil ou no exterior em minutos. Veja como funciona, calcule custos e tire suas dúvidas."
+  },
+  "header": {
+    "home": "Início",
+    "howItWorks": "Como funciona",
+    "calculator": "Calculadora",
+    "support": "Suporte",
+    "openAccount": "Abrir conta"
+  },
+  "home": {
+    "heroTitle": "Movimente seu dinheiro com inteligência",
+    "heroSubtitle": "BRL, dólar e cripto na mesma conta. Pague no Brasil ou no exterior em minutos, com taxa transparente.",
+    "searchPlaceholder": "Buscar transação ou operação...",
+    "heroChips": {
+      "payAbroad": "Pagar fornecedor no exterior",
+      "receiveAbroad": "Receber cliente do exterior",
+      "saveDollar": "Guardar em dólar",
+      "calculate": "Calcular custo"
+    },
+    "whatToDo": {
+      "title": "O que você precisa fazer?",
+      "subtitle": "Escolha sua situação. A gente mostra o passo a passo, o custo e o tempo."
+    },
+    "situations": {
+      "receive": { "title": "Receber dinheiro", "sub": "De clientes BR ou do exterior", "fee": "A partir de 1%", "count": "9 situações" },
+      "pay": { "title": "Pagar alguém", "sub": "Fornecedores, equipe, contas do dia a dia", "fee": "A partir de 1%", "count": "9 situações" },
+      "international": { "title": "Operar com o exterior", "sub": "Importar, exportar, pagar em USD/EUR/etc", "fee": "A partir de 3,5%", "count": "12 situações" },
+      "save": { "title": "Guardar em dólar", "sub": "Proteger seu caixa da variação cambial", "fee": "A partir de 2,5%", "count": "5 situações" },
+      "liberal": { "title": "Profissional liberal", "sub": "Médico, advogado, consultor", "fee": "A partir de 1%", "count": "3 situações" },
+      "trader": { "title": "Investir em cripto", "sub": "Comprar BTC, ETH ou stablecoins", "fee": "A partir de 1,5%", "count": "3 situações" },
+      "billing": { "title": "Cobrar clientes", "sub": "Substitua boleto e SWIFT por cobrança via PIX ou USDT", "fee": "Sem custo de emissão", "count": "5 situações" },
+      "calculate": { "title": "Calcular custo", "sub": "Veja quanto vai pagar na sua próxima operação", "fee": "Calculadora gratuita", "count": "Abrir calculadora" }
+    },
+    "situationModes": {
+      "payments": "Pagamentos",
+      "crypto": "Cripto"
+    },
+    "howItWorks": {
+      "title": "Como sua conta EvolueCash funciona",
+      "subtitle": "3 modos, um único ambiente. Escolha o que faz mais sentido pra cada operação."
+    },
+    "accounts": {
+      "payments": {
+        "title": "Conta de Pagamentos",
+        "description": "Receba e envie em reais via PIX, pague boletos, transfira pra qualquer titular.",
+        "bullets": [
+          "Conta vinculada ao seu CNPJ, segregada de outros clientes",
+          "PIX 24/7",
+          "Limite até R$ 50 milhões",
+          "Extrato exportável em CSV"
+        ]
+      },
+      "crypto": {
+        "title": "Conta Cripto",
+        "description": "Compre, venda e guarde BTC, ETH, USDC, USDT. Faça swap entre cripto direto, sem passar por reais.",
+        "bullets": [
+          "Custódia auditada nos EUA",
+          "4 redes blockchain (BTC, ETH, Polygon, Tron)",
+          "Saldo em dólar digital",
+          "Operação on-chain auditável"
+        ]
+      },
+      "comex": {
+        "title": "COMEX",
+        "description": "Cobre clientes do Brasil ou do exterior via Bolepix (BRL) ou Bolecripto (USDT/USDC).",
+        "bullets": [
+          "Substitui SWIFT",
+          "Liquidação em minutos",
+          "Validade até 1 ano",
+          "3 idiomas na fatura (PT/EN/ES)"
+        ]
+      }
+    },
+    "faq": {
+      "title": "Perguntas que todo mundo faz",
+      "items": [
+        {
+          "q": "Quanto custa pra usar a EvolueCash?",
+          "a": "A taxa varia por operação. Receber via PIX: 1%. Comprar/vender cripto: 1,5%. Pagar boleto: 1,75%. Transferir cripto on-chain: 0% (só taxa de rede). Operação internacional completa (BR → exterior): em torno de 3,5%. Você sempre vê o valor líquido antes de confirmar — sem letra miúda."
+        },
+        {
+          "q": "Quanto tempo leva uma operação internacional?",
+          "a": "Cerca de 2 horas em média, do PIX inicial até o destinatário receber em USD na conta dele nos EUA. Compare com 3 a 5 dias úteis pelo banco tradicional."
+        },
+        {
+          "q": "É legal? Tem CNPJ regularizado?",
+          "a": "Sim. A EvolueCash opera com infraestrutura financeira institucional em parceria nos EUA, com custódia auditada. Você opera em nome do seu CNPJ, com extrato auditável e suporte pra contabilidade."
+        },
+        {
+          "q": "Como funciona o suporte?",
+          "a": "Suporte humano via WhatsApp no número +55 47 98912-8640. Sem URA, sem chatbot, sem ticket. Conversa direta."
+        },
+        {
+          "q": "Posso pagar fornecedor que só recebe em USD bancário?",
+          "a": "Sim. A operação faz BRL → USDT on-chain → conversão final em USD na conta bancária do destinatário, via nossa rede de parceiros nos EUA. O fornecedor não precisa ter wallet cripto."
+        },
+        {
+          "q": "Posso receber de cliente no exterior em dólar?",
+          "a": "Sim. Você emite uma cobrança Bolecripto e o cliente paga em USDT ou USDC. Você converte pra reais quando quiser, ou mantém em dólar digital pra usar depois."
+        },
+        {
+          "q": "Quem mais usa a EvolueCash?",
+          "a": "Importadores, exportadores, profissionais liberais (médicos, advogados, consultores), agências que atendem cliente no exterior, info-produtores com audiência internacional, distribuidoras com fornecedor recorrente, e PJs que querem simplificar caixa em BRL e dólar."
+        },
+        {
+          "q": "E se eu nunca usei cripto antes?",
+          "a": "Não tem problema. A maioria das operações na EvolueCash é em BRL (PIX, boleto). Quando você precisa operar com o exterior, a plataforma faz a conversão pra cripto e a entrega na ponta, automaticamente. Você não precisa entender de blockchain pra usar."
+        }
+      ]
+    },
+    "ctaFinal": {
+      "title": "Pronto pra começar?",
+      "subtitle": "Abra sua conta agora. Em poucos minutos você está operando.",
+      "primary": "Abrir minha conta gratuitamente",
+      "secondary": "Falar com suporte no WhatsApp"
+    },
+    "seeAll": {
+      "title": "Quer ver tudo o que dá pra fazer?",
+      "transactions": "Ver as 25 transações",
+      "operations": "Ver as 34 operações"
+    }
+  },
+  "comoFunciona": {
+    "title": "Como a EvolueCash funciona",
+    "subtitle": "Tudo o que você precisa saber em 2 minutos.",
+    "flowTitle": "Fluxo padrão de operação internacional",
+    "flowSteps": ["Real (PIX)", "Conta Pagamentos", "Conta Cripto", "USDT/USDC", "On-chain", "USD bancário no exterior"],
+    "whyUseTitle": "Por que usar",
+    "whyUse": {
+      "speed": "Velocidade: minutos vs dias",
+      "cost": "Custo: 3,5% vs 4-6% bancário tradicional",
+      "transparency": "Transparência: extrato detalhado, taxas visíveis antes de confirmar",
+      "humanSupport": "Suporte humano direto via WhatsApp"
+    }
+  },
+  "operacoes": {
+    "categories": {
+      "receber": { "title": "Receber dinheiro", "sub": "9 situações pra você receber pagamentos no Brasil ou do exterior" },
+      "pagar": { "title": "Pagar alguém", "sub": "9 situações pra você pagar fornecedores, equipe ou contas" },
+      "internacional": { "title": "Operar com o exterior", "sub": "12 situações pra importar, exportar e pagar fora do Brasil" },
+      "dolarizacao": { "title": "Guardar em dólar", "sub": "5 situações pra proteger seu caixa da variação cambial" },
+      "liberal": { "title": "Profissional liberal", "sub": "3 situações pra médicos, advogados, consultores" },
+      "trader": { "title": "Investir em cripto", "sub": "3 situações pra comprar, transferir e realizar lucro" },
+      "cobranca": { "title": "Cobrar clientes", "sub": "5 situações pra emitir cobrança via PIX ou cripto" },
+      "all": { "title": "Todas as operações", "sub": "34 casos de uso da plataforma" }
+    },
+    "banner": "Procurando algo específico? Use a busca ou volte pra home pra escolher por situação.",
+    "viewSteps": "Ver passo a passo"
+  },
+  "transacoes": {
+    "title": "Transações",
+    "banner": "As transações são as ações individuais da plataforma (ex: enviar PIX, comprar cripto). Pra ver casos de uso completos (ex: 'como importador paga fornecedor da China'), visite as Operações.",
+    "bannerCta": "Ver operações por situação"
+  },
+  "detail": {
+    "caminho": "Caminho",
+    "modo": "Modo",
+    "taxa": "Taxa",
+    "tempo": "Tempo",
+    "minimo": "Mínimo",
+    "maximo": "Máximo",
+    "horario": "Horário",
+    "passo_a_passo": "Passo a Passo",
+    "operacoes_relacionadas": "Operações relacionadas",
+    "transacoes_relacionadas": "Transações relacionadas",
+    "cta": "Abra sua conta gratuitamente",
+    "para_quem": "Pra quem",
+    "fluxo": "A operação",
+    "tempo_total": "Tempo total",
+    "custo_total": "Custo total",
+    "exemplo": "Exemplo prático",
+    "cuidados": "Cuidados",
+    "dicas": "Dicas",
+    "openCalc": "Quer simular um valor diferente?",
+    "openCalcLink": "Abrir calculadora pra esta operação",
+    "fiscalDisclaimer": "Esta operação não substitui obrigações aduaneiras ou fiscais (DI/DUIMP, DU-E, IR, etc.). Consulte seu contador e despachante.",
+    "openAccount": "Abrir minha conta",
+    "talkSupport": "Falar com suporte"
+  },
+  "calc": {
+    "title": "Calculadora de Custos",
+    "selectOp": "Selecione a operação",
+    "amount": "Valor",
+    "currency": "Moeda",
+    "selectedOperation": "Operação selecionada",
+    "youWillMove": "Você vai movimentar",
+    "breakdown": "Quebra de custos",
+    "totalFees": "Total de taxas",
+    "effectiveCost": "Custo efetivo",
+    "estimatedTime": "Tempo estimado",
+    "netAtDestination": "Valor líquido no destino",
+    "share": "Compartilhar simulação",
+    "viewSteps": "Ver passo a passo",
+    "fxNotice": "Cotação simulada R$ 5,00 = US$ 1,00 — confira a cotação real no momento da operação."
+  },
+  "search": {
+    "title": "Busca",
+    "placeholder": "Digite para buscar...",
+    "no_results": "Nenhum resultado encontrado",
+    "transacao": "Transação",
+    "operacao": "Operação"
+  },
+  "footer": {
+    "whatsapp": "Suporte WhatsApp: +55 47 98912-8640",
+    "site": "evoluecash.com.br",
+    "disclaimer": "Este guia é informativo. Tarifas e horários sujeitos a alteração — confira sempre na plataforma antes de operar. EvolueCash não substitui obrigações fiscais e aduaneiras (DI/DUIMP, DU-E, declaração de IR, etc.). Consulte seu contador para tributação."
+  },
+  "categories": {
+    "pagamentos-br": "Pagamentos BR",
+    "cripto": "Cripto",
+    "comex": "COMEX",
+    "config": "Configuração",
+    "plataforma": "Plataforma"
+  },
+  "common": {
+    "from": "A partir de",
+    "situations": "situações",
+    "viewSteps": "Ver passo a passo",
+    "openCalculator": "Abrir calculadora pra esta operação",
+    "relatedOperations": "Operações relacionadas",
+    "openCalc": "Abrir calculadora"
+  }
+}

@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Guia EvolueCash
 
-## Getting Started
+Guia interativo bilíngue (PT-BR + EN-US) da plataforma EvolueCash — fintech que combina BRL, dólar digital e cripto numa única conta para empresas e profissionais.
 
-First, run the development server:
+🌐 Site oficial: https://evoluecash.com.br
+📱 Suporte: WhatsApp +55 47 98912-8640
+
+## Stack
+
+- Next.js 15 (App Router) + TypeScript
+- Tailwind CSS 4 + shadcn/ui
+- next-intl (PT-BR + EN-US)
+- lucide-react + fuse.js + next-themes
+
+## Design System
+
+- Brand: `#10B981` (verde)
+- Navy: `#0F172A` (fundo)
+- Inter (sans) + JetBrains Mono (mono)
+- Mobile-first
+
+## Como rodar
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Build de produção
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm run start
+```
 
-## Learn More
+## Estrutura
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+├── app/[locale]/                  # Rotas bilíngues
+├── components/                    # Componentes
+├── content/{locale}/              # Dados das transações e operações
+├── messages/{locale}.json         # Strings UI
+└── lib/                           # types, data, calc
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Como adicionar/editar conteúdo
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Transação:** edita `src/content/{locale}/transacoes.json`
+- **Operação:** edita `src/content/{locale}/operacoes.json` (define `categoriaUI`)
+- **Strings UI:** edita `src/messages/{locale}.json`
 
-## Deploy on Vercel
+## Licença
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+© EvolueCash. Todos os direitos reservados.

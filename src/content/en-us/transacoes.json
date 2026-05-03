@@ -1,0 +1,620 @@
+[
+  {
+    "codigo": "T01",
+    "slug": "receber-pix",
+    "titulo": "How to receive via PIX",
+    "descricao": "Generate a PIX key to receive deposits",
+    "emoji": "📥",
+    "caminho": "Depositos > Deposito PIX",
+    "modo": "ambos",
+    "taxa": {
+      "percentual": 1,
+      "descricao": "1% deducted from the received amount"
+    },
+    "tempo": "Immediate",
+    "horario": "24/7",
+    "limites": {
+      "min": "R$ 1.00"
+    },
+    "passos": [
+      "Enter the amount you want to receive",
+      "Click \"Next\"",
+      "Check the net amount (fee already applied)",
+      "Click \"Generate deposit key\"",
+      "Copy the key/QR and send to payer"
+    ],
+    "dica": "The fee is deducted from the received amount. If you want R$ 100 net, ask the payer to send ≈ R$ 101.02.",
+    "categoria": "pagamentos-br",
+    "relacionadas": ["T03", "T05"]
+  },
+  {
+    "codigo": "T02",
+    "slug": "pagar-boleto",
+    "titulo": "How to pay a bank slip (boleto)",
+    "descricao": "Pay bank slips directly through EvolueCash",
+    "emoji": "🧾",
+    "caminho": "Pagamentos > Boleto",
+    "modo": "pagamentos",
+    "taxa": {
+      "percentual": 1.75,
+      "descricao": "1.75% on the slip amount"
+    },
+    "tempo": "1-3 business days",
+    "horario": "Mon-Fri 9am-5pm",
+    "passos": [
+      "Paste the barcode (47 or 48 digits)",
+      "Click \"Next\"",
+      "Check payee, amount and due date",
+      "Confirm payment"
+    ],
+    "dica": "Use the paste icon to avoid errors. Expired slips may have recalculated interest.",
+    "categoria": "pagamentos-br",
+    "relacionadas": ["T05"]
+  },
+  {
+    "codigo": "T03",
+    "slug": "enviar-pix",
+    "titulo": "How to send PIX",
+    "descricao": "Send PIX to any registered key from your account",
+    "emoji": "📤",
+    "caminho": "Saques > Saque/Transferencia Pix",
+    "modo": "ambos",
+    "taxa": {
+      "percentual": 1,
+      "descricao": "1% on the transferred amount"
+    },
+    "tempo": "Immediate",
+    "horario": "24/7",
+    "limites": {
+      "max": "R$ 50 million"
+    },
+    "passos": [
+      "Read the notice and click \"Next\"",
+      "Select registered PIX key",
+      "Enter the amount",
+      "Check simulation",
+      "Confirm"
+    ],
+    "atencao": "In Crypto Account mode, PIX to third parties may be reversed. Use a key with the same CNPJ/CPF.",
+    "dica": "In Payments Account mode you have full freedom to send to any holder.",
+    "categoria": "pagamentos-br",
+    "relacionadas": ["T01", "T04", "T23"]
+  },
+  {
+    "codigo": "T04",
+    "slug": "cadastrar-chave-pix",
+    "titulo": "How to register a PIX key",
+    "descricao": "Register a PIX key linked to your CNPJ",
+    "emoji": "🔑",
+    "caminho": "Avatar > Adicionar Conta",
+    "modo": "ambos",
+    "taxa": {
+      "percentual": 0,
+      "descricao": "Free"
+    },
+    "tempo": "Immediate",
+    "horario": "24/7",
+    "passos": [
+      "Check Name and CNPJ",
+      "Select key type",
+      "Enter the key",
+      "Click \"Add Account\""
+    ],
+    "atencao": "The key must be registered at a bank with the SAME CNPJ. Third-party keys are not accepted.",
+    "categoria": "config",
+    "relacionadas": ["T15", "T03"]
+  },
+  {
+    "codigo": "T05",
+    "slug": "extrato-brl",
+    "titulo": "How to check BRL statement",
+    "descricao": "Check and export your BRL account statement",
+    "emoji": "📋",
+    "caminho": "Extrato > Conta Real Brasileira",
+    "modo": "ambos",
+    "taxa": {
+      "percentual": 0,
+      "descricao": "Free"
+    },
+    "tempo": "Immediate",
+    "horario": "24/7",
+    "passos": [
+      "Apply filters",
+      "Click \"Export CSV\"",
+      "File downloads directly"
+    ],
+    "dica": "Each statement line already shows the fee charged — useful for reconciliation.",
+    "categoria": "pagamentos-br",
+    "relacionadas": ["T11"]
+  },
+  {
+    "codigo": "T06",
+    "slug": "receber-cripto",
+    "titulo": "How to receive crypto",
+    "descricao": "Receive cryptocurrencies in your EvolueCash wallet",
+    "emoji": "📩",
+    "caminho": "Depositos > Deposito Crypto",
+    "modo": "ambos",
+    "taxa": {
+      "percentual": 0,
+      "descricao": "Free"
+    },
+    "tempo": "2-60 min",
+    "horario": "24/7",
+    "passos": [
+      "Select the token (BTC, ETH, USDT, USDC)",
+      "Choose the network",
+      "Copy the address",
+      "Send to payer",
+      "Click \"Receive\" to confirm"
+    ],
+    "atencao": "Always check TOKEN + NETWORK. Receiving USDC on a different network may result in total loss — there is no reversal.",
+    "categoria": "cripto",
+    "relacionadas": ["T07", "T09", "T11"]
+  },
+  {
+    "codigo": "T07",
+    "slug": "comprar-cripto",
+    "titulo": "How to buy crypto",
+    "descricao": "Buy cryptocurrencies using your BRL balance",
+    "emoji": "🛒",
+    "caminho": "Exchange > Comprar",
+    "modo": "cripto",
+    "taxa": {
+      "percentual": 1.5,
+      "descricao": "1.5% on the purchase amount"
+    },
+    "tempo": "Immediate",
+    "horario": "24/7",
+    "limites": {
+      "min": "R$ 10",
+      "max": "US$ 10 million"
+    },
+    "passos": [
+      "Select the token",
+      "Check the wallet",
+      "Enter the amount",
+      "Click \"Simulate Quote\"",
+      "Confirm with \"Buy\""
+    ],
+    "dica": "Confirm quickly after simulating — the quote changes continuously.",
+    "categoria": "cripto",
+    "relacionadas": ["T08", "T10"]
+  },
+  {
+    "codigo": "T08",
+    "slug": "vender-cripto",
+    "titulo": "How to sell crypto",
+    "descricao": "Sell cryptocurrencies and convert to BRL",
+    "emoji": "💱",
+    "caminho": "Exchange > Vender",
+    "modo": "cripto",
+    "taxa": {
+      "percentual": 1.5,
+      "descricao": "1.5% on the sale amount"
+    },
+    "tempo": "Immediate",
+    "horario": "24/7",
+    "limites": {
+      "max": "US$ 10 million"
+    },
+    "passos": [
+      "Select the token",
+      "Check balance",
+      "Enter the quantity",
+      "Click \"Simulate Quote\"",
+      "Confirm"
+    ],
+    "atencao": "To withdraw BRL to a bank account, T03 only runs Mon-Fri 9am-5pm.",
+    "categoria": "cripto",
+    "relacionadas": ["T07", "T03"]
+  },
+  {
+    "codigo": "T09",
+    "slug": "transferir-cripto",
+    "titulo": "How to transfer crypto",
+    "descricao": "Transfer cryptocurrencies to external wallets via blockchain",
+    "emoji": "🔗",
+    "caminho": "Exchange > Transferir",
+    "modo": "cripto",
+    "taxa": {
+      "percentual": 0,
+      "descricao": "0% platform fee + network fee"
+    },
+    "tempo": "Variable",
+    "horario": "Mon-Fri 9am-5pm",
+    "passos": [
+      "Select token",
+      "Check source wallet",
+      "Enter quantity",
+      "Choose destination network",
+      "Paste address and click \"Transfer\""
+    ],
+    "cuidado": "On-chain transfer is IRREVERSIBLE. Check 3x TOKEN, NETWORK and ADDRESS. Error = total loss.",
+    "dica": "Use \"Favorites\" for recurring addresses. Large amounts may take 20 min to 7 days for compliance.",
+    "categoria": "cripto",
+    "relacionadas": ["T06", "T10"]
+  },
+  {
+    "codigo": "T10",
+    "slug": "converter-cripto",
+    "titulo": "How to convert crypto (Swap)",
+    "descricao": "Convert between cryptocurrencies without going through BRL",
+    "emoji": "🔄",
+    "caminho": "Exchange > Converter",
+    "modo": "cripto",
+    "taxa": {
+      "percentual": 1.55,
+      "descricao": "1.55% on the converted amount"
+    },
+    "tempo": "Immediate",
+    "horario": "24/7",
+    "limites": {
+      "max": "R$ 1 million/month"
+    },
+    "passos": [
+      "In \"You are sending\" choose token + network + qty",
+      "In \"You will receive\" choose destination",
+      "Check \"Preview\"",
+      "Click \"CONVERT\""
+    ],
+    "dica": "Useful for swapping BTC → USDT without having to sell to BRL and buy again.",
+    "categoria": "cripto",
+    "relacionadas": ["T07", "T08"]
+  },
+  {
+    "codigo": "T11",
+    "slug": "extrato-cripto",
+    "titulo": "How to check crypto statement",
+    "descricao": "Check and export crypto transaction history",
+    "emoji": "📊",
+    "caminho": "Extrato > Area Cripto",
+    "modo": "cripto",
+    "taxa": {
+      "percentual": 0,
+      "descricao": "Free"
+    },
+    "tempo": "Immediate",
+    "horario": "24/7",
+    "passos": [
+      "Select token/network",
+      "View the list (Network, Amount, Hash, From, To)",
+      "Click \"Export CSV\""
+    ],
+    "dica": "Hashes are clickable — they open the network explorer for on-chain auditing.",
+    "categoria": "cripto",
+    "relacionadas": ["T05"]
+  },
+  {
+    "codigo": "T12",
+    "slug": "emitir-bolepix-estatico",
+    "titulo": "How to issue Static Bolepix",
+    "descricao": "Issue fixed-value invoices payable via PIX",
+    "emoji": "📄",
+    "caminho": "Comex > Gerar nova cobranca > Bolepix Estatico",
+    "modo": "ambos",
+    "taxa": {
+      "percentual": 1,
+      "descricao": "1% on receipt"
+    },
+    "tempo": "Variable",
+    "horario": "24/7",
+    "passos": [
+      "Screen 1: Fill in invoice details",
+      "Screen 2: Payer data + PIX key + Foreign Trade",
+      "Screen 3: Items, NCM, amount",
+      "Click \"Manage invoices\""
+    ],
+    "atencao": "Does not replace customs obligations. May require DI/DUIMP or DU-E.",
+    "dica": "Use when the amount is fixed. Before issuing, check NCM/HS of items.",
+    "categoria": "comex",
+    "relacionadas": ["T13", "T14", "T25"]
+  },
+  {
+    "codigo": "T13",
+    "slug": "emitir-bolepix-dinamico",
+    "titulo": "How to issue Dynamic Bolepix",
+    "descricao": "Issue variable-value invoices payable via PIX, valid for 1 year",
+    "emoji": "📃",
+    "caminho": "Comex > Bolepix Dinamico",
+    "modo": "ambos",
+    "taxa": {
+      "percentual": 1,
+      "descricao": "1% on receipt"
+    },
+    "tempo": "Variable",
+    "horario": "24/7",
+    "passos": [
+      "Screen 1: Fill in details",
+      "Screen 2: Payer + PIX key",
+      "Screen 3: Descriptive items",
+      "Click \"Manage invoices\""
+    ],
+    "dica": "Use when the amount varies (recurring billing). The payer defines the amount.",
+    "categoria": "comex",
+    "relacionadas": ["T12", "T14"]
+  },
+  {
+    "codigo": "T14",
+    "slug": "painel-cobrancas",
+    "titulo": "Invoice management dashboard",
+    "descricao": "Manage all COMEX invoices in a single dashboard",
+    "emoji": "🗂️",
+    "caminho": "Comex",
+    "modo": "ambos",
+    "taxa": {
+      "percentual": 0,
+      "descricao": "Free"
+    },
+    "tempo": "Immediate",
+    "horario": "24/7",
+    "passos": [
+      "View KPIs at the top",
+      "Use the table",
+      "\"+Generate new invoice\"",
+      "\"Filter\"",
+      "\"Use template\""
+    ],
+    "dica": "\"Use template\" repeats recurring invoices without redoing fields.",
+    "categoria": "comex",
+    "relacionadas": ["T12", "T13", "T25"]
+  },
+  {
+    "codigo": "T15",
+    "slug": "gerenciar-chaves-pix",
+    "titulo": "How to manage PIX keys",
+    "descricao": "View and copy your registered PIX keys",
+    "emoji": "🗝️",
+    "caminho": "Avatar > Chaves Pix",
+    "modo": "ambos",
+    "taxa": {
+      "percentual": 0,
+      "descricao": "Free"
+    },
+    "tempo": "Immediate",
+    "horario": "24/7",
+    "passos": [
+      "Click on avatar",
+      "Click \"PIX Keys\"",
+      "Modal opens with list",
+      "Menu (⋮) → \"Copy PIX key\""
+    ],
+    "dica": "To add a new key use T04. To delete, do it through the issuing bank.",
+    "categoria": "config",
+    "relacionadas": ["T04"]
+  },
+  {
+    "codigo": "T16",
+    "slug": "alternar-conta",
+    "titulo": "How to switch between Crypto and Payments Account",
+    "descricao": "Switch between Crypto Account and Payments Account modes",
+    "emoji": "🔀",
+    "caminho": "Header > Conta Cripto/Pagamentos",
+    "modo": "ambos",
+    "taxa": {
+      "percentual": 0,
+      "descricao": "Free"
+    },
+    "tempo": "Immediate",
+    "horario": "24/7",
+    "passos": [
+      "Click \"Crypto Account ⌄\"",
+      "Choose mode",
+      "Confirm with \"Continue\""
+    ],
+    "atencao": "Switching interrupts any ongoing flow.",
+    "dica": "Use Crypto Account for Exchange and Payments Account for daily BRL operations.",
+    "categoria": "plataforma",
+    "relacionadas": ["T07", "T03"]
+  },
+  {
+    "codigo": "T17",
+    "slug": "emitir-bolecripto-estatico",
+    "titulo": "How to issue Static Bolecripto",
+    "descricao": "Issue fixed-value crypto invoices for international clients",
+    "emoji": "🪙",
+    "caminho": "Comex > Bolecripto Estatico",
+    "modo": "ambos",
+    "taxa": {
+      "percentual": 2.5,
+      "descricao": "2.5% (1.5% + 1% later conversion)"
+    },
+    "tempo": "Variable",
+    "horario": "24/7",
+    "passos": [
+      "Screen 1: Details + USDT/USDC",
+      "Screen 2: Payer + Network + Wallet",
+      "Screen 3: Items",
+      "Click \"Manage invoices\""
+    ],
+    "atencao": "Crypto payment does not automatically confirm the amount. Check hash on-chain.",
+    "dica": "Before issuing, register a wallet for each network (My wallet). Ideal for clients outside Brazil.",
+    "categoria": "comex",
+    "relacionadas": ["T18", "T06"]
+  },
+  {
+    "codigo": "T18",
+    "slug": "emitir-bolecripto-dinamico",
+    "titulo": "How to issue Dynamic Bolecripto",
+    "descricao": "Issue variable-value crypto invoices, valid for 1 year",
+    "emoji": "🪙",
+    "caminho": "Comex > Bolecripto Dinamico",
+    "modo": "ambos",
+    "taxa": {
+      "percentual": 2.5,
+      "descricao": "2.5% (1.5% + 1% later conversion)"
+    },
+    "tempo": "Variable",
+    "horario": "24/7",
+    "passos": [
+      "Screen 1: Fill in details",
+      "Screen 2: Payer + network + wallet",
+      "Screen 3: Items (no fixed value)",
+      "Click \"Manage invoices\""
+    ],
+    "dica": "Use when the amount varies (variable royalties, hourly services). Valid for 1 year.",
+    "categoria": "comex",
+    "relacionadas": ["T17", "T14"]
+  },
+  {
+    "codigo": "T19",
+    "slug": "alternar-tema",
+    "titulo": "Toggle interface theme",
+    "descricao": "Switch between light and dark theme",
+    "emoji": "🌓",
+    "caminho": "Header > toggle ⚙/🌙",
+    "modo": "ambos",
+    "taxa": {
+      "percentual": 0,
+      "descricao": "Free"
+    },
+    "tempo": "Immediate",
+    "horario": "24/7",
+    "passos": [
+      "Click the toggle",
+      "Theme switches instantly"
+    ],
+    "dica": "Dark theme reduces eye strain. Light theme is better for screenshots.",
+    "categoria": "plataforma"
+  },
+  {
+    "codigo": "T20",
+    "slug": "mudar-idioma",
+    "titulo": "Change interface language",
+    "descricao": "Change the EvolueCash platform language",
+    "emoji": "🌐",
+    "caminho": "Header > bandeira",
+    "modo": "ambos",
+    "taxa": {
+      "percentual": 0,
+      "descricao": "Free"
+    },
+    "tempo": "Immediate",
+    "horario": "24/7",
+    "passos": [
+      "Click \"🇧🇷 Portuguese ▾\"",
+      "Choose between English, Portuguese, Spanish, Chinese or Arabic",
+      "Interface changes instantly"
+    ],
+    "dica": "The interface language does not affect the invoice language in COMEX billings.",
+    "categoria": "plataforma"
+  },
+  {
+    "codigo": "T21",
+    "slug": "suporte-whatsapp",
+    "titulo": "Open WhatsApp support",
+    "descricao": "Contact EvolueCash support via WhatsApp",
+    "emoji": "🎧",
+    "caminho": "Icone 🎧 (canto inferior direito)",
+    "modo": "ambos",
+    "taxa": {
+      "percentual": 0,
+      "descricao": "Free"
+    },
+    "tempo": "Variable",
+    "horario": "Business hours",
+    "passos": [
+      "Click the 🎧 icon",
+      "New tab opens with WhatsApp",
+      "Send your question to +55 47 98912-8640"
+    ],
+    "dica": "There is no internal chat, ticket or email. Everything goes through WhatsApp.",
+    "categoria": "plataforma"
+  },
+  {
+    "codigo": "T22",
+    "slug": "ver-carteira",
+    "titulo": "View consolidated wallet",
+    "descricao": "See all your wallet and payment data in one place",
+    "emoji": "👛",
+    "caminho": "Botao 'Ver minha carteira'",
+    "modo": "ambos",
+    "taxa": {
+      "percentual": 0,
+      "descricao": "Free"
+    },
+    "tempo": "Immediate",
+    "horario": "24/7",
+    "passos": [
+      "Click \"View my wallet\"",
+      "Modal opens with dropdown",
+      "Choose \"Crypto Wallets\" or \"Payment Data\"",
+      "Copy using the icon"
+    ],
+    "dica": "Fastest shortcut to send data to a new client. Everything in one modal.",
+    "categoria": "config"
+  },
+  {
+    "codigo": "T23",
+    "slug": "favoritos-pix",
+    "titulo": "How to use PIX favorites",
+    "descricao": "Save favorite PIX keys to speed up transfers",
+    "emoji": "⭐",
+    "caminho": "Saques > Saque Pix > tela 2 > '⭐ Meus Favoritos'",
+    "modo": "ambos",
+    "taxa": {
+      "percentual": 0,
+      "descricao": "Free"
+    },
+    "tempo": "Immediate",
+    "horario": "24/7",
+    "passos": [
+      "In the withdrawal flow go to screen 2",
+      "Click \"⭐ My Favorites\"",
+      "Modal opens with list",
+      "To favorite click the ⭐ next to \"Recent key\""
+    ],
+    "dica": "Save suppliers and employees as favorites. Reduces typing errors.",
+    "categoria": "config",
+    "relacionadas": ["T03", "T24"]
+  },
+  {
+    "codigo": "T24",
+    "slug": "chave-recente-pix",
+    "titulo": "How to use recent PIX key",
+    "descricao": "Use recent PIX keys for quick transfers",
+    "emoji": "🕐",
+    "caminho": "Saques > Transferencia Pix",
+    "modo": "pagamentos",
+    "taxa": {
+      "percentual": 1,
+      "descricao": "1% on the transferred amount"
+    },
+    "tempo": "Immediate",
+    "horario": "24/7",
+    "passos": [
+      "Saques > Transferencia Pix > \"Next\"",
+      "On screen 2 scroll to \"Recent keys\"",
+      "Click the arrow ›",
+      "Proceed and confirm"
+    ],
+    "dica": "Click the ⭐ next to the recent key to save as Favorite.",
+    "categoria": "pagamentos-br",
+    "relacionadas": ["T23", "T03"]
+  },
+  {
+    "codigo": "T25",
+    "slug": "filtrar-cobrancas-comex",
+    "titulo": "How to filter COMEX invoices",
+    "descricao": "Filter and find specific invoices in the COMEX dashboard",
+    "emoji": "🔍",
+    "caminho": "Comex > Filtro",
+    "modo": "ambos",
+    "taxa": {
+      "percentual": 0,
+      "descricao": "Free"
+    },
+    "tempo": "Immediate",
+    "horario": "24/7",
+    "passos": [
+      "In Comex click \"Filter\"",
+      "Check dimensions (Due date, Status, Payer)",
+      "In Status choose from Paid, Pending, Partially Paid, Overdue",
+      "Filter applies in real time",
+      "\"Clear Filters\""
+    ],
+    "dica": "\"Partially Paid\" status only appears in Dynamic Bolepix. Combine \"Status=Overdue\" + \"Payer=X\" for delinquency by client.",
+    "categoria": "comex",
+    "relacionadas": ["T14", "T12"]
+  }
+]

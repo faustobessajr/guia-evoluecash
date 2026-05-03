@@ -1,0 +1,977 @@
+[
+  {
+    "codigo": "OP01",
+    "slug": "receber-cliente-br-via-pix",
+    "titulo": "Receber pagamento de cliente brasileiro via PIX",
+    "emoji": "🇧🇷",
+    "para_quem": "Empresa ou profissional que recebe de clientes brasileiros via PIX no dia a dia.",
+    "categoria": "recebimento-br",
+    "categoriaUI": ["receber"],
+    "fluxo": [
+      { "etapa": 1, "titulo": "Receber os reais", "transacao_ref": "T01", "caminho": "Conta de Pagamentos → Depósitos → Depósito PIX", "taxa_percentual": 1.0, "descricao": "Gere a chave/QR Code e envie ao pagador. PIX cai automaticamente no seu saldo." }
+    ],
+    "tempo_total": "Imediato após PIX",
+    "custo_total_pct": 1.0,
+    "exemplo_pratico": {
+      "valor_input": 10000,
+      "moeda_input": "BRL",
+      "descricao_uso": "Receber R$ 10.000 de cliente brasileiro",
+      "breakdown": [{ "etapa": "Receber PIX (1%)", "taxa_brl": 100 }],
+      "total_taxa_brl": 100,
+      "valor_final_destino": "R$ 9.900 líquidos na sua conta"
+    },
+    "cuidados": ["Confira o valor líquido antes de gerar a chave", "PIX é 24/7, mas saque pra outro banco pode ter horário (T03)"],
+    "dicas": ["Se você quer R$ 100 líquidos, peça ao pagador R$ 101,02", "Use favoritos pra clientes recorrentes"],
+    "cta": "Abra sua conta gratuitamente em evoluecash.com.br"
+  },
+  {
+    "codigo": "OP02",
+    "slug": "receber-e-dolarizar",
+    "titulo": "Receber em reais e dolarizar na hora",
+    "emoji": "🇧🇷→💵",
+    "para_quem": "Empresa ou PF que recebe em BRL e quer proteger contra a desvalorização do real, mantendo em USDC.",
+    "categoria": "recebimento-br",
+    "categoriaUI": ["receber", "dolarizacao"],
+    "fluxo": [
+      { "etapa": 1, "titulo": "Receber os reais", "transacao_ref": "T01", "caminho": "Conta de Pagamentos → Depósitos → Depósito PIX", "taxa_percentual": 1.0, "descricao": "Cliente paga via PIX. Saldo cai imediatamente." },
+      { "etapa": 2, "titulo": "Alternar pra Conta Cripto", "transacao_ref": "T16", "caminho": "Header → Conta Cripto → Continuar", "taxa_percentual": 0, "descricao": "Sem custo. Saldo permanece o mesmo." },
+      { "etapa": 3, "titulo": "Comprar USDC com BRL", "transacao_ref": "T07", "caminho": "Exchange → Comprar → USDC", "taxa_percentual": 1.5, "descricao": "USDC é stablecoin atrelada 1:1 ao dólar americano." }
+    ],
+    "tempo_total": "~5 minutos",
+    "custo_total_pct": 2.5,
+    "exemplo_pratico": {
+      "valor_input": 10000,
+      "moeda_input": "BRL",
+      "descricao_uso": "Receber R$ 10.000 e dolarizar tudo em USDC",
+      "breakdown": [{ "etapa": "Receber PIX (1%)", "taxa_brl": 100 }, { "etapa": "Comprar USDC (1,5%)", "taxa_brl": 148.5 }],
+      "total_taxa_brl": 248.5,
+      "valor_final_destino": "≈ US$ 1.951 em USDC"
+    },
+    "cuidados": ["Cotação muda continuamente — confirme rápido depois de simular", "USDC fica em USDC, sem rendimento automático"],
+    "dicas": ["Use USDC pra hold de longo prazo. Pra reverter, faça T08 (Vender) → T03 (Sacar)", "USDC tem menor volatilidade que BTC/ETH"],
+    "cta": "Abra sua conta gratuitamente em evoluecash.com.br"
+  },
+  {
+    "codigo": "OP03",
+    "slug": "receber-dividir-dolar-real",
+    "titulo": "Receber e dividir entre dólar e real",
+    "emoji": "🇧🇷↔️💵",
+    "para_quem": "Quem recebe em BRL e quer separar caixa: parte mantém em real pro dia a dia, parte protege em dólar.",
+    "categoria": "recebimento-br",
+    "categoriaUI": ["receber", "dolarizacao"],
+    "fluxo": [
+      { "etapa": 1, "titulo": "Receber os reais", "transacao_ref": "T01", "caminho": "Conta de Pagamentos → Depósitos → Depósito PIX", "taxa_percentual": 1.0, "descricao": "Recebe o valor cheio em BRL." },
+      { "etapa": 2, "titulo": "Alternar pra Conta Cripto", "transacao_ref": "T16", "caminho": "Header → Conta Cripto", "taxa_percentual": 0, "descricao": "Sem custo." },
+      { "etapa": 3, "titulo": "Comprar USDC com parte do BRL", "transacao_ref": "T07", "caminho": "Exchange → Comprar → USDC", "taxa_percentual": 1.5, "descricao": "Digite só a parte que quer dolarizar (ex: 60%)." },
+      { "etapa": 4, "titulo": "Sacar o restante em BRL", "transacao_ref": "T03", "caminho": "Conta de Pagamentos → Saques → Transferência Pix", "taxa_percentual": 1.0, "descricao": "Saque pra sua conta bancária. Horário seg-sex 9h-17h." }
+    ],
+    "tempo_total": "~10 minutos",
+    "custo_total_pct": 2.0,
+    "exemplo_pratico": {
+      "valor_input": 10000,
+      "moeda_input": "BRL",
+      "descricao_uso": "Recebe R$ 10.000, dolariza 60% e saca 40%",
+      "breakdown": [{ "etapa": "Receber PIX (1%)", "taxa_brl": 100 }, { "etapa": "Comprar USDC R$ 6.000 (1,5%)", "taxa_brl": 89.1 }, { "etapa": "Sacar PIX R$ 4.000 (1%)", "taxa_brl": 39.6 }],
+      "total_taxa_brl": 228.7,
+      "valor_final_destino": "≈ US$ 1.171 em USDC + R$ 3.960 na conta bancária"
+    },
+    "cuidados": ["Saque PIX só roda seg-sex 9h-17h — planeje", "Fluxo em duas etapas: alterna conta, dolariza, alterna de novo, saca"],
+    "dicas": ["Use isso como rotina mensal: salário entra, parte vira reserva", "Salve a chave PIX da conta bancária como favorito (T23)"],
+    "cta": "Abra sua conta gratuitamente em evoluecash.com.br"
+  },
+  {
+    "codigo": "OP04",
+    "slug": "pagar-fornecedor-br-pix",
+    "titulo": "Pagar fornecedor brasileiro via PIX",
+    "emoji": "🇧🇷",
+    "para_quem": "Empresa que precisa pagar fornecedores, funcionários ou terceiros via PIX.",
+    "categoria": "pagamento-br",
+    "categoriaUI": ["pagar"],
+    "fluxo": [
+      { "etapa": 1, "titulo": "Enviar PIX", "transacao_ref": "T03", "caminho": "Conta de Pagamentos → Saques → Transferência Pix", "taxa_percentual": 1.0, "descricao": "Cole/digite a chave PIX do destinatário e confirme o valor." }
+    ],
+    "tempo_total": "Imediato",
+    "custo_total_pct": 1.0,
+    "exemplo_pratico": {
+      "valor_input": 5000,
+      "moeda_input": "BRL",
+      "descricao_uso": "Pagar fornecedor R$ 5.000 via PIX",
+      "breakdown": [{ "etapa": "Enviar PIX (1%)", "taxa_brl": 50 }],
+      "total_taxa_brl": 50,
+      "valor_final_destino": "R$ 5.000 ao fornecedor; R$ 5.050 debitado da sua conta"
+    },
+    "cuidados": ["Confira a chave PIX 2x antes de confirmar", "No modo Conta de Pagamentos a responsabilidade pela conferência é sua"],
+    "dicas": ["Use o modo Conta de Pagamentos pra agilidade 24/7", "Salve fornecedores como favoritos pra reduzir erro"],
+    "cta": "Abra sua conta gratuitamente em evoluecash.com.br"
+  },
+  {
+    "codigo": "OP05",
+    "slug": "pagar-fornecedores-favoritos",
+    "titulo": "Pagar fornecedores recorrentes usando Favoritos",
+    "emoji": "🇧🇷⭐",
+    "para_quem": "Empresa com vários pagamentos PIX recorrentes (folha de pagamento, fornecedores fixos, aluguéis).",
+    "categoria": "pagamento-br",
+    "categoriaUI": ["pagar"],
+    "fluxo": [
+      { "etapa": 1, "titulo": "Salvar destinatário como favorito", "transacao_ref": "T23", "caminho": "Saques → Transferência Pix → tela 2 → ⭐ ao lado da chave", "taxa_percentual": 0, "descricao": "Cadastro único, sem custo." },
+      { "etapa": 2, "titulo": "Usar favorito no PIX", "transacao_ref": "T03", "caminho": "Saques → Transferência Pix → Meus Favoritos", "taxa_percentual": 1.0, "descricao": "Selecione o destinatário, digite o valor e confirme." }
+    ],
+    "tempo_total": "Alguns segundos por pagamento",
+    "custo_total_pct": 1.0,
+    "exemplo_pratico": {
+      "valor_input": 50000,
+      "moeda_input": "BRL",
+      "descricao_uso": "Folha de pagamento R$ 50.000 entre 10 favoritos",
+      "breakdown": [{ "etapa": "Enviar PIX (1% sobre o total)", "taxa_brl": 500 }],
+      "total_taxa_brl": 500,
+      "valor_final_destino": "R$ 50.000 distribuídos nos 10 destinatários"
+    },
+    "cuidados": ["Mesmo com favorito, confira o valor antes de confirmar", "Favoritos são vinculados à sua conta — só você os vê"],
+    "dicas": ["Comece favoritando os 5-10 destinatários mais frequentes", "Reduz tempo de operação e erro de digitação"],
+    "cta": "Abra sua conta gratuitamente em evoluecash.com.br"
+  },
+  {
+    "codigo": "OP06",
+    "slug": "pagar-boletos-dia-a-dia",
+    "titulo": "Pagar boletos do dia a dia",
+    "emoji": "🧾",
+    "para_quem": "Qualquer empresa ou pessoa que paga boletos: aluguel, energia, telefonia, fornecedores.",
+    "categoria": "pagamento-br",
+    "categoriaUI": ["pagar"],
+    "fluxo": [
+      { "etapa": 1, "titulo": "Pagar boleto", "transacao_ref": "T02", "caminho": "Conta de Pagamentos → Pagamentos → Boleto", "taxa_percentual": 1.75, "descricao": "Cole o código de barras, confira beneficiário e valor, confirme." }
+    ],
+    "tempo_total": "Liquidação conforme horário bancário",
+    "custo_total_pct": 1.75,
+    "exemplo_pratico": {
+      "valor_input": 1000,
+      "moeda_input": "BRL",
+      "descricao_uso": "Pagar boleto de R$ 1.000",
+      "breakdown": [{ "etapa": "Pagar boleto (1,75%)", "taxa_brl": 17.5 }],
+      "total_taxa_brl": 17.5,
+      "valor_final_destino": "R$ 1.000 ao beneficiário; R$ 1.017,50 debitado"
+    },
+    "cuidados": ["Boletos vencidos podem ter juros recalculados", "Liquidação depende do horário bancário (D+0 ou D+1)"],
+    "dicas": ["Use o ícone de colar pra evitar erro de digitação", "Boletos de cartão de crédito ou arrecadação seguem regras próprias"],
+    "cta": "Abra sua conta gratuitamente em evoluecash.com.br"
+  },
+  {
+    "codigo": "OP07",
+    "slug": "importador-paga-fornecedor-exterior",
+    "titulo": "Importador paga fornecedor estrangeiro",
+    "emoji": "🌍",
+    "para_quem": "Importador PJ que compra mercadoria de fornecedor estrangeiro (China, EUA, Europa) e precisa pagar em moeda local do destino",
+    "categoria": "pagamento-internacional",
+    "categoriaUI": ["pagar", "internacional"],
+    "fluxo": [
+      {
+        "etapa": 1,
+        "titulo": "Receber os reais",
+        "transacao_ref": "T01",
+        "caminho": "Conta de Pagamentos > Depósitos > Depósito PIX",
+        "taxa_percentual": 1,
+        "descricao": "Receba via PIX na conta EvolueCash"
+      },
+      {
+        "etapa": 2,
+        "titulo": "Alternar pra Conta Cripto",
+        "transacao_ref": "T16",
+        "caminho": "Header > Conta Cripto",
+        "taxa_percentual": 0,
+        "descricao": "Troque para o modo Conta Cripto"
+      },
+      {
+        "etapa": 3,
+        "titulo": "Comprar USDT com BRL",
+        "transacao_ref": "T07",
+        "caminho": "Exchange > Comprar > USDT",
+        "taxa_percentual": 1.5,
+        "descricao": "Converta reais em USDT"
+      },
+      {
+        "etapa": 4,
+        "titulo": "Transferir USDT on-chain",
+        "transacao_ref": "T09",
+        "caminho": "Exchange > Transferir > Rede TRON",
+        "taxa_percentual": 0,
+        "descricao": "Envie USDT para a carteira do fornecedor"
+      },
+      {
+        "etapa": 5,
+        "titulo": "Conversão final USDT para USD",
+        "transacao_ref": "",
+        "caminho": "Off-ramp via rede de parceiros",
+        "taxa_percentual": 1,
+        "descricao": "Conversão USDT para dólares via parceiro"
+      }
+    ],
+    "tempo_total": "~2 horas",
+    "custo_total_pct": 3.5,
+    "exemplo_pratico": {
+      "valor_input": 220000,
+      "moeda_input": "USD",
+      "descricao_uso": "Pagamento de US$ 220.000 a fornecedor nos EUA",
+      "breakdown": [
+        { "etapa": "Depósito PIX (1%)", "taxa_brl": 11000 },
+        { "etapa": "Compra USDT (1,5%)", "taxa_brl": 16500 },
+        { "etapa": "Transferência on-chain", "taxa_brl": 50 },
+        { "etapa": "Off-ramp (1%)", "taxa_brl": 10690 }
+      ],
+      "total_taxa_brl": 38240,
+      "valor_final_destino": "~US$ 212.300 na conta do fornecedor"
+    },
+    "cuidados": [
+      "Confirme TOKEN + REDE + ENDEREÇO antes de transferir on-chain (T09 é irreversível)",
+      "Saques cripto seg-sex 9h-17h",
+      "Limite swap mensal R$ 1 milhão"
+    ],
+    "dicas": [
+      "Use Favoritos pra endereços recorrentes",
+      "Considere fracionar operações grandes"
+    ],
+    "cta": "Abra sua conta gratuitamente em evoluecash.com.br"
+  },
+  {
+    "codigo": "OP08",
+    "slug": "empresa-br-paga-divida-usd",
+    "titulo": "Empresa BR paga dívida em USD pra empresa USA",
+    "emoji": "🌍",
+    "para_quem": "Empresa brasileira com obrigação de pagamento em USD pra empresa americana (dívida, contrato anual, parcela de aquisição).",
+    "categoria": "pagamento-internacional",
+    "categoriaUI": ["pagar", "internacional"],
+    "fluxo": [
+      { "etapa": 1, "titulo": "Receber os reais", "transacao_ref": "T01", "caminho": "Conta de Pagamentos → Depósito PIX", "taxa_percentual": 1.0, "descricao": "Empresa devedora paga via PIX." },
+      { "etapa": 2, "titulo": "Alternar pra Conta Cripto", "transacao_ref": "T16", "caminho": "Header → Conta Cripto", "taxa_percentual": 0, "descricao": "Sem custo." },
+      { "etapa": 3, "titulo": "Comprar USDT com BRL", "transacao_ref": "T07", "caminho": "Exchange → Comprar → USDT", "taxa_percentual": 1.5, "descricao": "Conversão BRL → USDT." },
+      { "etapa": 4, "titulo": "Transferir USDT on-chain", "transacao_ref": "T09", "caminho": "Exchange → Transferir → Rede TRON", "taxa_percentual": 0, "descricao": "Endereço do parceiro de off-ramp." },
+      { "etapa": 5, "titulo": "Conversão final USDT → USD bancário", "transacao_ref": "T09", "caminho": "Off-ramp via parceiros nos EUA", "taxa_percentual": 1.0, "descricao": "Empresa USA recebe em USD." }
+    ],
+    "tempo_total": "~2 horas",
+    "custo_total_pct": 3.5,
+    "exemplo_pratico": {
+      "valor_input": 400000,
+      "moeda_input": "USD",
+      "descricao_uso": "Parcela anual de US$ 400.000 (~R$ 2.000.000)",
+      "breakdown": [{ "etapa": "Receber PIX (1%)", "taxa_brl": 20000 }, { "etapa": "Comprar USDT (1,5%)", "taxa_brl": 29700 }, { "etapa": "Rede on-chain", "taxa_brl": 30 }, { "etapa": "Conversão USDT → USD (1%)", "taxa_brl": 19500 }],
+      "total_taxa_brl": 69230,
+      "valor_final_destino": "≈ US$ 386.150 na conta da empresa USA"
+    },
+    "cuidados": ["Mesma cadeia da OP07 — irreversibilidade da T09 vale aqui", "Operação se repete a cada parcela — salve endereço como favorito", "Valores acima de US$ 50k podem ter compliance de 20 min a 7 dias"],
+    "dicas": ["Estratégia 'picado': fracione US$ 400 mil em 8 lotes de US$ 50 mil", "Cabe melhor no limite mensal de swap, dilui variação cambial", "Compliance mais ágil pra cada lote"],
+    "cta": "Abra sua conta gratuitamente em evoluecash.com.br"
+  },
+  {
+    "codigo": "OP09",
+    "slug": "pagar-freelancer-internacional",
+    "titulo": "Empresa paga freelancer ou equipe internacional",
+    "emoji": "👥",
+    "para_quem": "Empresa BR (agência, SaaS, startup) com freelancers, contratados PJ ou time distribuído fora do Brasil.",
+    "categoria": "pagamento-internacional",
+    "categoriaUI": ["pagar", "internacional"],
+    "fluxo": [
+      { "etapa": 1, "titulo": "Receber os reais", "transacao_ref": "T01", "caminho": "Conta de Pagamentos → Depósito PIX", "taxa_percentual": 1.0, "descricao": "Funding em BRL pra cobrir a folha do mês." },
+      { "etapa": 2, "titulo": "Alternar pra Conta Cripto", "transacao_ref": "T16", "caminho": "Header → Conta Cripto", "taxa_percentual": 0, "descricao": "Sem custo." },
+      { "etapa": 3, "titulo": "Comprar USDT", "transacao_ref": "T07", "caminho": "Exchange → Comprar → USDT", "taxa_percentual": 1.5, "descricao": "Compre o equivalente ao total da folha." },
+      { "etapa": 4, "titulo": "Transferir pra cada freelancer", "transacao_ref": "T09", "caminho": "Exchange → Transferir → rede preferida", "taxa_percentual": 0, "descricao": "Endereço da carteira do freelancer ou parceiro OTC." },
+      { "etapa": 5, "titulo": "Conversão USDT → USD/EUR", "transacao_ref": "T09", "caminho": "Off-ramp via parceiros (se freelancer não tiver wallet)", "taxa_percentual": 1.0, "descricao": "Pagamento na conta bancária do freelancer." }
+    ],
+    "tempo_total": "~1 hora por pagamento",
+    "custo_total_pct": 3.5,
+    "exemplo_pratico": {
+      "valor_input": 20000,
+      "moeda_input": "USD",
+      "descricao_uso": "Folha mensal: 10 freelancers × US$ 2.000",
+      "breakdown": [{ "etapa": "Receber PIX (1%)", "taxa_brl": 1000 }, { "etapa": "Comprar USDT (1,5%)", "taxa_brl": 1485 }, { "etapa": "Rede on-chain (10×)", "taxa_brl": 50 }, { "etapa": "Conversão USDT → USD (1%)", "taxa_brl": 975 }],
+      "total_taxa_brl": 3510,
+      "valor_final_destino": "≈ US$ 19.300 distribuídos entre os 10 freelancers"
+    },
+    "cuidados": ["Cada freelancer pode preferir rede diferente — confira antes", "Se freelancer tem wallet própria, custo cai pra 2,5%", "Confira sempre rede + endereço antes de cada envio"],
+    "dicas": ["Salve cada freelancer como favorito (planilha com rede + endereço)", "Faça pagamento todo dia X do mês", "Polygon mais barato pra valores pequenos, Tron pra USDT"],
+    "cta": "Abra sua conta gratuitamente em evoluecash.com.br"
+  },
+  {
+    "codigo": "OP10",
+    "slug": "pagar-equipamento-importado",
+    "titulo": "Empresa paga equipamento ou maquinário importado",
+    "emoji": "🏗️",
+    "para_quem": "Empresa de construção, indústria, agro ou tech que compra máquina, equipamento ou peça especializada de fornecedor internacional.",
+    "categoria": "pagamento-internacional",
+    "categoriaUI": ["pagar", "internacional"],
+    "fluxo": [
+      { "etapa": 1, "titulo": "Receber os reais", "transacao_ref": "T01", "caminho": "Conta de Pagamentos → Depósito PIX", "taxa_percentual": 1.0, "descricao": "Funding em BRL." },
+      { "etapa": 2, "titulo": "Alternar pra Conta Cripto", "transacao_ref": "T16", "caminho": "Header → Conta Cripto", "taxa_percentual": 0, "descricao": "Sem custo." },
+      { "etapa": 3, "titulo": "Comprar USDT", "transacao_ref": "T07", "caminho": "Exchange → Comprar → USDT", "taxa_percentual": 1.5, "descricao": "Conversão BRL → USDT." },
+      { "etapa": 4, "titulo": "Transferir on-chain", "transacao_ref": "T09", "caminho": "Exchange → Transferir → rede do fornecedor", "taxa_percentual": 0, "descricao": "Endereço do parceiro de off-ramp." },
+      { "etapa": 5, "titulo": "Conversão final USDT → USD", "transacao_ref": "T09", "caminho": "Off-ramp via parceiros", "taxa_percentual": 1.0, "descricao": "Fornecedor recebe em USD." }
+    ],
+    "tempo_total": "~2 horas",
+    "custo_total_pct": 3.5,
+    "exemplo_pratico": {
+      "valor_input": 80000,
+      "moeda_input": "USD",
+      "descricao_uso": "Equipamento de US$ 80.000 (~R$ 400.000)",
+      "breakdown": [{ "etapa": "Receber PIX (1%)", "taxa_brl": 4000 }, { "etapa": "Comprar USDT (1,5%)", "taxa_brl": 5940 }, { "etapa": "Rede on-chain", "taxa_brl": 30 }, { "etapa": "Conversão USDT → USD (1%)", "taxa_brl": 3900 }],
+      "total_taxa_brl": 13870,
+      "valor_final_destino": "≈ US$ 77.225 na conta do fornecedor"
+    },
+    "cuidados": ["Esta operação não substitui DI/DUIMP no Siscomex", "Consulte despachante pra alinhar nota fiscal de importação", "Documente NCM, valor declarado e câmbio efetivo"],
+    "dicas": ["Pagamentos acima de US$ 50k podem demorar 20 min a 7 dias", "Planeje a operação com folga em relação à data de embarque"],
+    "cta": "Abra sua conta gratuitamente em evoluecash.com.br"
+  },
+  {
+    "codigo": "OP11",
+    "slug": "distribuidora-importacao-recorrente",
+    "titulo": "Distribuidora paga importação recorrente",
+    "emoji": "📦",
+    "para_quem": "Distribuidora ou atacadista que importa produto de fornecedor recorrente (China, Bielorrússia, Coreia, Índia) todo mês.",
+    "categoria": "pagamento-internacional",
+    "categoriaUI": ["pagar", "internacional"],
+    "fluxo": [
+      { "etapa": 1, "titulo": "Receber os reais", "transacao_ref": "T01", "caminho": "Conta de Pagamentos → Depósito PIX", "taxa_percentual": 1.0, "descricao": "Funding mensal em BRL." },
+      { "etapa": 2, "titulo": "Alternar pra Conta Cripto", "transacao_ref": "T16", "caminho": "Header → Conta Cripto", "taxa_percentual": 0, "descricao": "Sem custo." },
+      { "etapa": 3, "titulo": "Comprar USDT", "transacao_ref": "T07", "caminho": "Exchange → Comprar → USDT", "taxa_percentual": 1.5, "descricao": "Conversão." },
+      { "etapa": 4, "titulo": "Transferir on-chain", "transacao_ref": "T09", "caminho": "Exchange → Transferir → rede do fornecedor", "taxa_percentual": 0, "descricao": "Endereço do fornecedor (ou parceiro OTC)." },
+      { "etapa": 5, "titulo": "Conversão USDT → moeda local", "transacao_ref": "T09", "caminho": "Off-ramp via parceiros (USD, EUR, etc)", "taxa_percentual": 1.0, "descricao": "Fornecedor recebe em moeda local." }
+    ],
+    "tempo_total": "~2 horas",
+    "custo_total_pct": 3.5,
+    "exemplo_pratico": {
+      "valor_input": 100000,
+      "moeda_input": "USD",
+      "descricao_uso": "Importação mensal de US$ 100.000",
+      "breakdown": [{ "etapa": "Receber PIX (1%)", "taxa_brl": 5000 }, { "etapa": "Comprar USDT (1,5%)", "taxa_brl": 7425 }, { "etapa": "Rede on-chain", "taxa_brl": 30 }, { "etapa": "Conversão USDT → USD (1%)", "taxa_brl": 4875 }],
+      "total_taxa_brl": 17330,
+      "valor_final_destino": "≈ US$ 96.534 na conta do fornecedor (mensal)"
+    },
+    "cuidados": ["Limite swap mensal R$ 1 milhão — imports acima precisam ser fracionados", "Mantenha documentação aduaneira em ordem (DI/DUIMP)", "Consulte despachante regularmente"],
+    "dicas": ["Salve o endereço do fornecedor como favorito", "Mantenha buffer em USDC pra urgências", "Considere fracionar em 2-3 envios por mês pra diluir variação cambial"],
+    "cta": "Abra sua conta gratuitamente em evoluecash.com.br"
+  },
+  {
+    "codigo": "OP12",
+    "slug": "pagamento-fracionado-picado",
+    "titulo": "Pagamento internacional fracionado (picado)",
+    "emoji": "🔢",
+    "para_quem": "Empresa que precisa fazer remessa internacional grande (acima do limite mensal de swap) ou que prefere diluir em parcelas menores.",
+    "categoria": "pagamento-internacional",
+    "categoriaUI": ["pagar", "internacional"],
+    "fluxo": [
+      { "etapa": 1, "titulo": "Receber os reais por lote", "transacao_ref": "T01", "caminho": "Conta de Pagamentos → Depósito PIX", "taxa_percentual": 1.0, "descricao": "Receba em lotes (ex: R$ 100k por vez)." },
+      { "etapa": 2, "titulo": "Alternar pra Conta Cripto", "transacao_ref": "T16", "caminho": "Header → Conta Cripto", "taxa_percentual": 0, "descricao": "Sem custo (uma vez só)." },
+      { "etapa": 3, "titulo": "Comprar USDT por lote", "transacao_ref": "T07", "caminho": "Exchange → Comprar → USDT", "taxa_percentual": 1.5, "descricao": "Compre em cada lote." },
+      { "etapa": 4, "titulo": "Transferir on-chain por lote", "transacao_ref": "T09", "caminho": "Exchange → Transferir → mesmo endereço final", "taxa_percentual": 0, "descricao": "Mesmo endereço pra cada lote." },
+      { "etapa": 5, "titulo": "Conversão USDT → USD por lote", "transacao_ref": "T09", "caminho": "Off-ramp via parceiros", "taxa_percentual": 1.0, "descricao": "Cada lote converte separadamente." }
+    ],
+    "tempo_total": "~2 horas por lote",
+    "custo_total_pct": 3.5,
+    "exemplo_pratico": {
+      "valor_input": 200000,
+      "moeda_input": "USD",
+      "descricao_uso": "Remessa total US$ 200.000 em 10 lotes de US$ 20.000",
+      "breakdown": [{ "etapa": "Receber PIX 10× (1% sobre total)", "taxa_brl": 10000 }, { "etapa": "Comprar USDT 10× (1,5% sobre total)", "taxa_brl": 14850 }, { "etapa": "Rede on-chain 10×", "taxa_brl": 300 }, { "etapa": "Conversão USDT → USD 10× (1% sobre total)", "taxa_brl": 9750 }],
+      "total_taxa_brl": 34900,
+      "valor_final_destino": "≈ US$ 193.020 na conta destino"
+    },
+    "cuidados": ["Documente todos os lotes pra reconciliação contábil", "Use sempre o mesmo endereço de destino", "Mantenha planilha de controle: data, valor BRL, valor USDT, hash, valor USD"],
+    "dicas": ["Cabe no limite swap mensal (R$ 1 mi)", "Compliance mais rápido por lote", "Diluição da variação cambial — não fica refém de cotação única"],
+    "cta": "Abra sua conta gratuitamente em evoluecash.com.br"
+  },
+  {
+    "codigo": "OP13",
+    "slug": "exportador-recebe-do-exterior",
+    "titulo": "Exportador recebe do cliente no exterior em USDT/USDC",
+    "emoji": "🌎",
+    "para_quem": "Empresa BR que vende produto ou serviço pra cliente estrangeiro e precisa receber em moeda forte.",
+    "categoria": "recebimento-internacional",
+    "categoriaUI": ["receber", "internacional"],
+    "fluxo": [
+      { "etapa": 1, "titulo": "Emitir cobrança em cripto", "transacao_ref": "T17", "caminho": "Comex → Bolecripto Estático", "taxa_percentual": 0, "descricao": "Liquidação em USDT ou USDC. Idioma da fatura: inglês ou espanhol." },
+      { "etapa": 2, "titulo": "Cliente paga em USDT/USDC", "transacao_ref": "T17", "caminho": "Cliente paga via wallet ou exchange", "taxa_percentual": 0, "descricao": "USDT/USDC na sua carteira (2-60 min)." },
+      { "etapa": 3, "titulo": "Vender por BRL", "transacao_ref": "T08", "caminho": "Exchange → Vender", "taxa_percentual": 1.5, "descricao": "Conversão pra reais." },
+      { "etapa": 4, "titulo": "Sacar BRL", "transacao_ref": "T03", "caminho": "Saques → Transferência Pix", "taxa_percentual": 1.0, "descricao": "Saque pra conta bancária BR." }
+    ],
+    "tempo_total": "1 a 24 horas",
+    "custo_total_pct": 2.5,
+    "exemplo_pratico": {
+      "valor_input": 50000,
+      "moeda_input": "USD",
+      "descricao_uso": "Exportação de US$ 50.000 (~R$ 250.000)",
+      "breakdown": [{ "etapa": "Vender USDT (1,5%)", "taxa_brl": 3750 }, { "etapa": "Sacar PIX (1%)", "taxa_brl": 2462 }],
+      "total_taxa_brl": 6212,
+      "valor_final_destino": "≈ R$ 243.788 na conta bancária"
+    },
+    "cuidados": ["Esta operação não substitui DU-E", "Confira hash on-chain de cada pagamento", "Documente conversão pra contabilidade"],
+    "dicas": ["Bolecripto Estático fixa o valor — bom pra contratos fechados", "Pra cobrança variável, use Bolecripto Dinâmico (OP18)", "Pode acumular USDT e converter em lotes maiores"],
+    "cta": "Abra sua conta gratuitamente em evoluecash.com.br"
+  },
+  {
+    "codigo": "OP14",
+    "slug": "turismo-recebe-estrangeiros",
+    "titulo": "Empresa de turismo recebe estrangeiros em USDT",
+    "emoji": "🏖️",
+    "para_quem": "Pousada, hotel, agência de turismo, guia ou operadora que recebe estrangeiro e quer cobrar em USDT/USDC.",
+    "categoria": "recebimento-internacional",
+    "categoriaUI": ["receber", "internacional"],
+    "fluxo": [
+      { "etapa": 1, "titulo": "Emitir Bolecripto", "transacao_ref": "T17", "caminho": "Comex → Bolecripto Estático ou Dinâmico", "taxa_percentual": 0, "descricao": "Estático pra pacote fechado, Dinâmico pra extras." },
+      { "etapa": 2, "titulo": "Hóspede paga em USDT/USDC", "transacao_ref": "T17", "caminho": "Cliente paga via wallet", "taxa_percentual": 0, "descricao": "USDT/USDC na sua carteira (2-60 min)." },
+      { "etapa": 3, "titulo": "Vender por BRL", "transacao_ref": "T08", "caminho": "Exchange → Vender", "taxa_percentual": 1.5, "descricao": "Conversão." },
+      { "etapa": 4, "titulo": "Sacar BRL", "transacao_ref": "T03", "caminho": "Saques → Transferência Pix", "taxa_percentual": 1.0, "descricao": "Saque pra conta bancária BR." }
+    ],
+    "tempo_total": "1 a 24 horas",
+    "custo_total_pct": 2.5,
+    "exemplo_pratico": {
+      "valor_input": 1500,
+      "moeda_input": "USD",
+      "descricao_uso": "Pacote de hospedagem US$ 1.500 (~R$ 7.500)",
+      "breakdown": [{ "etapa": "Vender USDT (1,5%)", "taxa_brl": 112.5 }, { "etapa": "Sacar PIX (1%)", "taxa_brl": 73.88 }],
+      "total_taxa_brl": 186.38,
+      "valor_final_destino": "≈ R$ 7.314 na sua conta"
+    },
+    "cuidados": ["Configure invoice em inglês ou espanhol", "Eduque o hóspede a usar exchange reconhecida", "Cripto não tem chargeback"],
+    "dicas": ["Sem cartão de crédito internacional (taxa típica 4-6%)", "Sem chargeback", "Mantenha em USDT até decidir converter"],
+    "cta": "Abra sua conta gratuitamente em evoluecash.com.br"
+  },
+  {
+    "codigo": "OP15",
+    "slug": "imobiliaria-recebe-estrangeiro",
+    "titulo": "Imobiliária recebe pagamento de estrangeiro",
+    "emoji": "🏠",
+    "para_quem": "Imobiliária, corretor ou administradora que vende ou aluga imóvel pra cliente estrangeiro.",
+    "categoria": "recebimento-internacional",
+    "categoriaUI": ["receber", "internacional"],
+    "fluxo": [
+      { "etapa": 1, "titulo": "Emitir Bolecripto", "transacao_ref": "T17", "caminho": "Comex → Bolecripto Estático ou Dinâmico", "taxa_percentual": 0, "descricao": "Liquidação USDT ou USDC. Idioma inglês ou espanhol." },
+      { "etapa": 2, "titulo": "Cliente paga", "transacao_ref": "T17", "caminho": "Wallet ou exchange", "taxa_percentual": 0, "descricao": "USDT/USDC na carteira. Confira hash." },
+      { "etapa": 3, "titulo": "Vender por BRL", "transacao_ref": "T08", "caminho": "Exchange → Vender", "taxa_percentual": 1.5, "descricao": "Conversão." },
+      { "etapa": 4, "titulo": "Sacar BRL pra repasse", "transacao_ref": "T03", "caminho": "Saques → Transferência Pix", "taxa_percentual": 1.0, "descricao": "Repasse pro vendedor/proprietário." }
+    ],
+    "tempo_total": "1 a 24 horas",
+    "custo_total_pct": 2.5,
+    "exemplo_pratico": {
+      "valor_input": 200000,
+      "moeda_input": "USD",
+      "descricao_uso": "Venda de imóvel US$ 200.000 (~R$ 1.000.000)",
+      "breakdown": [{ "etapa": "Vender USDT (1,5%)", "taxa_brl": 15000 }, { "etapa": "Sacar PIX (1%)", "taxa_brl": 9850 }],
+      "total_taxa_brl": 24850,
+      "valor_final_destino": "≈ R$ 975.150 na sua conta"
+    },
+    "cuidados": ["Não substitui registro cartorial nem ITBI", "Documente conversão pra contabilidade", "Mantenha valor declarado em USD e câmbio efetivo do dia"],
+    "dicas": ["Pra aluguel mensal, use Bolecripto Dinâmico Recorrente (OP30)", "Inquilino paga todo mês no mesmo endereço"],
+    "cta": "Abra sua conta gratuitamente em evoluecash.com.br"
+  },
+  {
+    "codigo": "OP16",
+    "slug": "info-produtor-vendas-internacionais",
+    "titulo": "Info-produtor recebe vendas internacionais",
+    "emoji": "🎓",
+    "para_quem": "Quem vende curso, infoproduto, mentoria ou conteúdo digital pra audiência fora do Brasil.",
+    "categoria": "recebimento-internacional",
+    "categoriaUI": ["receber", "internacional"],
+    "fluxo": [
+      { "etapa": 1, "titulo": "Emitir cobrança", "transacao_ref": "T17", "caminho": "Comex → Bolecripto Estático ou Dinâmico", "taxa_percentual": 0, "descricao": "Estático pra preço fechado, Dinâmico pra assinatura recorrente." },
+      { "etapa": 2, "titulo": "Comprador paga em USDT/USDC", "transacao_ref": "T17", "caminho": "Link compartilhado em checkout/social", "taxa_percentual": 0, "descricao": "USDT/USDC na carteira." },
+      { "etapa": 3, "titulo": "Vender por BRL em lote", "transacao_ref": "T08", "caminho": "Exchange → Vender (acumule e converta)", "taxa_percentual": 1.5, "descricao": "Pode acumular vários meses ou converter mensal." },
+      { "etapa": 4, "titulo": "Sacar BRL", "transacao_ref": "T03", "caminho": "Saques → Transferência Pix", "taxa_percentual": 1.0, "descricao": "Saque pra conta bancária BR." }
+    ],
+    "tempo_total": "1 a 24 horas por lote",
+    "custo_total_pct": 2.5,
+    "exemplo_pratico": {
+      "valor_input": 5000,
+      "moeda_input": "USD",
+      "descricao_uso": "Acumulado de US$ 5.000 em vendas (~R$ 25.000)",
+      "breakdown": [{ "etapa": "Vender USDT (1,5%)", "taxa_brl": 375 }, { "etapa": "Sacar PIX (1%)", "taxa_brl": 246 }],
+      "total_taxa_brl": 621,
+      "valor_final_destino": "≈ R$ 24.379 na sua conta"
+    },
+    "cuidados": ["Educar o público sobre como pagar em USDT", "Pra vendas pequenas (US$ 30-100), prefira Polygon ou Tron"],
+    "dicas": ["Não precisa converter cada venda imediatamente", "Acumule em USDC e converta quando câmbio estiver favorável", "Bolecripto Dinâmico Recorrente pra assinaturas"],
+    "cta": "Abra sua conta gratuitamente em evoluecash.com.br"
+  },
+  {
+    "codigo": "OP17",
+    "slug": "agencia-marketing-cliente-internacional",
+    "titulo": "Agência de marketing recebe cliente internacional",
+    "emoji": "📣",
+    "para_quem": "Agência BR de marketing, design, performance, social media ou consultoria que atende cliente fora do Brasil.",
+    "categoria": "recebimento-internacional",
+    "categoriaUI": ["receber", "internacional"],
+    "fluxo": [
+      { "etapa": 1, "titulo": "Emitir cobrança", "transacao_ref": "T17", "caminho": "Comex → Bolecripto Estático ou Dinâmico", "taxa_percentual": 0, "descricao": "Estático pra projeto, Dinâmico pra retainer mensal." },
+      { "etapa": 2, "titulo": "Cliente paga", "transacao_ref": "T17", "caminho": "USDT ou USDC", "taxa_percentual": 0, "descricao": "USDT/USDC na carteira." },
+      { "etapa": 3, "titulo": "Vender por BRL", "transacao_ref": "T08", "caminho": "Exchange → Vender", "taxa_percentual": 1.5, "descricao": "Conversão." },
+      { "etapa": 4, "titulo": "Sacar BRL", "transacao_ref": "T03", "caminho": "Saques → Transferência Pix", "taxa_percentual": 1.0, "descricao": "Saque mensal." }
+    ],
+    "tempo_total": "1 a 24 horas",
+    "custo_total_pct": 2.5,
+    "exemplo_pratico": {
+      "valor_input": 8000,
+      "moeda_input": "USD",
+      "descricao_uso": "Contrato mensal US$ 8.000 (~R$ 40.000)",
+      "breakdown": [{ "etapa": "Vender USDT (1,5%)", "taxa_brl": 600 }, { "etapa": "Sacar PIX (1%)", "taxa_brl": 394 }],
+      "total_taxa_brl": 994,
+      "valor_final_destino": "≈ R$ 39.006 na sua conta (mensal)"
+    },
+    "cuidados": ["Configure invoice no idioma do cliente", "Documente cada conversão pra reconciliação fiscal", "Mantenha contrato e nota fiscal alinhados"],
+    "dicas": ["Cobre em USDC (mais estável)", "Use Bolecripto Dinâmico Recorrente pra contratos mensais", "Acumule reserva em USDC pra cobrir meses de baixa"],
+    "cta": "Abra sua conta gratuitamente em evoluecash.com.br"
+  },
+  {
+    "codigo": "OP18",
+    "slug": "saas-recebe-recorrente-exterior",
+    "titulo": "Empresa B2B/SaaS recebe pagamento recorrente do exterior",
+    "emoji": "🔄",
+    "para_quem": "SaaS, plataforma B2B ou software house brasileira que cobra mensalidade, licença ou assinatura de cliente estrangeiro.",
+    "categoria": "recebimento-internacional",
+    "categoriaUI": ["receber", "internacional"],
+    "fluxo": [
+      { "etapa": 1, "titulo": "Emitir Bolecripto Dinâmico Recorrente", "transacao_ref": "T18", "caminho": "Comex → Bolecripto Dinâmico → Recorrente: Sim", "taxa_percentual": 0, "descricao": "Validade 1 ano. Cliente paga todo mês no mesmo endereço." },
+      { "etapa": 2, "titulo": "Receber USDT/USDC mensal", "transacao_ref": "T18", "caminho": "Acompanhe pelo Painel COMEX", "taxa_percentual": 0, "descricao": "Cada pagamento confirmado on-chain." },
+      { "etapa": 3, "titulo": "Vender por BRL em lote", "transacao_ref": "T08", "caminho": "Exchange → Vender (mensal ou em lote)", "taxa_percentual": 1.5, "descricao": "Conversão." },
+      { "etapa": 4, "titulo": "Sacar BRL", "transacao_ref": "T03", "caminho": "Saques → Transferência Pix", "taxa_percentual": 1.0, "descricao": "Saque pra operação." }
+    ],
+    "tempo_total": "1 a 24 horas por conversão",
+    "custo_total_pct": 2.5,
+    "exemplo_pratico": {
+      "valor_input": 10000,
+      "moeda_input": "USD",
+      "descricao_uso": "20 clientes × US$ 500/mês = US$ 10.000/mês",
+      "breakdown": [{ "etapa": "Vender USDT (1,5%)", "taxa_brl": 750 }, { "etapa": "Sacar PIX (1%)", "taxa_brl": 493 }],
+      "total_taxa_brl": 1243,
+      "valor_final_destino": "≈ R$ 48.757 na sua conta (mensal)"
+    },
+    "cuidados": ["Pagamento cripto não confirma valor automaticamente — verifique hash", "Configure idioma da invoice por cliente", "Tenha política de cancelamento clara"],
+    "dicas": ["Bolecripto Dinâmico Recorrente com validade 1 ano", "Filtre cobranças vencidas pelo Painel COMEX (T25)", "Mantenha 1-2 meses de reserva em USDC"],
+    "cta": "Abra sua conta gratuitamente em evoluecash.com.br"
+  },
+  {
+    "codigo": "OP19",
+    "slug": "pf-dolariza-poupanca",
+    "titulo": "Pessoa Física dolariza poupança",
+    "emoji": "👤💵",
+    "para_quem": "PF que tem reserva em reais e quer manter em USDC (dólar digital, estável).",
+    "categoria": "dolarizacao",
+    "categoriaUI": ["dolarizacao"],
+    "fluxo": [
+      { "etapa": 1, "titulo": "Depositar reais", "transacao_ref": "T01", "caminho": "Conta de Pagamentos → Depósito PIX", "taxa_percentual": 1.0, "descricao": "Pague de outro banco." },
+      { "etapa": 2, "titulo": "Alternar pra Conta Cripto", "transacao_ref": "T16", "caminho": "Header → Conta Cripto", "taxa_percentual": 0, "descricao": "Sem custo." },
+      { "etapa": 3, "titulo": "Comprar USDC", "transacao_ref": "T07", "caminho": "Exchange → Comprar → USDC", "taxa_percentual": 1.5, "descricao": "Mínimo R$ 10. Stablecoin 1:1 ao dólar." },
+      { "etapa": 4, "titulo": "Manter na carteira", "transacao_ref": "T22", "caminho": "Conta Cripto → Saldo USDC", "taxa_percentual": 0, "descricao": "Sem custo de manutenção." }
+    ],
+    "tempo_total": "~5 minutos",
+    "custo_total_pct": 2.5,
+    "exemplo_pratico": {
+      "valor_input": 30000,
+      "moeda_input": "BRL",
+      "descricao_uso": "Reserva de R$ 30.000 → dolarização total",
+      "breakdown": [{ "etapa": "Receber PIX (1%)", "taxa_brl": 300 }, { "etapa": "Comprar USDC (1,5%)", "taxa_brl": 445.5 }],
+      "total_taxa_brl": 745.5,
+      "valor_final_destino": "≈ US$ 5.851 em USDC"
+    },
+    "cuidados": ["Não há rendimento automático em USDC — é reserva de valor", "Pra reverter, faça T08 (Vender) → T03 (Sacar)", "Ganho de capital pode incidir ao reverter"],
+    "dicas": ["USDC é mais estável que BTC/ETH", "É como ter 'dólar digital' parado na carteira", "Estabeleça política clara"],
+    "cta": "Abra sua conta gratuitamente em evoluecash.com.br"
+  },
+  {
+    "codigo": "OP20",
+    "slug": "pj-hedge-cambial",
+    "titulo": "Empresa faz hedge cambial (proteção de caixa)",
+    "emoji": "🏢💵",
+    "para_quem": "Empresa com custos atrelados ao dólar (importação, software estrangeiro, freelancers internacionais) que quer proteger parte do caixa contra oscilação cambial.",
+    "categoria": "dolarizacao",
+    "categoriaUI": ["dolarizacao"],
+    "fluxo": [
+      { "etapa": 1, "titulo": "Depositar reais do caixa", "transacao_ref": "T01", "caminho": "Conta de Pagamentos → Depósito PIX", "taxa_percentual": 1.0, "descricao": "Funding em BRL." },
+      { "etapa": 2, "titulo": "Alternar pra Conta Cripto", "transacao_ref": "T16", "caminho": "Header → Conta Cripto", "taxa_percentual": 0, "descricao": "Sem custo." },
+      { "etapa": 3, "titulo": "Comprar USDC parcial", "transacao_ref": "T07", "caminho": "Exchange → Comprar → USDC", "taxa_percentual": 1.5, "descricao": "Compre só a parte que quer proteger (ex: 30-50%)." },
+      { "etapa": 4, "titulo": "Manter como reserva", "transacao_ref": "T22", "caminho": "Conta Cripto → Saldo USDC", "taxa_percentual": 0, "descricao": "Pode usar pra pagamentos internacionais." }
+    ],
+    "tempo_total": "~10 minutos",
+    "custo_total_pct": 2.5,
+    "exemplo_pratico": {
+      "valor_input": 200000,
+      "moeda_input": "BRL",
+      "descricao_uso": "Caixa R$ 500.000, hedge de 40% (R$ 200.000)",
+      "breakdown": [{ "etapa": "Receber PIX (1%)", "taxa_brl": 2000 }, { "etapa": "Comprar USDC (1,5%)", "taxa_brl": 2970 }],
+      "total_taxa_brl": 4970,
+      "valor_final_destino": "≈ US$ 39.006 em USDC como reserva"
+    },
+    "cuidados": ["Hedge não é especulação — defina política clara", "Documente conversão pra contabilidade", "Consulte contador sobre impacto fiscal"],
+    "dicas": ["Empresas que importam mensalmente: 1-3 meses em USDC como buffer", "Quando o real desvaloriza, sua reserva vale mais", "Quando o real valoriza, converta parte"],
+    "cta": "Abra sua conta gratuitamente em evoluecash.com.br"
+  },
+  {
+    "codigo": "OP21",
+    "slug": "pf-reverte-dolarizacao",
+    "titulo": "Reverter dolarização (USDC → BRL de volta)",
+    "emoji": "💵→🇧🇷",
+    "para_quem": "Quem tem USDC na conta cripto e quer voltar pra reais.",
+    "categoria": "dolarizacao",
+    "categoriaUI": ["dolarizacao"],
+    "fluxo": [
+      { "etapa": 1, "titulo": "Vender USDC por BRL", "transacao_ref": "T08", "caminho": "Conta Cripto → Exchange → Vender → USDC", "taxa_percentual": 1.5, "descricao": "Conversão pra reais." },
+      { "etapa": 2, "titulo": "Alternar pra Conta de Pagamentos", "transacao_ref": "T16", "caminho": "Header → Conta de Pagamentos", "taxa_percentual": 0, "descricao": "Opcional." },
+      { "etapa": 3, "titulo": "Sacar BRL via PIX", "transacao_ref": "T03", "caminho": "Saques → Transferência Pix", "taxa_percentual": 1.0, "descricao": "Saque pra conta bancária. Horário seg-sex 9h-17h." }
+    ],
+    "tempo_total": "~10 minutos",
+    "custo_total_pct": 2.5,
+    "exemplo_pratico": {
+      "valor_input": 5000,
+      "moeda_input": "USD",
+      "descricao_uso": "US$ 5.000 em USDC convertendo pra BRL",
+      "breakdown": [{ "etapa": "Vender USDC (1,5%)", "taxa_brl": 375 }, { "etapa": "Sacar PIX (1%)", "taxa_brl": 246 }],
+      "total_taxa_brl": 621,
+      "valor_final_destino": "≈ R$ 24.379 na conta bancária"
+    },
+    "cuidados": ["Saque PIX só seg-sex 9h-17h", "Cotação muda continuamente — confirme rápido", "Documente pra tributação (ganho de capital)"],
+    "dicas": ["Reverta quando atingir meta de preço", "Reverta quando precisa de BRL pra despesa", "Reorganização de portfólio também é motivo válido"],
+    "cta": "Abra sua conta gratuitamente em evoluecash.com.br"
+  },
+  {
+    "codigo": "OP22",
+    "slug": "trocar-btc-usdc",
+    "titulo": "Trocar BTC por USDC (estabilizar sem sair pra real)",
+    "emoji": "₿→💵",
+    "para_quem": "Investidor cripto que quer realizar lucro de Bitcoin em dólar estável (USDC) sem voltar pra real.",
+    "categoria": "dolarizacao",
+    "categoriaUI": ["dolarizacao", "trader"],
+    "fluxo": [
+      { "etapa": 1, "titulo": "Fazer Swap BTC → USDC", "transacao_ref": "T10", "caminho": "Conta Cripto → Exchange → Converter", "taxa_percentual": 1.55, "descricao": "Origem BTC, destino USDC. Cotação ao vivo." }
+    ],
+    "tempo_total": "2 a 60 minutos",
+    "custo_total_pct": 1.55,
+    "exemplo_pratico": {
+      "valor_input": 30000,
+      "moeda_input": "USD",
+      "descricao_uso": "0,5 BTC ≈ US$ 30.000 → swap pra USDC",
+      "breakdown": [{ "etapa": "Swap BTC → USDC (1,55%)", "taxa_brl": 2325 }],
+      "total_taxa_brl": 2325,
+      "valor_final_destino": "≈ US$ 29.535 em USDC"
+    },
+    "cuidados": ["Cotação é estimada — confirme rápido", "Limite mensal de swap: R$ 1 milhão", "Confira rede de destino"],
+    "dicas": ["Swap evita 2 taxas (Vender + Comprar = ~3%; Swap = 1,55%)", "Útil pra estabilizar lucro sem sair pra real"],
+    "cta": "Abra sua conta gratuitamente em evoluecash.com.br"
+  },
+  {
+    "codigo": "OP23",
+    "slug": "migrar-usdt-entre-redes",
+    "titulo": "Migrar USDT entre redes (TRON → Polygon, etc)",
+    "emoji": "🔄",
+    "para_quem": "Quem tem USDT/USDC em uma rede e precisa mover pra outra (pra economizar gas ou atender preferência do parceiro).",
+    "categoria": "dolarizacao",
+    "categoriaUI": ["dolarizacao"],
+    "fluxo": [
+      { "etapa": 1, "titulo": "Swap entre redes", "transacao_ref": "T10", "caminho": "Conta Cripto → Exchange → Converter", "taxa_percentual": 1.55, "descricao": "Mesmo token, rede diferente." }
+    ],
+    "tempo_total": "2 a 60 minutos",
+    "custo_total_pct": 1.55,
+    "exemplo_pratico": {
+      "valor_input": 2000,
+      "moeda_input": "USD",
+      "descricao_uso": "Migrar US$ 2.000 USDT de TRON pra Polygon",
+      "breakdown": [{ "etapa": "Swap entre redes (1,55%)", "taxa_brl": 155 }],
+      "total_taxa_brl": 155,
+      "valor_final_destino": "≈ US$ 1.969 em USDT na Polygon"
+    },
+    "cuidados": ["Confirme a rede de destino antes de migrar", "Erro de rede = perda total", "Mantenha histórico no extrato cripto (T11)"],
+    "dicas": ["Polygon: gas baixo, bom pra valores pequenos", "Tron: padrão de exchange asiática", "Ethereum: gas alto, só pra valores grandes"],
+    "cta": "Abra sua conta gratuitamente em evoluecash.com.br"
+  },
+  {
+    "codigo": "OP24",
+    "slug": "liberal-recebe-honorarios",
+    "titulo": "Profissional liberal recebe honorários",
+    "emoji": "👨‍⚕️",
+    "para_quem": "Profissional liberal PJ (médico, advogado, consultor) que atende clientes brasileiros e recebe via PIX.",
+    "categoria": "liberal",
+    "categoriaUI": ["receber", "liberal"],
+    "fluxo": [
+      { "etapa": 1, "titulo": "Receber honorários", "transacao_ref": "T01", "caminho": "Conta de Pagamentos → Depósito PIX", "taxa_percentual": 1.0, "descricao": "Gere chave/QR e envie ao paciente/cliente." }
+    ],
+    "tempo_total": "Imediato",
+    "custo_total_pct": 1.0,
+    "exemplo_pratico": {
+      "valor_input": 500,
+      "moeda_input": "BRL",
+      "descricao_uso": "Honorário médico R$ 500",
+      "breakdown": [{ "etapa": "Receber PIX (1%)", "taxa_brl": 5 }],
+      "total_taxa_brl": 5,
+      "valor_final_destino": "R$ 495 líquidos na conta"
+    },
+    "cuidados": ["Mantenha controle do extrato (T05) pra emissão de NF e tributação", "Cada linha do extrato mostra a taxa cobrada"],
+    "dicas": ["Use T22 (Carteira Consolidada) pra mandar dados rápido pelo WhatsApp", "Configure cobranças recorrentes via Bolepix Dinâmico (T13)"],
+    "cta": "Abra sua conta gratuitamente em evoluecash.com.br"
+  },
+  {
+    "codigo": "OP25",
+    "slug": "liberal-recebe-dolariza",
+    "titulo": "Profissional liberal recebe e dolariza pra reserva",
+    "emoji": "👨‍⚕️💵",
+    "para_quem": "Profissional liberal PJ que recebe em BRL mas quer formar reserva em dólar.",
+    "categoria": "liberal",
+    "categoriaUI": ["receber", "liberal", "dolarizacao"],
+    "fluxo": [
+      { "etapa": 1, "titulo": "Receber honorários", "transacao_ref": "T01", "caminho": "Conta de Pagamentos → Depósito PIX", "taxa_percentual": 1.0, "descricao": "Receba os honorários do mês." },
+      { "etapa": 2, "titulo": "Alternar pra Conta Cripto", "transacao_ref": "T16", "caminho": "Header → Conta Cripto", "taxa_percentual": 0, "descricao": "Sem custo." },
+      { "etapa": 3, "titulo": "Comprar USDC parcial", "transacao_ref": "T07", "caminho": "Exchange → Comprar → USDC", "taxa_percentual": 1.5, "descricao": "Defina o % a dolarizar (ex: 30%)." }
+    ],
+    "tempo_total": "~5 minutos",
+    "custo_total_pct": 2.5,
+    "exemplo_pratico": {
+      "valor_input": 9000,
+      "moeda_input": "BRL",
+      "descricao_uso": "Faturamento R$ 30.000, dolariza 30% (R$ 9.000)",
+      "breakdown": [{ "etapa": "Receber PIX (1%)", "taxa_brl": 90 }, { "etapa": "Comprar USDC (1,5%)", "taxa_brl": 133.65 }],
+      "total_taxa_brl": 223.65,
+      "valor_final_destino": "≈ US$ 1.755 em USDC + R$ 21.000 BRL"
+    },
+    "cuidados": ["Estabeleça política clara — não é especulação", "Documente cada conversão pra contabilidade", "Ganho de capital pode incidir ao reverter"],
+    "dicas": ["Rotina mensal: ao receber, dolariza X%", "Em 12 meses tem reserva em USDC sem ter pensado", "Quando quiser usar, faça OP21"],
+    "cta": "Abra sua conta gratuitamente em evoluecash.com.br"
+  },
+  {
+    "codigo": "OP26",
+    "slug": "liberal-cobra-cliente-internacional",
+    "titulo": "Profissional liberal cobra cliente internacional",
+    "emoji": "👨‍⚕️🌎",
+    "para_quem": "Médico (telemedicina), advogado, consultor brasileiro que atende cliente fora do Brasil.",
+    "categoria": "liberal",
+    "categoriaUI": ["receber", "liberal", "internacional"],
+    "fluxo": [
+      { "etapa": 1, "titulo": "Emitir cobrança", "transacao_ref": "T17", "caminho": "Comex → Bolecripto Estático ou Dinâmico", "taxa_percentual": 0, "descricao": "Estático pra preço fechado, Dinâmico pra consulta por hora." },
+      { "etapa": 2, "titulo": "Cliente paga em USDT/USDC", "transacao_ref": "T17", "caminho": "Wallet ou exchange", "taxa_percentual": 0, "descricao": "USDT/USDC na carteira." },
+      { "etapa": 3, "titulo": "Vender por BRL", "transacao_ref": "T08", "caminho": "Exchange → Vender", "taxa_percentual": 1.5, "descricao": "Conversão." },
+      { "etapa": 4, "titulo": "Sacar BRL", "transacao_ref": "T03", "caminho": "Saques → Transferência Pix", "taxa_percentual": 1.0, "descricao": "Saque pra conta bancária." }
+    ],
+    "tempo_total": "1 a 24 horas",
+    "custo_total_pct": 2.5,
+    "exemplo_pratico": {
+      "valor_input": 300,
+      "moeda_input": "USD",
+      "descricao_uso": "Consulta internacional US$ 300 (~R$ 1.500)",
+      "breakdown": [{ "etapa": "Vender USDT (1,5%)", "taxa_brl": 22.5 }, { "etapa": "Sacar PIX (1%)", "taxa_brl": 14.78 }],
+      "total_taxa_brl": 37.28,
+      "valor_final_destino": "≈ R$ 1.463 na sua conta"
+    },
+    "cuidados": ["Configure invoice no idioma do cliente", "Documente recebimento pra emissão de NF", "Mantenha controle do câmbio efetivo"],
+    "dicas": ["Médico pode atender brasileiro residente no exterior", "Advogado: caso de cidadania italiana, americana, etc", "Consultor com cliente PJ no exterior"],
+    "cta": "Abra sua conta gratuitamente em evoluecash.com.br"
+  },
+  {
+    "codigo": "OP27",
+    "slug": "cobrar-cliente-nacional-pix",
+    "titulo": "Cobrar cliente nacional via PIX (substituir boleto)",
+    "emoji": "🇧🇷",
+    "para_quem": "Empresa que quer profissionalizar cobranças sem usar boleto bancário tradicional.",
+    "categoria": "comex-cobranca",
+    "categoriaUI": ["cobranca"],
+    "fluxo": [
+      { "etapa": 1, "titulo": "Emitir Bolepix", "transacao_ref": "T12", "caminho": "Comex → Bolepix Estático ou Dinâmico", "taxa_percentual": 0, "descricao": "Estático (valor fechado) ou Dinâmico (variável)." },
+      { "etapa": 2, "titulo": "Cliente paga via PIX", "transacao_ref": "T12", "caminho": "Cliente paga pelo banco dele", "taxa_percentual": 1.0, "descricao": "PIX cai automático na sua conta." },
+      { "etapa": 3, "titulo": "Acompanhar no painel", "transacao_ref": "T14", "caminho": "Comex → painel de cobranças", "taxa_percentual": 0, "descricao": "Status atualiza em tempo real." }
+    ],
+    "tempo_total": "Imediato após PIX",
+    "custo_total_pct": 1.0,
+    "exemplo_pratico": {
+      "valor_input": 5000,
+      "moeda_input": "BRL",
+      "descricao_uso": "Cobrar cliente R$ 5.000 via Bolepix",
+      "breakdown": [{ "etapa": "Receber PIX (1%)", "taxa_brl": 50 }],
+      "total_taxa_brl": 50,
+      "valor_final_destino": "R$ 4.950 líquidos"
+    },
+    "cuidados": ["Bolepix Estático = valor fixo. Dinâmico = cliente define", "Validade Bolepix Dinâmico: 1 ano"],
+    "dicas": ["Sem custo de emissão (vs ~R$ 3-5 do boleto bancário)", "Pagamento imediato (vs D+1 ou D+2)", "Invoice em PDF profissional"],
+    "cta": "Abra sua conta gratuitamente em evoluecash.com.br"
+  },
+  {
+    "codigo": "OP28",
+    "slug": "cobrar-cliente-internacional-cripto",
+    "titulo": "Cobrar cliente internacional via cripto (substituir SWIFT)",
+    "emoji": "🌎",
+    "para_quem": "Empresa BR que vende pra cliente estrangeiro e quer cobrar sem usar SWIFT.",
+    "categoria": "comex-cobranca",
+    "categoriaUI": ["cobranca", "internacional"],
+    "fluxo": [
+      { "etapa": 1, "titulo": "Emitir Bolecripto", "transacao_ref": "T17", "caminho": "Comex → Bolecripto Estático ou Dinâmico", "taxa_percentual": 0, "descricao": "Liquidação USDT ou USDC. Idioma inglês ou espanhol." },
+      { "etapa": 2, "titulo": "Cliente paga em USDT/USDC", "transacao_ref": "T17", "caminho": "Wallet ou exchange", "taxa_percentual": 0, "descricao": "USDT/USDC na carteira." },
+      { "etapa": 3, "titulo": "Acompanhar no painel", "transacao_ref": "T14", "caminho": "Comex → painel", "taxa_percentual": 0, "descricao": "Status, valor recebido." },
+      { "etapa": 4, "titulo": "Vender e sacar quando quiser", "transacao_ref": "T08", "caminho": "Exchange → Vender → Sacar PIX", "taxa_percentual": 2.5, "descricao": "Conversão pra BRL (1,5% + 1%)." }
+    ],
+    "tempo_total": "1 a 24 horas",
+    "custo_total_pct": 2.5,
+    "exemplo_pratico": {
+      "valor_input": 10000,
+      "moeda_input": "USD",
+      "descricao_uso": "Venda internacional US$ 10.000",
+      "breakdown": [{ "etapa": "Vender USDT (1,5%)", "taxa_brl": 750 }, { "etapa": "Sacar PIX (1%)", "taxa_brl": 493 }],
+      "total_taxa_brl": 1243,
+      "valor_final_destino": "≈ R$ 48.757 na sua conta"
+    },
+    "cuidados": ["Pagamento cripto não confirma valor automaticamente — confira hash", "Não substitui DU-E no Siscomex se aplicável"],
+    "dicas": ["Sem necessidade de conta no exterior", "Sem tarifa SWIFT (~US$ 50 a US$ 150)", "Tempo: minutos vs 3-5 dias úteis"],
+    "cta": "Abra sua conta gratuitamente em evoluecash.com.br"
+  },
+  {
+    "codigo": "OP29",
+    "slug": "cobranca-recorrente-nacional",
+    "titulo": "Cobrança recorrente nacional (assinatura, mensalidade, aluguel)",
+    "emoji": "🔁🇧🇷",
+    "para_quem": "Empresa BR com receita recorrente: SaaS, escola, academia, condomínio, aluguel, mentoria, plano de saúde.",
+    "categoria": "comex-cobranca",
+    "categoriaUI": ["cobranca"],
+    "fluxo": [
+      { "etapa": 1, "titulo": "Emitir Bolepix Dinâmico Recorrente", "transacao_ref": "T13", "caminho": "Comex → Bolepix Dinâmico → Recorrente: Sim", "taxa_percentual": 0, "descricao": "Validade 1 ano. Cliente paga todo mês." },
+      { "etapa": 2, "titulo": "Cliente paga via PIX recorrente", "transacao_ref": "T01", "caminho": "Cliente paga mensalmente", "taxa_percentual": 1.0, "descricao": "Cada pagamento cai na sua conta." },
+      { "etapa": 3, "titulo": "Acompanhar pagamentos", "transacao_ref": "T14", "caminho": "Comex → painel + filtros (T25)", "taxa_percentual": 0, "descricao": "Filtre por status e por pagador." }
+    ],
+    "tempo_total": "Imediato a cada pagamento",
+    "custo_total_pct": 1.0,
+    "exemplo_pratico": {
+      "valor_input": 10000,
+      "moeda_input": "BRL",
+      "descricao_uso": "50 alunos × R$ 200/mês = R$ 10.000 mensal",
+      "breakdown": [{ "etapa": "Receber PIX (1% sobre total)", "taxa_brl": 100 }],
+      "total_taxa_brl": 100,
+      "valor_final_destino": "R$ 9.900 líquidos mensais"
+    },
+    "cuidados": ["Bolepix Dinâmico tem validade de 1 ano — renove antes", "Comunique aos clientes a chave PIX fixa"],
+    "dicas": ["Use filtro do painel COMEX (T25) pra inadimplência", "Identifica em segundos quem está atrasado"],
+    "cta": "Abra sua conta gratuitamente em evoluecash.com.br"
+  },
+  {
+    "codigo": "OP30",
+    "slug": "cobranca-recorrente-internacional",
+    "titulo": "Cobrança recorrente internacional",
+    "emoji": "🔁🌎",
+    "para_quem": "Empresa BR com receita recorrente de clientes no exterior.",
+    "categoria": "comex-cobranca",
+    "categoriaUI": ["cobranca", "internacional"],
+    "fluxo": [
+      { "etapa": 1, "titulo": "Emitir Bolecripto Dinâmico Recorrente", "transacao_ref": "T18", "caminho": "Comex → Bolecripto Dinâmico → Recorrente: Sim", "taxa_percentual": 0, "descricao": "Validade 1 ano." },
+      { "etapa": 2, "titulo": "Cliente paga mensalmente", "transacao_ref": "T18", "caminho": "Mesmo endereço todo mês", "taxa_percentual": 0, "descricao": "USDT/USDC na carteira." },
+      { "etapa": 3, "titulo": "Acompanhar painel", "transacao_ref": "T14", "caminho": "Comex → painel + filtros", "taxa_percentual": 0, "descricao": "Status: Pago, Vencido, Parcial." },
+      { "etapa": 4, "titulo": "Converter e sacar", "transacao_ref": "T08", "caminho": "Exchange → Vender → Sacar PIX", "taxa_percentual": 2.5, "descricao": "Pode acumular ou converter mensal." }
+    ],
+    "tempo_total": "Conforme política de pagamento do cliente",
+    "custo_total_pct": 2.5,
+    "exemplo_pratico": {
+      "valor_input": 6000,
+      "moeda_input": "USD",
+      "descricao_uso": "30 clientes × US$ 200/mês = US$ 6.000",
+      "breakdown": [{ "etapa": "Vender USDT (1,5%)", "taxa_brl": 450 }, { "etapa": "Sacar PIX (1%)", "taxa_brl": 296 }],
+      "total_taxa_brl": 746,
+      "valor_final_destino": "≈ R$ 29.254 mensais"
+    },
+    "cuidados": ["Pagamento cripto não confirma valor automaticamente — verifique hash", "Se cliente parar de pagar, comunique cancelamento"],
+    "dicas": ["Bolecripto Dinâmico Recorrente com validade 1 ano", "Renove antes de expirar", "Acumule USDC e converta em lotes"],
+    "cta": "Abra sua conta gratuitamente em evoluecash.com.br"
+  },
+  {
+    "codigo": "OP31",
+    "slug": "acompanhar-inadimplencia",
+    "titulo": "Acompanhar inadimplência (filtrar vencidos por cliente)",
+    "emoji": "🔍",
+    "para_quem": "Empresa com cobranças COMEX que precisa controlar quem pagou, quem está atrasado e quanto.",
+    "categoria": "comex-cobranca",
+    "categoriaUI": ["cobranca"],
+    "fluxo": [
+      { "etapa": 1, "titulo": "Acessar Painel COMEX", "transacao_ref": "T14", "caminho": "Comex", "taxa_percentual": 0, "descricao": "KPIs no topo." },
+      { "etapa": 2, "titulo": "Aplicar filtro", "transacao_ref": "T25", "caminho": "Comex → Filtro", "taxa_percentual": 0, "descricao": "Marque Status=Vencido, e Pagador=cliente específico." },
+      { "etapa": 3, "titulo": "Analisar e agir", "transacao_ref": "T14", "caminho": "Lista resultante", "taxa_percentual": 0, "descricao": "Identifique padrões, contate cliente, renegocie." }
+    ],
+    "tempo_total": "Alguns segundos",
+    "custo_total_pct": 0,
+    "exemplo_pratico": {
+      "valor_input": 0,
+      "moeda_input": "BRL",
+      "descricao_uso": "Empresa SaaS com 100 clientes filtra vencidos",
+      "breakdown": [{ "etapa": "Sem custo (consulta)", "taxa_brl": 0 }],
+      "total_taxa_brl": 0,
+      "valor_final_destino": "Identifica 12 clientes com R$ 24.000 em atraso"
+    },
+    "cuidados": ["Status 'Pago Parcialmente' só aparece em cobranças Dinâmicas", "Antes de exportar, sempre aplique filtros"],
+    "dicas": ["Toda segunda: filtre vencidos", "Toda quinta: lista cobranças Pago Parcialmente", "Mensal: exporte CSV pra reconciliação"],
+    "cta": "Abra sua conta gratuitamente em evoluecash.com.br"
+  },
+  {
+    "codigo": "OP32",
+    "slug": "investidor-compra-bitcoin-hold",
+    "titulo": "Investidor compra Bitcoin pra holdar",
+    "emoji": "₿",
+    "para_quem": "PF ou PJ que quer comprar Bitcoin como investimento de longo prazo.",
+    "categoria": "trader",
+    "categoriaUI": ["trader"],
+    "fluxo": [
+      { "etapa": 1, "titulo": "Depositar reais", "transacao_ref": "T01", "caminho": "Conta de Pagamentos → Depósito PIX", "taxa_percentual": 1.0, "descricao": "Funding em BRL." },
+      { "etapa": 2, "titulo": "Alternar pra Conta Cripto", "transacao_ref": "T16", "caminho": "Header → Conta Cripto", "taxa_percentual": 0, "descricao": "Sem custo." },
+      { "etapa": 3, "titulo": "Comprar BTC", "transacao_ref": "T07", "caminho": "Exchange → Comprar → BTC", "taxa_percentual": 1.5, "descricao": "Mínimo R$ 10. Máximo US$ 10 milhões por operação." },
+      { "etapa": 4, "titulo": "Manter na carteira ou transferir", "transacao_ref": "T22", "caminho": "Conta Cripto → Saldo BTC ou T09", "taxa_percentual": 0, "descricao": "Mantenha na EvolueCash ou transfira pra hardware wallet." }
+    ],
+    "tempo_total": "5 a 60 minutos",
+    "custo_total_pct": 2.5,
+    "exemplo_pratico": {
+      "valor_input": 5000,
+      "moeda_input": "BRL",
+      "descricao_uso": "Compra de R$ 5.000 em BTC",
+      "breakdown": [{ "etapa": "Receber PIX (1%)", "taxa_brl": 50 }, { "etapa": "Comprar BTC (1,5%)", "taxa_brl": 74.25 }],
+      "total_taxa_brl": 124.25,
+      "valor_final_destino": "≈ R$ 4.876 em BTC"
+    },
+    "cuidados": ["Bitcoin é volátil — só aloque o que pode segurar por 4+ anos", "Pra segurança máxima, transfira pra hardware wallet (T09)", "Documente cada compra pra apuração fiscal"],
+    "dicas": ["Estratégia DCA: valor mensal fixo, dia X do mês", "Em 12-24 meses dilui variação de preço", "Não cuide do preço diariamente — é hold de longo prazo"],
+    "cta": "Abra sua conta gratuitamente em evoluecash.com.br"
+  },
+  {
+    "codigo": "OP33",
+    "slug": "trader-move-cripto-exchanges",
+    "titulo": "Trader move cripto entre exchanges",
+    "emoji": "🔄",
+    "para_quem": "Trader, investidor ativo ou usuário de DeFi que precisa mover cripto da EvolueCash pra outra exchange ou wallet.",
+    "categoria": "trader",
+    "categoriaUI": ["trader"],
+    "fluxo": [
+      { "etapa": 1, "titulo": "Transferir on-chain", "transacao_ref": "T09", "caminho": "Conta Cripto → Exchange → Transferir", "taxa_percentual": 0, "descricao": "Selecione token, rede compatível e endereço de destino." }
+    ],
+    "tempo_total": "2 a 60 minutos (depende da rede)",
+    "custo_total_pct": 0,
+    "exemplo_pratico": {
+      "valor_input": 30000,
+      "moeda_input": "USD",
+      "descricao_uso": "Move 1 ETH (~US$ 30.000) pra MetaMask",
+      "breakdown": [{ "etapa": "Taxa de rede Ethereum (~US$ 5-30)", "taxa_brl": 75 }],
+      "total_taxa_brl": 75,
+      "valor_final_destino": "≈ 0,998 ETH na MetaMask"
+    },
+    "cuidados": ["TRANSFERÊNCIA ON-CHAIN É IRREVERSÍVEL", "Confira 3x antes de confirmar: TOKEN, REDE, ENDEREÇO", "Erro = perda total"],
+    "dicas": ["Polygon: gas centavos", "Tron: gas baixo, padrão asiática", "Ethereum: gas alto, só pra valores maiores", "Sem limite de saída cripto"],
+    "cta": "Abra sua conta gratuitamente em evoluecash.com.br"
+  },
+  {
+    "codigo": "OP34",
+    "slug": "realizar-lucro-cripto-brl",
+    "titulo": "Realizar lucro: vender cripto e voltar pra BRL",
+    "emoji": "💰",
+    "para_quem": "Investidor cripto que quer realizar lucro de uma posição (BTC, ETH, USDT, USDC) e ter o valor em reais na conta bancária.",
+    "categoria": "trader",
+    "categoriaUI": ["trader"],
+    "fluxo": [
+      { "etapa": 1, "titulo": "Vender cripto por BRL", "transacao_ref": "T08", "caminho": "Conta Cripto → Exchange → Vender", "taxa_percentual": 1.5, "descricao": "Selecione token e quantidade, simule cotação, confirme." },
+      { "etapa": 2, "titulo": "Alternar pra Conta de Pagamentos", "transacao_ref": "T16", "caminho": "Header → Conta de Pagamentos", "taxa_percentual": 0, "descricao": "Opcional." },
+      { "etapa": 3, "titulo": "Sacar BRL via PIX", "transacao_ref": "T03", "caminho": "Saques → Transferência Pix", "taxa_percentual": 1.0, "descricao": "Cole sua chave PIX do banco habitual." }
+    ],
+    "tempo_total": "5 a 70 minutos",
+    "custo_total_pct": 2.5,
+    "exemplo_pratico": {
+      "valor_input": 5000,
+      "moeda_input": "USD",
+      "descricao_uso": "Realizar US$ 5.000 em USDC (~R$ 25.000)",
+      "breakdown": [{ "etapa": "Vender USDC (1,5%)", "taxa_brl": 375 }, { "etapa": "Sacar PIX (1%)", "taxa_brl": 246 }],
+      "total_taxa_brl": 621,
+      "valor_final_destino": "≈ R$ 24.379 na conta bancária"
+    },
+    "cuidados": ["Ganho de capital incide sobre o lucro — documente preço de compra e venda", "Saque PIX só seg-sex 9h-17h", "Cotação muda continuamente"],
+    "dicas": ["Realize quando atingir meta de preço", "Realize quando precisa de BRL pra outra alocação", "Reorganização de portfólio também é motivo válido"],
+    "cta": "Abra sua conta gratuitamente em evoluecash.com.br"
+  }
+]

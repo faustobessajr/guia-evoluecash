@@ -1,0 +1,226 @@
+{
+  "site": {
+    "title": "EvolueCash Guide — Move your money with intelligence",
+    "description": "BRL, USD, and crypto in one account. Pay in Brazil or abroad in minutes. See how it works, calculate costs, and get your questions answered."
+  },
+  "header": {
+    "home": "Home",
+    "howItWorks": "How it works",
+    "calculator": "Calculator",
+    "support": "Support",
+    "openAccount": "Open account"
+  },
+  "home": {
+    "heroTitle": "Move your money with intelligence",
+    "heroSubtitle": "BRL, USD, and crypto in one account. Pay in Brazil or abroad in minutes with transparent fees.",
+    "searchPlaceholder": "Search transaction or operation...",
+    "heroChips": {
+      "payAbroad": "Pay supplier abroad",
+      "receiveAbroad": "Receive client abroad",
+      "saveDollar": "Save in USD",
+      "calculate": "Calculate cost"
+    },
+    "whatToDo": {
+      "title": "What do you need to do?",
+      "subtitle": "Choose your situation. We'll show you the steps, the cost, and the time."
+    },
+    "situations": {
+      "receive": { "title": "Receive money", "sub": "From BR or international clients", "fee": "From 1%", "count": "9 situations" },
+      "pay": { "title": "Pay someone", "sub": "Suppliers, team, daily bills", "fee": "From 1%", "count": "9 situations" },
+      "international": { "title": "Cross-border operations", "sub": "Import, export, pay in USD/EUR/etc", "fee": "From 3.5%", "count": "12 situations" },
+      "save": { "title": "Save in USD", "sub": "Protect your cash from FX volatility", "fee": "From 2.5%", "count": "5 situations" },
+      "liberal": { "title": "Liberal professional", "sub": "Doctor, lawyer, consultant", "fee": "From 1%", "count": "3 situations" },
+      "trader": { "title": "Invest in crypto", "sub": "Buy BTC, ETH, or stablecoins", "fee": "From 1.5%", "count": "3 situations" },
+      "billing": { "title": "Bill your clients", "sub": "Replace boleto and SWIFT with PIX or USDT billing", "fee": "No issuance cost", "count": "5 situations" },
+      "calculate": { "title": "Calculate cost", "sub": "See exactly what you'll pay", "fee": "Free calculator", "count": "Open calculator" }
+    },
+    "situationModes": {
+      "payments": "Payments",
+      "crypto": "Crypto"
+    },
+    "howItWorks": {
+      "title": "How your EvolueCash account works",
+      "subtitle": "3 modes, one environment. Choose what makes the most sense for each operation."
+    },
+    "accounts": {
+      "payments": {
+        "title": "Payments Account",
+        "description": "Receive and send Brazilian Reais via PIX, pay boletos, transfer to any holder.",
+        "bullets": [
+          "Account linked to your CNPJ, segregated from other clients",
+          "PIX 24/7",
+          "Limit up to R$ 50 million",
+          "Statement exportable as CSV"
+        ]
+      },
+      "crypto": {
+        "title": "Crypto Account",
+        "description": "Buy, sell, and hold BTC, ETH, USDC, USDT. Swap directly between crypto without going through fiat.",
+        "bullets": [
+          "Audited custody in the United States",
+          "4 blockchain networks (BTC, ETH, Polygon, Tron)",
+          "Balance in digital dollar",
+          "Auditable on-chain operations"
+        ]
+      },
+      "comex": {
+        "title": "COMEX",
+        "description": "Bill clients in Brazil or abroad via Bolepix (BRL) or Bolecripto (USDT/USDC).",
+        "bullets": [
+          "Replaces SWIFT",
+          "Settlement in minutes",
+          "Validity up to 1 year",
+          "3 invoice languages (PT/EN/ES)"
+        ]
+      }
+    },
+    "faq": {
+      "title": "Frequently asked questions",
+      "items": [
+        {
+          "q": "How much does it cost to use EvolueCash?",
+          "a": "Fees vary by operation. Receive via PIX: 1%. Buy/sell crypto: 1.5%. Pay boleto: 1.75%. Transfer crypto on-chain: 0% (network fee only). Full international operation (BR to abroad): around 3.5%. You always see the net amount before confirming — no fine print."
+        },
+        {
+          "q": "How long does an international operation take?",
+          "a": "About 2 hours on average, from the initial PIX to the recipient receiving USD in their bank account abroad. Compare with 3 to 5 business days through traditional banks."
+        },
+        {
+          "q": "Is it legal? Properly registered?",
+          "a": "Yes. EvolueCash operates with institutional financial infrastructure in partnership in the US, with audited custody. You operate under your CNPJ, with auditable statements and accounting support."
+        },
+        {
+          "q": "How does support work?",
+          "a": "Human support via WhatsApp at +55 47 98912-8640. No IVR, no chatbot, no ticket. Direct conversation."
+        },
+        {
+          "q": "Can I pay a supplier who only receives in USD bank?",
+          "a": "Yes. The operation goes BRL → USDT on-chain → final conversion in USD to the recipient's bank account, via our partner network in the US. The supplier doesn't need a crypto wallet."
+        },
+        {
+          "q": "Can I receive from international clients in USD?",
+          "a": "Yes. You issue a Bolecripto charge and the client pays in USDT or USDC. You convert to BRL when you want, or hold in digital dollar to use later."
+        },
+        {
+          "q": "Who else uses EvolueCash?",
+          "a": "Importers, exporters, liberal professionals (doctors, lawyers, consultants), agencies serving international clients, info-product creators with international audiences, distributors with recurring foreign suppliers, and businesses that want to simplify cash flow in BRL and USD."
+        },
+        {
+          "q": "What if I've never used crypto before?",
+          "a": "No problem. Most operations on EvolueCash are in BRL (PIX, boleto). When you need to operate internationally, the platform handles the crypto conversion and final delivery automatically. You don't need to understand blockchain to use it."
+        }
+      ]
+    },
+    "ctaFinal": {
+      "title": "Ready to start?",
+      "subtitle": "Open your account now. In a few minutes you'll be operating.",
+      "primary": "Open my account for free",
+      "secondary": "Talk to support on WhatsApp"
+    },
+    "seeAll": {
+      "title": "Want to see everything?",
+      "transactions": "View all 25 transactions",
+      "operations": "View all 34 operations"
+    }
+  },
+  "comoFunciona": {
+    "title": "How EvolueCash works",
+    "subtitle": "Everything you need to know in 2 minutes.",
+    "flowTitle": "Standard international operation flow",
+    "flowSteps": ["Real (PIX)", "Payments Account", "Crypto Account", "USDT/USDC", "On-chain", "USD bank abroad"],
+    "whyUseTitle": "Why use it",
+    "whyUse": {
+      "speed": "Speed: minutes vs days",
+      "cost": "Cost: 3.5% vs 4-6% traditional banking",
+      "transparency": "Transparency: detailed statement, fees visible before confirming",
+      "humanSupport": "Direct human support via WhatsApp"
+    }
+  },
+  "operacoes": {
+    "categories": {
+      "receber": { "title": "Receive money", "sub": "9 situations to receive payments in Brazil or from abroad" },
+      "pagar": { "title": "Pay someone", "sub": "9 situations to pay suppliers, team, or bills" },
+      "internacional": { "title": "Cross-border operations", "sub": "12 situations to import, export, and pay outside Brazil" },
+      "dolarizacao": { "title": "Save in USD", "sub": "5 situations to protect your cash from FX volatility" },
+      "liberal": { "title": "Liberal professional", "sub": "3 situations for doctors, lawyers, consultants" },
+      "trader": { "title": "Invest in crypto", "sub": "3 situations to buy, transfer, and take profit" },
+      "cobranca": { "title": "Bill your clients", "sub": "5 situations to issue charges via PIX or crypto" },
+      "all": { "title": "All operations", "sub": "34 use cases on the platform" }
+    },
+    "banner": "Looking for something specific? Use the search or go back to home to choose by situation.",
+    "viewSteps": "View step-by-step"
+  },
+  "transacoes": {
+    "title": "Transactions",
+    "banner": "Transactions are individual platform actions (e.g., send PIX, buy crypto). To see complete use cases (e.g., 'how an importer pays a Chinese supplier'), visit Operations.",
+    "bannerCta": "View operations by situation"
+  },
+  "detail": {
+    "caminho": "Path",
+    "modo": "Mode",
+    "taxa": "Fee",
+    "tempo": "Time",
+    "minimo": "Minimum",
+    "maximo": "Maximum",
+    "horario": "Hours",
+    "passo_a_passo": "Step by Step",
+    "operacoes_relacionadas": "Related operations",
+    "transacoes_relacionadas": "Related transactions",
+    "cta": "Open your account for free",
+    "para_quem": "For whom",
+    "fluxo": "The operation",
+    "tempo_total": "Total time",
+    "custo_total": "Total cost",
+    "exemplo": "Practical example",
+    "cuidados": "Cautions",
+    "dicas": "Tips",
+    "openCalc": "Want to simulate a different amount?",
+    "openCalcLink": "Open calculator for this operation",
+    "fiscalDisclaimer": "This operation does not replace customs or tax obligations (DI/DUIMP, DU-E, income tax, etc.). Consult your accountant and customs broker.",
+    "openAccount": "Open my account",
+    "talkSupport": "Talk to support"
+  },
+  "calc": {
+    "title": "Cost Calculator",
+    "selectOp": "Select operation",
+    "amount": "Amount",
+    "currency": "Currency",
+    "selectedOperation": "Selected operation",
+    "youWillMove": "You will move",
+    "breakdown": "Cost breakdown",
+    "totalFees": "Total fees",
+    "effectiveCost": "Effective cost",
+    "estimatedTime": "Estimated time",
+    "netAtDestination": "Net amount at destination",
+    "share": "Share simulation",
+    "viewSteps": "View step-by-step",
+    "fxNotice": "Simulated rate R$ 5.00 = US$ 1.00 — check the real rate at the time of operation."
+  },
+  "search": {
+    "title": "Search",
+    "placeholder": "Type to search...",
+    "no_results": "No results found",
+    "transacao": "Transaction",
+    "operacao": "Operation"
+  },
+  "footer": {
+    "whatsapp": "WhatsApp Support: +55 47 98912-8640",
+    "site": "evoluecash.com.br",
+    "disclaimer": "This guide is informational. Fees and hours subject to change — always check the platform before operating. EvolueCash does not replace tax and customs obligations (DI/DUIMP, DU-E, income tax declaration, etc.). Consult your accountant for taxation."
+  },
+  "categories": {
+    "pagamentos-br": "BR Payments",
+    "cripto": "Crypto",
+    "comex": "COMEX",
+    "config": "Settings",
+    "plataforma": "Platform"
+  },
+  "common": {
+    "from": "From",
+    "situations": "situations",
+    "viewSteps": "View step-by-step",
+    "openCalculator": "Open calculator for this operation",
+    "relatedOperations": "Related operations",
+    "openCalc": "Open calculator"
+  }
+}
