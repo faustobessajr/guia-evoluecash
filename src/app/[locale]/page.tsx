@@ -1,11 +1,13 @@
 import Link from "next/link";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { getTransacoes, getOperacoes } from "@/lib/data";
+import { getTransacoes, getOperacoes, contarOps, contarOpsBR } from "@/lib/data";
 import type { Locale } from "@/lib/types";
 import { BuscaBar } from "@/components/busca-bar";
 import { AsciiDivider } from "@/components/ascii-divider";
 import { FaqAccordion } from "@/components/faq-accordion";
 import { AccountColumns } from "@/components/account-columns";
+import { CardPrincipal } from "@/components/home/CardPrincipal";
+import { CardSecundario } from "@/components/home/CardSecundario";
 import type { Metadata } from "next";
 
 export async function generateMetadata({
@@ -15,7 +17,6 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "site" });
-  const otherLocale = locale === "pt-br" ? "en-us" : "pt-br";
   return {
     title: t("title"),
     description: t("description"),
@@ -28,61 +29,10 @@ export async function generateMetadata({
   };
 }
 
-const situationCards = [
-  {
-    key: "receive",
-    emoji: "💸",
-    categoria: "receber",
-    modes: ["payments", "crypto"],
-  },
-  {
-    key: "pay",
-    emoji: "📤",
-    categoria: "pagar",
-    modes: ["payments", "crypto"],
-  },
-  {
-    key: "international",
-    emoji: "🌍",
-    categoria: "internacional",
-    modes: ["crypto"],
-  },
-  {
-    key: "save",
-    emoji: "💵",
-    categoria: "dolarizacao",
-    modes: ["crypto"],
-  },
-  {
-    key: "liberal",
-    emoji: "👨‍⚕️",
-    categoria: "liberal",
-    modes: ["payments", "crypto"],
-  },
-  {
-    key: "trader",
-    emoji: "📈",
-    categoria: "trader",
-    modes: ["crypto"],
-  },
-  {
-    key: "billing",
-    emoji: "📋",
-    categoria: "cobranca",
-    modes: ["payments", "crypto"],
-  },
-  {
-    key: "calculate",
-    emoji: "🧮",
-    categoria: null,
-    modes: [],
-  },
-] as const;
-
 const heroChipLinks = [
-  { key: "payAbroad", href: "/operacoes/importador-paga-fornecedor-exterior" },
-  { key: "receiveAbroad", href: "/operacoes/exportador-recebe-exterior-usdt" },
-  { key: "saveDollar", href: "/operacoes/pf-dolariza-poupanca" },
+  { key: "payAbroad", href: "/operacoes?categoria=pagar&categoria=internacional" },
+  { key: "receiveAbroad", href: "/operacoes?categoria=receber&categoria=internacional" },
+  { key: "brPix", href: "/operacoes?categoria=receber-pagar-br" },
   { key: "calculate", href: "/calculadora" },
 ] as const;
 
@@ -96,10 +46,6 @@ export default async function HomePage({
 
   const t = await getTranslations({ locale, namespace: "home" });
   const searchT = await getTranslations({ locale, namespace: "search" });
-  const modesT = await getTranslations({
-    locale,
-    namespace: "home.situationModes",
-  });
 
   const transacoes = getTransacoes(locale as Locale);
   const operacoes = getOperacoes(locale as Locale);
@@ -113,33 +59,38 @@ export default async function HomePage({
       title: t("accounts.payments.title"),
       description: t("accounts.payments.description"),
       bullets: (
-        await getTranslations({
-          locale,
-          namespace: "home.accounts.payments",
-        })
+        await getTranslations({ locale, namespace: "home.accounts.payments" })
       ).raw("bullets") as string[],
     },
     crypto: {
       title: t("accounts.crypto.title"),
       description: t("accounts.crypto.description"),
       bullets: (
-        await getTranslations({
-          locale,
-          namespace: "home.accounts.crypto",
-        })
+        await getTranslations({ locale, namespace: "home.accounts.crypto" })
       ).raw("bullets") as string[],
     },
     comex: {
       title: t("accounts.comex.title"),
       description: t("accounts.comex.description"),
       bullets: (
-        await getTranslations({
-          locale,
-          namespace: "home.accounts.comex",
-        })
+        await getTranslations({ locale, namespace: "home.accounts.comex" })
       ).raw("bullets") as string[],
     },
   };
+
+  // Card counts (computed server-side)
+  const l = locale as Locale;
+  const countPagarInternacional = contarOps(l, "pagar", "internacional");
+  const countReceberInternacional = contarOps(l, "receber", "internacional");
+  const countBR = contarOpsBR(l);
+  const countDolarizacao = contarOps(l, "dolarizacao");
+  const countLiberal = contarOps(l, "liberal");
+  const countTrader = contarOps(l, "trader");
+  const countCobranca = contarOps(l, "cobranca");
+
+  const cards = t.raw("cards") as Record<string, unknown>;
+  const principal = (cards as any).principal;
+  const outras = (cards as any).outras;
 
   return (
     <div className="space-y-12">
@@ -166,7 +117,7 @@ export default async function HomePage({
             <Link
               key={chip.key}
               href={`/${locale}${chip.href}`}
-              className="bg-navy-light border border-navy-border rounded-lg px-3 py-1.5 text-xs text-text-secondary hover:border-brand/50 hover:text-brand transition-colors"
+              className="bg-navy-light border border-navy-border rounded-lg px-3 py-1.5 min-h-[44px] flex items-center text-xs text-text-secondary hover:border-brand/50 hover:text-brand transition-colors"
             >
               {t(`heroChips.${chip.key}`)}
             </Link>
@@ -186,47 +137,88 @@ export default async function HomePage({
             {t("whatToDo.subtitle")}
           </p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-          {situationCards.map((card) => {
-            const href =
-              card.categoria === null
-                ? `/${locale}/calculadora`
-                : `/${locale}/operacoes?categoria=${card.categoria}`;
 
-            return (
-              <Link key={card.key} href={href}>
-                <div className="bg-navy-light border border-navy-border rounded-xl p-6 h-full hover:scale-[1.02] hover:border-brand transition-all">
-                  <span className="text-[32px] block mb-3">{card.emoji}</span>
-                  <h3 className="text-lg font-bold mb-1">
-                    {t(`situations.${card.key}.title`)}
-                  </h3>
-                  <p className="text-sm text-text-secondary mb-3">
-                    {t(`situations.${card.key}.sub`)}
-                  </p>
-                  <p className="text-sm font-mono text-brand mb-2">
-                    {t(`situations.${card.key}.fee`)}
-                  </p>
-                  {card.modes.length > 0 && (
-                    <div className="flex flex-wrap gap-1 mb-2">
-                      {card.modes.map((mode) => (
-                        <span
-                          key={mode}
-                          className="text-[10px] bg-navy border border-navy-border rounded px-1.5 py-0.5 text-text-muted"
-                        >
-                          {mode === "payments" ? "🇧🇷" : "💵"}{" "}
-                          {modesT(mode)}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                  <p className="text-[13px] text-text-secondary">
-                    → {t(`situations.${card.key}.count`)}
-                  </p>
-                </div>
-              </Link>
-            );
-          })}
+        {/* 4 main cards — 1 col mobile, 2 col desktop */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+          <CardPrincipal
+            emoji="💵"
+            titulo={principal.pagar_exterior.titulo}
+            descricao={principal.pagar_exterior.descricao}
+            taxa={principal.pagar_exterior.taxa}
+            contagem={countPagarInternacional}
+            contagemLabel={locale === "pt-br" ? "situações" : "situations"}
+            href={`/${locale}/operacoes?categoria=pagar&categoria=internacional`}
+            modos={principal.pagar_exterior.modos}
+          />
+          <CardPrincipal
+            emoji="🌎"
+            titulo={principal.receber_exterior.titulo}
+            descricao={principal.receber_exterior.descricao}
+            taxa={principal.receber_exterior.taxa}
+            contagem={countReceberInternacional}
+            contagemLabel={locale === "pt-br" ? "situações" : "situations"}
+            href={`/${locale}/operacoes?categoria=receber&categoria=internacional`}
+            modos={principal.receber_exterior.modos}
+          />
+          <CardPrincipal
+            emoji="💸"
+            titulo={principal.br_pix.titulo}
+            descricao={principal.br_pix.descricao}
+            taxa={principal.br_pix.taxa}
+            contagem={countBR}
+            contagemLabel={locale === "pt-br" ? "situações" : "situations"}
+            href={`/${locale}/operacoes?categoria=receber-pagar-br`}
+            modos={principal.br_pix.modos}
+          />
+          <CardPrincipal
+            emoji="🧮"
+            titulo={principal.calcular.titulo}
+            descricao={principal.calcular.descricao}
+            taxa={principal.calcular.taxa}
+            ctaTexto={principal.calcular.cta}
+            href={`/${locale}/calculadora`}
+            isAction
+          />
         </div>
+
+        {/* Expandable secondary cards */}
+        <details className="mt-6 group">
+          <summary className="flex items-center gap-2 cursor-pointer list-none select-none w-fit mx-auto py-3 px-4 rounded-lg border border-navy-border bg-navy-light hover:border-brand text-sm text-text-secondary hover:text-brand transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand">
+            <span className="group-open:hidden">▸</span>
+            <span className="hidden group-open:inline">▾</span>
+            {outras.toggle}
+          </summary>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 mt-4">
+            <CardSecundario
+              emoji="💵"
+              titulo={outras.guardar_dolar.titulo}
+              descricao={outras.guardar_dolar.descricao}
+              contagem={countDolarizacao}
+              href={`/${locale}/operacoes?categoria=dolarizacao`}
+            />
+            <CardSecundario
+              emoji="👨‍⚕️"
+              titulo={outras.liberal.titulo}
+              descricao={outras.liberal.descricao}
+              contagem={countLiberal}
+              href={`/${locale}/operacoes?categoria=liberal`}
+            />
+            <CardSecundario
+              emoji="📈"
+              titulo={outras.cripto.titulo}
+              descricao={outras.cripto.descricao}
+              contagem={countTrader}
+              href={`/${locale}/operacoes?categoria=trader`}
+            />
+            <CardSecundario
+              emoji="📋"
+              titulo={outras.cobrar.titulo}
+              descricao={outras.cobrar.descricao}
+              contagem={countCobranca}
+              href={`/${locale}/operacoes?categoria=cobranca`}
+            />
+          </div>
+        </details>
       </section>
 
       <AsciiDivider />
@@ -266,7 +258,7 @@ export default async function HomePage({
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
           <a
-            href="https://evoluecash.com.br/cadastro"
+            href="https://app.evoluecash.com.br/account-creation"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-brand text-white font-semibold px-8 py-3 rounded-xl hover:bg-brand-dark transition-colors text-center"

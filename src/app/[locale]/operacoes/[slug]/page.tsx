@@ -275,7 +275,7 @@ export default async function OperacaoDetailPage({
       {/* 14. Dual CTA */}
       <div className="flex flex-col sm:flex-row gap-3 justify-center my-6">
         <a
-          href="https://evoluecash.com.br/cadastro"
+          href="https://app.evoluecash.com.br/account-creation"
           target="_blank"
           rel="noopener noreferrer"
           className="bg-brand text-white font-semibold px-8 py-3 rounded-xl hover:bg-brand-dark transition-colors text-center"

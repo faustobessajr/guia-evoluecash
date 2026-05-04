@@ -2,26 +2,46 @@
   {
     "codigo": "OP01",
     "slug": "receber-cliente-br-via-pix",
-    "titulo": "Receive payment from Brazilian client via PIX",
+    "titulo": "Receive payment from Brazilian client via PIX (Brazilian instant payment system)",
     "emoji": "🇧🇷",
-    "para_quem": "Company or professional receiving from Brazilian clients via PIX in daily operations.",
+    "para_quem": "Company or professional receiving from Brazilian clients via PIX (Brazilian instant payment system) in daily operations.",
     "categoria": "recebimento-br",
-    "categoriaUI": ["receber"],
-    "fluxo": [
-      { "etapa": 1, "titulo": "Receive the BRL", "transacao_ref": "T01", "caminho": "Payments Account → Deposits → PIX Deposit", "taxa_percentual": 1.0, "descricao": "Generate the key/QR code and send to the payer. PIX is automatically credited to your balance." }
+    "categoriaUI": [
+      "receber"
     ],
-    "tempo_total": "Instant after PIX",
-    "custo_total_pct": 1.0,
+    "fluxo": [
+      {
+        "etapa": 1,
+        "titulo": "Receive the BRL",
+        "transacao_ref": "T01",
+        "caminho": "Payments Account (Brazilian mode with PIX) → Deposits → PIX (Brazilian instant payment system) Deposit",
+        "taxa_percentual": 1,
+        "descricao": "Generate the key/QR code and send to the payer. PIX (Brazilian instant payment system) is automatically credited to your balance."
+      }
+    ],
+    "tempo_total": "Instant after PIX (Brazilian instant payment system)",
+    "custo_total_pct": 1,
     "exemplo_pratico": {
       "valor_input": 10000,
       "moeda_input": "BRL",
       "descricao_uso": "Receive R$ 10,000 from a Brazilian client",
-      "breakdown": [{ "etapa": "Receive PIX (1%)", "taxa_brl": 100 }],
+      "breakdown": [
+        {
+          "etapa": "Receive PIX (Brazilian instant payment system) (1%)",
+          "taxa_brl": 100
+        }
+      ],
       "total_taxa_brl": 100,
       "valor_final_destino": "R$ 9,900 net in your account"
     },
-    "cuidados": ["Check the net amount before generating the key", "PIX runs 24/7, but withdrawal to another bank may have time restrictions (T03)"],
-    "dicas": ["If you want R$ 100 net, ask payer for R$ 101.02", "Use favorites for recurring clients"],
+    "cuidados": [
+      "Check the net amount before generating the key",
+      "PIX (Brazilian instant payment system) runs 24/7, but withdrawal to another bank may have time restrictions (T03)"
+    ],
+    "dicas": [
+      "If you want R$ 100 net, ask payer for R$ 101.02",
+      "Use favorites for recurring clients"
+    ],
     "cta": "Open your account for free at evoluecash.com.br"
   },
   {
@@ -29,26 +49,65 @@
     "slug": "receber-e-dolarizar",
     "titulo": "Receive in BRL and convert to USD instantly",
     "emoji": "🇧🇷→💵",
-    "para_quem": "Company or individual receiving in BRL and wanting protection against currency depreciation by holding USDC.",
+    "para_quem": "Company or individual receiving in BRL and wanting protection against currency depreciation by holding USDC (digital dollar).",
     "categoria": "recebimento-br",
-    "categoriaUI": ["receber", "dolarizacao"],
+    "categoriaUI": [
+      "receber",
+      "dolarizacao"
+    ],
     "fluxo": [
-      { "etapa": 1, "titulo": "Receive BRL", "transacao_ref": "T01", "caminho": "Payments Account → Deposits → PIX Deposit", "taxa_percentual": 1.0, "descricao": "Client pays via PIX. Balance arrives instantly." },
-      { "etapa": 2, "titulo": "Switch to Crypto Account", "transacao_ref": "T16", "caminho": "Header → Crypto Account → Continue", "taxa_percentual": 0, "descricao": "No fee. Balance remains the same." },
-      { "etapa": 3, "titulo": "Buy USDC with BRL", "transacao_ref": "T07", "caminho": "Exchange → Buy → USDC", "taxa_percentual": 1.5, "descricao": "USDC is a stablecoin pegged 1:1 to the US dollar." }
+      {
+        "etapa": 1,
+        "titulo": "Receive BRL",
+        "transacao_ref": "T01",
+        "caminho": "Payments Account (Brazilian mode with PIX) → Deposits → PIX (Brazilian instant payment system) Deposit",
+        "taxa_percentual": 1,
+        "descricao": "Client pays via PIX (Brazilian instant payment system). Balance arrives instantly."
+      },
+      {
+        "etapa": 2,
+        "titulo": "Switch to Crypto Account (international mode with digital dollars)",
+        "transacao_ref": "T16",
+        "caminho": "Header → Crypto Account (international mode with digital dollars) → Continue",
+        "taxa_percentual": 0,
+        "descricao": "No fee. Balance remains the same."
+      },
+      {
+        "etapa": 3,
+        "titulo": "Buy USDC (digital dollar) with BRL",
+        "transacao_ref": "T07",
+        "caminho": "Exchange → Buy → USDC (digital dollar)",
+        "taxa_percentual": 1.5,
+        "descricao": "USDC (digital dollar) is a stablecoin (digital currency pegged to USD) pegged 1:1 to the US dollar."
+      }
     ],
     "tempo_total": "~5 minutes",
     "custo_total_pct": 2.5,
     "exemplo_pratico": {
       "valor_input": 10000,
       "moeda_input": "BRL",
-      "descricao_uso": "Receive R$ 10,000 and convert to USDC",
-      "breakdown": [{ "etapa": "Receive PIX (1%)", "taxa_brl": 100 }, { "etapa": "Buy USDC (1.5%)", "taxa_brl": 148.5 }],
+      "descricao_uso": "Receive R$ 10,000 and convert to USDC (digital dollar)",
+      "breakdown": [
+        {
+          "etapa": "Receive PIX (Brazilian instant payment system) (1%)",
+          "taxa_brl": 100
+        },
+        {
+          "etapa": "Buy USDC (digital dollar) (1.5%)",
+          "taxa_brl": 148.5
+        }
+      ],
       "total_taxa_brl": 248.5,
-      "valor_final_destino": "≈ US$ 1,951 in USDC"
+      "valor_final_destino": "≈ US$ 1,951 in USDC (digital dollar)"
     },
-    "cuidados": ["Quote changes continuously — confirm quickly", "USDC stays as USDC — no automatic yield"],
-    "dicas": ["Use USDC for long-term hold. To reverse, do T08 (Sell) → T03 (Withdraw)", "USDC has lower volatility than BTC/ETH"],
+    "cuidados": [
+      "Quote changes continuously — confirm quickly",
+      "USDC (digital dollar) stays as USDC — no automatic yield"
+    ],
+    "dicas": [
+      "Use USDC (digital dollar) for long-term hold. To reverse, do T08 (Sell) → T03 (Withdraw)",
+      "USDC (digital dollar) has lower volatility than BTC/ETH"
+    ],
     "cta": "Open your account for free at evoluecash.com.br"
   },
   {
@@ -58,50 +117,120 @@
     "emoji": "🇧🇷↔️💵",
     "para_quem": "Receive in BRL and want to split cash: keep part in BRL for daily expenses, protect part in USD.",
     "categoria": "recebimento-br",
-    "categoriaUI": ["receber", "dolarizacao"],
+    "categoriaUI": [
+      "receber",
+      "dolarizacao"
+    ],
     "fluxo": [
-      { "etapa": 1, "titulo": "Receive BRL", "transacao_ref": "T01", "caminho": "Payments Account → Deposits → PIX Deposit", "taxa_percentual": 1.0, "descricao": "Receive full amount in BRL." },
-      { "etapa": 2, "titulo": "Switch to Crypto Account", "transacao_ref": "T16", "caminho": "Header → Crypto Account", "taxa_percentual": 0, "descricao": "No fee." },
-      { "etapa": 3, "titulo": "Buy USDC with part of BRL", "transacao_ref": "T07", "caminho": "Exchange → Buy → USDC", "taxa_percentual": 1.5, "descricao": "Enter only the portion to convert (e.g., 60%)." },
-      { "etapa": 4, "titulo": "Withdraw remaining BRL", "transacao_ref": "T03", "caminho": "Payments Account → Withdrawals → PIX Transfer", "taxa_percentual": 1.0, "descricao": "Withdraw to bank account. Window: Mon-Fri 9am-5pm." }
+      {
+        "etapa": 1,
+        "titulo": "Receive BRL",
+        "transacao_ref": "T01",
+        "caminho": "Payments Account (Brazilian mode with PIX) → Deposits → PIX (Brazilian instant payment system) Deposit",
+        "taxa_percentual": 1,
+        "descricao": "Receive full amount in BRL."
+      },
+      {
+        "etapa": 2,
+        "titulo": "Switch to Crypto Account (international mode with digital dollars)",
+        "transacao_ref": "T16",
+        "caminho": "Header → Crypto Account (international mode with digital dollars)",
+        "taxa_percentual": 0,
+        "descricao": "No fee."
+      },
+      {
+        "etapa": 3,
+        "titulo": "Buy USDC (digital dollar) with part of BRL",
+        "transacao_ref": "T07",
+        "caminho": "Exchange → Buy → USDC (digital dollar)",
+        "taxa_percentual": 1.5,
+        "descricao": "Enter only the portion to convert (e.g., 60%)."
+      },
+      {
+        "etapa": 4,
+        "titulo": "Withdraw remaining BRL",
+        "transacao_ref": "T03",
+        "caminho": "Payments Account (Brazilian mode with PIX) → Withdrawals → PIX (Brazilian instant payment system) Transfer",
+        "taxa_percentual": 1,
+        "descricao": "Withdraw to bank account. Window: Mon-Fri 9am-5pm."
+      }
     ],
     "tempo_total": "~10 minutes",
-    "custo_total_pct": 2.0,
+    "custo_total_pct": 2,
     "exemplo_pratico": {
       "valor_input": 10000,
       "moeda_input": "BRL",
       "descricao_uso": "Receive R$ 10,000, convert 60% to USD, withdraw 40%",
-      "breakdown": [{ "etapa": "Receive PIX (1%)", "taxa_brl": 100 }, { "etapa": "Buy USDC R$ 6,000 (1.5%)", "taxa_brl": 89.1 }, { "etapa": "Withdraw PIX R$ 4,000 (1%)", "taxa_brl": 39.6 }],
+      "breakdown": [
+        {
+          "etapa": "Receive PIX (Brazilian instant payment system) (1%)",
+          "taxa_brl": 100
+        },
+        {
+          "etapa": "Buy USDC (digital dollar) R$ 6,000 (1.5%)",
+          "taxa_brl": 89.1
+        },
+        {
+          "etapa": "Withdraw PIX (Brazilian instant payment system) R$ 4,000 (1%)",
+          "taxa_brl": 39.6
+        }
+      ],
       "total_taxa_brl": 228.7,
-      "valor_final_destino": "≈ US$ 1,171 in USDC + R$ 3,960 in bank account"
+      "valor_final_destino": "≈ US$ 1,171 in USDC (digital dollar) + R$ 3,960 in bank account"
     },
-    "cuidados": ["PIX withdrawal only Mon-Fri 9am-5pm", "Two-step flow: switch, convert, switch back, withdraw"],
-    "dicas": ["Use as monthly routine: salary arrives, part becomes reserve", "Save bank PIX key as favorite (T23)"],
+    "cuidados": [
+      "PIX (Brazilian instant payment system) withdrawal only Mon-Fri 9am-5pm",
+      "Two-step flow: switch, convert, switch back, withdraw"
+    ],
+    "dicas": [
+      "Use as monthly routine: salary arrives, part becomes reserve",
+      "Save bank PIX (Brazilian instant payment system) key as favorite (T23)"
+    ],
     "cta": "Open your account for free at evoluecash.com.br"
   },
   {
     "codigo": "OP04",
     "slug": "pagar-fornecedor-br-pix",
-    "titulo": "Pay Brazilian supplier via PIX",
+    "titulo": "Pay Brazilian supplier via PIX (Brazilian instant payment system)",
     "emoji": "🇧🇷",
-    "para_quem": "Company that needs to pay suppliers, employees, or third parties via PIX.",
+    "para_quem": "Company that needs to pay suppliers, employees, or third parties via PIX (Brazilian instant payment system).",
     "categoria": "pagamento-br",
-    "categoriaUI": ["pagar"],
+    "categoriaUI": [
+      "pagar"
+    ],
     "fluxo": [
-      { "etapa": 1, "titulo": "Send PIX", "transacao_ref": "T03", "caminho": "Payments Account → Withdrawals → PIX Transfer", "taxa_percentual": 1.0, "descricao": "Paste/type recipient's PIX key and confirm amount." }
+      {
+        "etapa": 1,
+        "titulo": "Send PIX (Brazilian instant payment system)",
+        "transacao_ref": "T03",
+        "caminho": "Payments Account (Brazilian mode with PIX) → Withdrawals → PIX (Brazilian instant payment system) Transfer",
+        "taxa_percentual": 1,
+        "descricao": "Paste/type recipient's PIX (Brazilian instant payment system) key and confirm amount."
+      }
     ],
     "tempo_total": "Instant",
-    "custo_total_pct": 1.0,
+    "custo_total_pct": 1,
     "exemplo_pratico": {
       "valor_input": 5000,
       "moeda_input": "BRL",
-      "descricao_uso": "Pay supplier R$ 5,000 via PIX",
-      "breakdown": [{ "etapa": "Send PIX (1%)", "taxa_brl": 50 }],
+      "descricao_uso": "Pay supplier R$ 5,000 via PIX (Brazilian instant payment system)",
+      "breakdown": [
+        {
+          "etapa": "Send PIX (Brazilian instant payment system) (1%)",
+          "taxa_brl": 50
+        }
+      ],
       "total_taxa_brl": 50,
       "valor_final_destino": "R$ 5,000 to supplier; R$ 5,050 debited from yours"
     },
-    "cuidados": ["Double-check PIX key before confirming", "In Payments Account mode, verification responsibility is yours"],
-    "dicas": ["Use Payments Account mode for 24/7 agility", "Save suppliers as favorites to reduce errors"],
+    "cuidados": [
+      "Double-check PIX (Brazilian instant payment system) key before confirming",
+      "In Payments Account (Brazilian mode with PIX) mode, verification responsibility is yours"
+    ],
+    "dicas": [
+      "Use Payments Account (Brazilian mode with PIX) mode for 24/7 agility",
+      "Save suppliers as favorites to reduce errors"
+    ],
     "cta": "Open your account for free at evoluecash.com.br"
   },
   {
@@ -109,25 +238,52 @@
     "slug": "pagar-fornecedores-favoritos",
     "titulo": "Pay recurring suppliers using Favorites",
     "emoji": "🇧🇷⭐",
-    "para_quem": "Company with multiple recurring PIX payments (payroll, fixed suppliers, rent).",
+    "para_quem": "Company with multiple recurring PIX (Brazilian instant payment system) payments (payroll, fixed suppliers, rent).",
     "categoria": "pagamento-br",
-    "categoriaUI": ["pagar"],
+    "categoriaUI": [
+      "pagar"
+    ],
     "fluxo": [
-      { "etapa": 1, "titulo": "Save recipient as favorite", "transacao_ref": "T23", "caminho": "Withdrawals → PIX Transfer → screen 2 → ⭐ next to key", "taxa_percentual": 0, "descricao": "One-time setup, no fee." },
-      { "etapa": 2, "titulo": "Use favorite in PIX", "transacao_ref": "T03", "caminho": "Withdrawals → PIX Transfer → My Favorites", "taxa_percentual": 1.0, "descricao": "Select recipient, enter amount, confirm." }
+      {
+        "etapa": 1,
+        "titulo": "Save recipient as favorite",
+        "transacao_ref": "T23",
+        "caminho": "Withdrawals → PIX (Brazilian instant payment system) Transfer → screen 2 → ⭐ next to key",
+        "taxa_percentual": 0,
+        "descricao": "One-time setup, no fee."
+      },
+      {
+        "etapa": 2,
+        "titulo": "Use favorite in PIX (Brazilian instant payment system)",
+        "transacao_ref": "T03",
+        "caminho": "Withdrawals → PIX (Brazilian instant payment system) Transfer → My Favorites",
+        "taxa_percentual": 1,
+        "descricao": "Select recipient, enter amount, confirm."
+      }
     ],
     "tempo_total": "Few seconds per payment",
-    "custo_total_pct": 1.0,
+    "custo_total_pct": 1,
     "exemplo_pratico": {
       "valor_input": 50000,
       "moeda_input": "BRL",
       "descricao_uso": "R$ 50,000 payroll across 10 favorites",
-      "breakdown": [{ "etapa": "Send PIX (1% on total)", "taxa_brl": 500 }],
+      "breakdown": [
+        {
+          "etapa": "Send PIX (Brazilian instant payment system) (1% on total)",
+          "taxa_brl": 500
+        }
+      ],
       "total_taxa_brl": 500,
       "valor_final_destino": "R$ 50,000 distributed across 10 recipients"
     },
-    "cuidados": ["Even with favorite, verify amount before confirming", "Favorites are linked to your account only"],
-    "dicas": ["Start by favoriting 5-10 most frequent recipients", "Reduces operation time and typing errors"],
+    "cuidados": [
+      "Even with favorite, verify amount before confirming",
+      "Favorites are linked to your account only"
+    ],
+    "dicas": [
+      "Start by favoriting 5-10 most frequent recipients",
+      "Reduces operation time and typing errors"
+    ],
     "cta": "Open your account for free at evoluecash.com.br"
   },
   {
@@ -137,9 +293,18 @@
     "emoji": "🧾",
     "para_quem": "Any company or individual paying boletos: rent, utilities, telecom, suppliers.",
     "categoria": "pagamento-br",
-    "categoriaUI": ["pagar"],
+    "categoriaUI": [
+      "pagar"
+    ],
     "fluxo": [
-      { "etapa": 1, "titulo": "Pay boleto", "transacao_ref": "T02", "caminho": "Payments Account → Payments → Boleto", "taxa_percentual": 1.75, "descricao": "Paste barcode, verify beneficiary and amount, confirm." }
+      {
+        "etapa": 1,
+        "titulo": "Pay boleto",
+        "transacao_ref": "T02",
+        "caminho": "Payments Account (Brazilian mode with PIX) → Payments → Boleto",
+        "taxa_percentual": 1.75,
+        "descricao": "Paste barcode, verify beneficiary and amount, confirm."
+      }
     ],
     "tempo_total": "Settlement per banking hours",
     "custo_total_pct": 1.75,
@@ -147,12 +312,23 @@
       "valor_input": 1000,
       "moeda_input": "BRL",
       "descricao_uso": "Pay R$ 1,000 boleto",
-      "breakdown": [{ "etapa": "Pay boleto (1.75%)", "taxa_brl": 17.5 }],
+      "breakdown": [
+        {
+          "etapa": "Pay boleto (1.75%)",
+          "taxa_brl": 17.5
+        }
+      ],
       "total_taxa_brl": 17.5,
       "valor_final_destino": "R$ 1,000 to beneficiary; R$ 1,017.50 debited"
     },
-    "cuidados": ["Overdue boletos may have recalculated interest", "Settlement depends on banking hours (D+0 or D+1)"],
-    "dicas": ["Use paste icon to avoid barcode typing errors", "Credit card or arrecadação boletos follow specific rules"],
+    "cuidados": [
+      "Overdue boletos may have recalculated interest",
+      "Settlement depends on banking hours (D+0 (same day) or D+1 (next business day))"
+    ],
+    "dicas": [
+      "Use paste icon to avoid barcode typing errors",
+      "Credit card or arrecadação boletos follow specific rules"
+    ],
     "cta": "Open your account for free at evoluecash.com.br"
   },
   {
@@ -162,13 +338,51 @@
     "emoji": "🌍",
     "para_quem": "Importer (legal entity) buying goods from foreign supplier (China, USA, Europe) needing to pay in destination's local currency.",
     "categoria": "pagamento-internacional",
-    "categoriaUI": ["pagar", "internacional"],
+    "categoriaUI": [
+      "pagar",
+      "internacional"
+    ],
     "fluxo": [
-      { "etapa": 1, "titulo": "Receive BRL", "transacao_ref": "T01", "caminho": "Payments Account → Deposits → PIX Deposit", "taxa_percentual": 1.0, "descricao": "BRL funding for the operation." },
-      { "etapa": 2, "titulo": "Switch to Crypto Account", "transacao_ref": "T16", "caminho": "Header → Crypto Account", "taxa_percentual": 0, "descricao": "No fee." },
-      { "etapa": 3, "titulo": "Buy USDT with BRL", "transacao_ref": "T07", "caminho": "Exchange → Buy → USDT", "taxa_percentual": 1.5, "descricao": "BRL → USDT conversion." },
-      { "etapa": 4, "titulo": "Transfer USDT on-chain", "transacao_ref": "T09", "caminho": "Exchange → Transfer → TRON Network", "taxa_percentual": 0, "descricao": "Off-ramp partner address." },
-      { "etapa": 5, "titulo": "Final USDT → USD conversion", "transacao_ref": "T09", "caminho": "Off-ramp via partner network in US", "taxa_percentual": 1.0, "descricao": "Supplier receives USD in bank account." }
+      {
+        "etapa": 1,
+        "titulo": "Receive BRL",
+        "transacao_ref": "T01",
+        "caminho": "Payments Account (Brazilian mode with PIX) → Deposits → PIX (Brazilian instant payment system) Deposit",
+        "taxa_percentual": 1,
+        "descricao": "BRL funding for the operation."
+      },
+      {
+        "etapa": 2,
+        "titulo": "Switch to Crypto Account (international mode with digital dollars)",
+        "transacao_ref": "T16",
+        "caminho": "Header → Crypto Account (international mode with digital dollars)",
+        "taxa_percentual": 0,
+        "descricao": "No fee."
+      },
+      {
+        "etapa": 3,
+        "titulo": "Buy USDT (digital dollar) with BRL",
+        "transacao_ref": "T07",
+        "caminho": "Exchange → Buy → USDT (digital dollar)",
+        "taxa_percentual": 1.5,
+        "descricao": "BRL → USDT (digital dollar) conversion."
+      },
+      {
+        "etapa": 4,
+        "titulo": "Transfer USDT (digital dollar) on-chain (over the international network)",
+        "transacao_ref": "T09",
+        "caminho": "Exchange → Transfer → Tron (standard for Asian exchanges) Network",
+        "taxa_percentual": 0,
+        "descricao": "Off-ramp (exit to local currency) partner address."
+      },
+      {
+        "etapa": 5,
+        "titulo": "Final USDT (digital dollar) → USD conversion",
+        "transacao_ref": "T09",
+        "caminho": "Off-ramp (exit to local currency) via partner network in US",
+        "taxa_percentual": 1,
+        "descricao": "Supplier receives USD in bank account."
+      }
     ],
     "tempo_total": "~2 hours",
     "custo_total_pct": 3.5,
@@ -176,12 +390,36 @@
       "valor_input": 220000,
       "moeda_input": "USD",
       "descricao_uso": "US$ 220,000 payment to US supplier",
-      "breakdown": [{ "etapa": "Receive PIX (1%)", "taxa_brl": 11000 }, { "etapa": "Buy USDT (1.5%)", "taxa_brl": 16500 }, { "etapa": "On-chain network", "taxa_brl": 30 }, { "etapa": "USDT → USD conversion (1%)", "taxa_brl": 10725 }],
+      "breakdown": [
+        {
+          "etapa": "Receive PIX (Brazilian instant payment system) (1%)",
+          "taxa_brl": 11000
+        },
+        {
+          "etapa": "Buy USDT (digital dollar) (1.5%)",
+          "taxa_brl": 16500
+        },
+        {
+          "etapa": "on-chain (over the international network) network",
+          "taxa_brl": 30
+        },
+        {
+          "etapa": "USDT (digital dollar) → USD conversion (1%)",
+          "taxa_brl": 10725
+        }
+      ],
       "total_taxa_brl": 38255,
       "valor_final_destino": "≈ US$ 212,300 in supplier's account"
     },
-    "cuidados": ["Confirm TOKEN + NETWORK + ADDRESS before transferring on-chain (T09 is irreversible)", "Crypto withdrawals run Mon-Fri 9am-5pm", "Monthly swap limit R$ 1 million"],
-    "dicas": ["Use Favorites for recurring addresses", "Consider fractioning large operations"],
+    "cuidados": [
+      "Confirm TOKEN + NETWORK + ADDRESS before transferring on-chain (T09 is irreversible)",
+      "Crypto withdrawals run Mon-Fri 9am-5pm",
+      "Monthly swap (direct currency conversion) limit R$ 1 million"
+    ],
+    "dicas": [
+      "Use Favorites for recurring addresses",
+      "Consider fractioning large operations"
+    ],
     "cta": "Open your account for free at evoluecash.com.br"
   },
   {
@@ -191,13 +429,51 @@
     "emoji": "🌍",
     "para_quem": "Brazilian company with USD payment obligation to US company (debt, annual contract, acquisition installment).",
     "categoria": "pagamento-internacional",
-    "categoriaUI": ["pagar", "internacional"],
+    "categoriaUI": [
+      "pagar",
+      "internacional"
+    ],
     "fluxo": [
-      { "etapa": 1, "titulo": "Receive BRL", "transacao_ref": "T01", "caminho": "Payments Account → PIX Deposit", "taxa_percentual": 1.0, "descricao": "Debtor company pays via PIX." },
-      { "etapa": 2, "titulo": "Switch to Crypto Account", "transacao_ref": "T16", "caminho": "Header → Crypto Account", "taxa_percentual": 0, "descricao": "No fee." },
-      { "etapa": 3, "titulo": "Buy USDT with BRL", "transacao_ref": "T07", "caminho": "Exchange → Buy → USDT", "taxa_percentual": 1.5, "descricao": "BRL → USDT conversion." },
-      { "etapa": 4, "titulo": "Transfer USDT on-chain", "transacao_ref": "T09", "caminho": "Exchange → Transfer → TRON Network", "taxa_percentual": 0, "descricao": "Off-ramp partner address." },
-      { "etapa": 5, "titulo": "Final USDT → USD conversion", "transacao_ref": "T09", "caminho": "Off-ramp via partner network in US", "taxa_percentual": 1.0, "descricao": "US company receives USD." }
+      {
+        "etapa": 1,
+        "titulo": "Receive BRL",
+        "transacao_ref": "T01",
+        "caminho": "Payments Account (Brazilian mode with PIX) → PIX (Brazilian instant payment system) Deposit",
+        "taxa_percentual": 1,
+        "descricao": "Debtor company pays via PIX (Brazilian instant payment system)."
+      },
+      {
+        "etapa": 2,
+        "titulo": "Switch to Crypto Account (international mode with digital dollars)",
+        "transacao_ref": "T16",
+        "caminho": "Header → Crypto Account (international mode with digital dollars)",
+        "taxa_percentual": 0,
+        "descricao": "No fee."
+      },
+      {
+        "etapa": 3,
+        "titulo": "Buy USDT (digital dollar) with BRL",
+        "transacao_ref": "T07",
+        "caminho": "Exchange → Buy → USDT (digital dollar)",
+        "taxa_percentual": 1.5,
+        "descricao": "BRL → USDT (digital dollar) conversion."
+      },
+      {
+        "etapa": 4,
+        "titulo": "Transfer USDT (digital dollar) on-chain (over the international network)",
+        "transacao_ref": "T09",
+        "caminho": "Exchange → Transfer → Tron (standard for Asian exchanges) Network",
+        "taxa_percentual": 0,
+        "descricao": "Off-ramp (exit to local currency) partner address."
+      },
+      {
+        "etapa": 5,
+        "titulo": "Final USDT (digital dollar) → USD conversion",
+        "transacao_ref": "T09",
+        "caminho": "Off-ramp (exit to local currency) via partner network in US",
+        "taxa_percentual": 1,
+        "descricao": "US company receives USD."
+      }
     ],
     "tempo_total": "~2 hours",
     "custo_total_pct": 3.5,
@@ -205,12 +481,37 @@
       "valor_input": 400000,
       "moeda_input": "USD",
       "descricao_uso": "Annual installment US$ 400,000 (~R$ 2,000,000)",
-      "breakdown": [{ "etapa": "Receive PIX (1%)", "taxa_brl": 20000 }, { "etapa": "Buy USDT (1.5%)", "taxa_brl": 29700 }, { "etapa": "On-chain network", "taxa_brl": 30 }, { "etapa": "USDT → USD conversion (1%)", "taxa_brl": 19500 }],
+      "breakdown": [
+        {
+          "etapa": "Receive PIX (Brazilian instant payment system) (1%)",
+          "taxa_brl": 20000
+        },
+        {
+          "etapa": "Buy USDT (digital dollar) (1.5%)",
+          "taxa_brl": 29700
+        },
+        {
+          "etapa": "on-chain (over the international network) network",
+          "taxa_brl": 30
+        },
+        {
+          "etapa": "USDT (digital dollar) → USD conversion (1%)",
+          "taxa_brl": 19500
+        }
+      ],
       "total_taxa_brl": 69230,
       "valor_final_destino": "≈ US$ 386,150 in US company's account"
     },
-    "cuidados": ["Same chain as OP07 — T09 irreversibility applies", "Operation repeats per installment — save address as favorite", "Amounts above US$ 50k may have compliance review"],
-    "dicas": ["'Fractioned' strategy: split US$ 400k into 8 lots of US$ 50k", "Better fits monthly swap limit, dilutes FX volatility", "Faster compliance per lot"],
+    "cuidados": [
+      "Same chain as OP07 — T09 irreversibility applies",
+      "Operation repeats per installment — save address as favorite",
+      "Amounts above US$ 50k may have compliance (security verification) review"
+    ],
+    "dicas": [
+      "'Fractioned' strategy: split US$ 400k into 8 lots of US$ 50k",
+      "Better fits monthly swap (direct currency conversion) limit, dilutes FX volatility",
+      "Faster compliance (security verification) per lot"
+    ],
     "cta": "Open your account for free at evoluecash.com.br"
   },
   {
@@ -220,13 +521,51 @@
     "emoji": "👥",
     "para_quem": "Brazilian company (agency, SaaS, startup) with freelancers, contractors, or distributed team outside Brazil.",
     "categoria": "pagamento-internacional",
-    "categoriaUI": ["pagar", "internacional"],
+    "categoriaUI": [
+      "pagar",
+      "internacional"
+    ],
     "fluxo": [
-      { "etapa": 1, "titulo": "Receive BRL", "transacao_ref": "T01", "caminho": "Payments Account → PIX Deposit", "taxa_percentual": 1.0, "descricao": "BRL funding to cover monthly payroll." },
-      { "etapa": 2, "titulo": "Switch to Crypto Account", "transacao_ref": "T16", "caminho": "Header → Crypto Account", "taxa_percentual": 0, "descricao": "No fee." },
-      { "etapa": 3, "titulo": "Buy USDT", "transacao_ref": "T07", "caminho": "Exchange → Buy → USDT", "taxa_percentual": 1.5, "descricao": "Buy USDT equivalent to total payroll." },
-      { "etapa": 4, "titulo": "Transfer to each freelancer", "transacao_ref": "T09", "caminho": "Exchange → Transfer → preferred network", "taxa_percentual": 0, "descricao": "Freelancer's wallet or OTC partner." },
-      { "etapa": 5, "titulo": "USDT → USD/EUR conversion", "transacao_ref": "T09", "caminho": "Off-ramp via partners (if no wallet)", "taxa_percentual": 1.0, "descricao": "Payment to freelancer's bank account." }
+      {
+        "etapa": 1,
+        "titulo": "Receive BRL",
+        "transacao_ref": "T01",
+        "caminho": "Payments Account (Brazilian mode with PIX) → PIX (Brazilian instant payment system) Deposit",
+        "taxa_percentual": 1,
+        "descricao": "BRL funding to cover monthly payroll."
+      },
+      {
+        "etapa": 2,
+        "titulo": "Switch to Crypto Account (international mode with digital dollars)",
+        "transacao_ref": "T16",
+        "caminho": "Header → Crypto Account (international mode with digital dollars)",
+        "taxa_percentual": 0,
+        "descricao": "No fee."
+      },
+      {
+        "etapa": 3,
+        "titulo": "Buy USDT (digital dollar)",
+        "transacao_ref": "T07",
+        "caminho": "Exchange → Buy → USDT (digital dollar)",
+        "taxa_percentual": 1.5,
+        "descricao": "Buy USDT (digital dollar) equivalent to total payroll."
+      },
+      {
+        "etapa": 4,
+        "titulo": "Transfer to each freelancer",
+        "transacao_ref": "T09",
+        "caminho": "Exchange → Transfer → preferred network",
+        "taxa_percentual": 0,
+        "descricao": "Freelancer's wallet (receiving address) or OTC partner."
+      },
+      {
+        "etapa": 5,
+        "titulo": "USDT (digital dollar) → USD/EUR conversion",
+        "transacao_ref": "T09",
+        "caminho": "Off-ramp (exit to local currency) via partners (if no wallet (receiving address))",
+        "taxa_percentual": 1,
+        "descricao": "Payment to freelancer's bank account."
+      }
     ],
     "tempo_total": "~1 hour per payment",
     "custo_total_pct": 3.5,
@@ -234,12 +573,37 @@
       "valor_input": 20000,
       "moeda_input": "USD",
       "descricao_uso": "Monthly payroll: 10 freelancers × US$ 2,000",
-      "breakdown": [{ "etapa": "Receive PIX (1%)", "taxa_brl": 1000 }, { "etapa": "Buy USDT (1.5%)", "taxa_brl": 1485 }, { "etapa": "On-chain network (10×)", "taxa_brl": 50 }, { "etapa": "USDT → USD conversion (1%)", "taxa_brl": 975 }],
+      "breakdown": [
+        {
+          "etapa": "Receive PIX (Brazilian instant payment system) (1%)",
+          "taxa_brl": 1000
+        },
+        {
+          "etapa": "Buy USDT (digital dollar) (1.5%)",
+          "taxa_brl": 1485
+        },
+        {
+          "etapa": "on-chain (over the international network) network (10×)",
+          "taxa_brl": 50
+        },
+        {
+          "etapa": "USDT (digital dollar) → USD conversion (1%)",
+          "taxa_brl": 975
+        }
+      ],
       "total_taxa_brl": 3510,
       "valor_final_destino": "≈ US$ 19,300 distributed across 10 freelancers"
     },
-    "cuidados": ["Each freelancer may prefer different network — confirm beforehand", "If freelancer has own wallet, cost drops to 2.5%", "Always confirm network + address"],
-    "dicas": ["Save each freelancer as favorite", "Schedule payment for same day each month", "Polygon cheaper for small amounts, Tron for USDT"],
+    "cuidados": [
+      "Each freelancer may prefer different network — confirm beforehand",
+      "If freelancer has own wallet (receiving address), cost drops to 2.5%",
+      "Always confirm network + address"
+    ],
+    "dicas": [
+      "Save each freelancer as favorite",
+      "Schedule payment for same day each month",
+      "Polygon (low-fee network) cheaper for small amounts, Tron (standard for Asian exchanges) for USDT (digital dollar)"
+    ],
     "cta": "Open your account for free at evoluecash.com.br"
   },
   {
@@ -249,13 +613,51 @@
     "emoji": "🏗️",
     "para_quem": "Construction, industrial, agribusiness, or tech company buying machinery from international suppliers.",
     "categoria": "pagamento-internacional",
-    "categoriaUI": ["pagar", "internacional"],
+    "categoriaUI": [
+      "pagar",
+      "internacional"
+    ],
     "fluxo": [
-      { "etapa": 1, "titulo": "Receive BRL", "transacao_ref": "T01", "caminho": "Payments Account → PIX Deposit", "taxa_percentual": 1.0, "descricao": "BRL funding." },
-      { "etapa": 2, "titulo": "Switch to Crypto Account", "transacao_ref": "T16", "caminho": "Header → Crypto Account", "taxa_percentual": 0, "descricao": "No fee." },
-      { "etapa": 3, "titulo": "Buy USDT", "transacao_ref": "T07", "caminho": "Exchange → Buy → USDT", "taxa_percentual": 1.5, "descricao": "BRL → USDT conversion." },
-      { "etapa": 4, "titulo": "On-chain transfer", "transacao_ref": "T09", "caminho": "Exchange → Transfer → supplier's network", "taxa_percentual": 0, "descricao": "Off-ramp partner address." },
-      { "etapa": 5, "titulo": "Final USDT → USD conversion", "transacao_ref": "T09", "caminho": "Off-ramp via partner network", "taxa_percentual": 1.0, "descricao": "Supplier receives USD." }
+      {
+        "etapa": 1,
+        "titulo": "Receive BRL",
+        "transacao_ref": "T01",
+        "caminho": "Payments Account (Brazilian mode with PIX) → PIX (Brazilian instant payment system) Deposit",
+        "taxa_percentual": 1,
+        "descricao": "BRL funding."
+      },
+      {
+        "etapa": 2,
+        "titulo": "Switch to Crypto Account (international mode with digital dollars)",
+        "transacao_ref": "T16",
+        "caminho": "Header → Crypto Account (international mode with digital dollars)",
+        "taxa_percentual": 0,
+        "descricao": "No fee."
+      },
+      {
+        "etapa": 3,
+        "titulo": "Buy USDT (digital dollar)",
+        "transacao_ref": "T07",
+        "caminho": "Exchange → Buy → USDT (digital dollar)",
+        "taxa_percentual": 1.5,
+        "descricao": "BRL → USDT (digital dollar) conversion."
+      },
+      {
+        "etapa": 4,
+        "titulo": "on-chain (over the international network) transfer",
+        "transacao_ref": "T09",
+        "caminho": "Exchange → Transfer → supplier's network",
+        "taxa_percentual": 0,
+        "descricao": "Off-ramp (exit to local currency) partner address."
+      },
+      {
+        "etapa": 5,
+        "titulo": "Final USDT (digital dollar) → USD conversion",
+        "transacao_ref": "T09",
+        "caminho": "Off-ramp (exit to local currency) via partner network",
+        "taxa_percentual": 1,
+        "descricao": "Supplier receives USD."
+      }
     ],
     "tempo_total": "~2 hours",
     "custo_total_pct": 3.5,
@@ -263,12 +665,36 @@
       "valor_input": 80000,
       "moeda_input": "USD",
       "descricao_uso": "Equipment purchase US$ 80,000 (~R$ 400,000)",
-      "breakdown": [{ "etapa": "Receive PIX (1%)", "taxa_brl": 4000 }, { "etapa": "Buy USDT (1.5%)", "taxa_brl": 5940 }, { "etapa": "On-chain network", "taxa_brl": 30 }, { "etapa": "USDT → USD conversion (1%)", "taxa_brl": 3900 }],
+      "breakdown": [
+        {
+          "etapa": "Receive PIX (Brazilian instant payment system) (1%)",
+          "taxa_brl": 4000
+        },
+        {
+          "etapa": "Buy USDT (digital dollar) (1.5%)",
+          "taxa_brl": 5940
+        },
+        {
+          "etapa": "on-chain (over the international network) network",
+          "taxa_brl": 30
+        },
+        {
+          "etapa": "USDT (digital dollar) → USD conversion (1%)",
+          "taxa_brl": 3900
+        }
+      ],
       "total_taxa_brl": 13870,
       "valor_final_destino": "≈ US$ 77,225 in supplier's account"
     },
-    "cuidados": ["Does not replace DI/DUIMP in Siscomex", "Consult customs broker to align import invoice", "Document NCM, declared value, exchange rate"],
-    "dicas": ["Payments above US$ 50k may take 20 min to 7 days for compliance", "Plan with margin relative to shipping date"],
+    "cuidados": [
+      "Does not replace DI/DUIMP (Brazilian customs documentation) in Siscomex (Brazilian Federal Revenue system)",
+      "Consult customs broker to align import invoice",
+      "Document NCM, declared value, exchange rate"
+    ],
+    "dicas": [
+      "Payments above US$ 50k may take 20 min to 7 days for compliance (security verification)",
+      "Plan with margin relative to shipping date"
+    ],
     "cta": "Open your account for free at evoluecash.com.br"
   },
   {
@@ -278,13 +704,51 @@
     "emoji": "📦",
     "para_quem": "Distributor or wholesaler importing from recurring supplier (China, Belarus, Korea, India) every month.",
     "categoria": "pagamento-internacional",
-    "categoriaUI": ["pagar", "internacional"],
+    "categoriaUI": [
+      "pagar",
+      "internacional"
+    ],
     "fluxo": [
-      { "etapa": 1, "titulo": "Receive BRL", "transacao_ref": "T01", "caminho": "Payments Account → PIX Deposit", "taxa_percentual": 1.0, "descricao": "Monthly BRL funding." },
-      { "etapa": 2, "titulo": "Switch to Crypto Account", "transacao_ref": "T16", "caminho": "Header → Crypto Account", "taxa_percentual": 0, "descricao": "No fee." },
-      { "etapa": 3, "titulo": "Buy USDT", "transacao_ref": "T07", "caminho": "Exchange → Buy → USDT", "taxa_percentual": 1.5, "descricao": "BRL → USDT conversion." },
-      { "etapa": 4, "titulo": "On-chain transfer", "transacao_ref": "T09", "caminho": "Exchange → Transfer → supplier's network", "taxa_percentual": 0, "descricao": "Supplier address (or OTC partner)." },
-      { "etapa": 5, "titulo": "USDT → local currency conversion", "transacao_ref": "T09", "caminho": "Off-ramp via partner network", "taxa_percentual": 1.0, "descricao": "Supplier receives in local currency." }
+      {
+        "etapa": 1,
+        "titulo": "Receive BRL",
+        "transacao_ref": "T01",
+        "caminho": "Payments Account (Brazilian mode with PIX) → PIX (Brazilian instant payment system) Deposit",
+        "taxa_percentual": 1,
+        "descricao": "Monthly BRL funding."
+      },
+      {
+        "etapa": 2,
+        "titulo": "Switch to Crypto Account (international mode with digital dollars)",
+        "transacao_ref": "T16",
+        "caminho": "Header → Crypto Account (international mode with digital dollars)",
+        "taxa_percentual": 0,
+        "descricao": "No fee."
+      },
+      {
+        "etapa": 3,
+        "titulo": "Buy USDT (digital dollar)",
+        "transacao_ref": "T07",
+        "caminho": "Exchange → Buy → USDT (digital dollar)",
+        "taxa_percentual": 1.5,
+        "descricao": "BRL → USDT (digital dollar) conversion."
+      },
+      {
+        "etapa": 4,
+        "titulo": "on-chain (over the international network) transfer",
+        "transacao_ref": "T09",
+        "caminho": "Exchange → Transfer → supplier's network",
+        "taxa_percentual": 0,
+        "descricao": "Supplier address (or OTC partner)."
+      },
+      {
+        "etapa": 5,
+        "titulo": "USDT (digital dollar) → local currency conversion",
+        "transacao_ref": "T09",
+        "caminho": "Off-ramp (exit to local currency) via partner network",
+        "taxa_percentual": 1,
+        "descricao": "Supplier receives in local currency."
+      }
     ],
     "tempo_total": "~2 hours",
     "custo_total_pct": 3.5,
@@ -292,12 +756,37 @@
       "valor_input": 100000,
       "moeda_input": "USD",
       "descricao_uso": "Monthly import US$ 100,000",
-      "breakdown": [{ "etapa": "Receive PIX (1%)", "taxa_brl": 5000 }, { "etapa": "Buy USDT (1.5%)", "taxa_brl": 7425 }, { "etapa": "On-chain network", "taxa_brl": 30 }, { "etapa": "USDT → USD conversion (1%)", "taxa_brl": 4875 }],
+      "breakdown": [
+        {
+          "etapa": "Receive PIX (Brazilian instant payment system) (1%)",
+          "taxa_brl": 5000
+        },
+        {
+          "etapa": "Buy USDT (digital dollar) (1.5%)",
+          "taxa_brl": 7425
+        },
+        {
+          "etapa": "on-chain (over the international network) network",
+          "taxa_brl": 30
+        },
+        {
+          "etapa": "USDT (digital dollar) → USD conversion (1%)",
+          "taxa_brl": 4875
+        }
+      ],
       "total_taxa_brl": 17330,
       "valor_final_destino": "≈ US$ 96,534 in supplier's account (monthly)"
     },
-    "cuidados": ["Monthly swap limit R$ 1 million — larger imports must be fractioned", "Keep customs documentation (DI/DUIMP)", "Consult customs broker regularly"],
-    "dicas": ["Save supplier address as favorite", "Maintain USDC buffer for urgent operations", "Consider fractioning into 2-3 monthly transfers"],
+    "cuidados": [
+      "Monthly swap (direct currency conversion) limit R$ 1 million — larger imports must be fractioned",
+      "Keep customs documentation (DI/DUIMP (Brazilian customs documentation))",
+      "Consult customs broker regularly"
+    ],
+    "dicas": [
+      "Save supplier address as favorite",
+      "Maintain USDC (digital dollar) buffer for urgent operations",
+      "Consider fractioning into 2-3 monthly transfers"
+    ],
     "cta": "Open your account for free at evoluecash.com.br"
   },
   {
@@ -305,15 +794,53 @@
     "slug": "pagamento-fracionado-picado",
     "titulo": "Fractioned international payment",
     "emoji": "🔢",
-    "para_quem": "Company that needs large international remittance (above monthly swap limit) or prefers smaller installments.",
+    "para_quem": "Company that needs large international remittance (above monthly swap (direct currency conversion) limit) or prefers smaller installments.",
     "categoria": "pagamento-internacional",
-    "categoriaUI": ["pagar", "internacional"],
+    "categoriaUI": [
+      "pagar",
+      "internacional"
+    ],
     "fluxo": [
-      { "etapa": 1, "titulo": "Receive BRL by lot", "transacao_ref": "T01", "caminho": "Payments Account → PIX Deposit", "taxa_percentual": 1.0, "descricao": "Receive in lots (e.g., R$ 100k each)." },
-      { "etapa": 2, "titulo": "Switch to Crypto Account", "transacao_ref": "T16", "caminho": "Header → Crypto Account", "taxa_percentual": 0, "descricao": "No fee (one-time)." },
-      { "etapa": 3, "titulo": "Buy USDT per lot", "transacao_ref": "T07", "caminho": "Exchange → Buy → USDT", "taxa_percentual": 1.5, "descricao": "Buy on each lot." },
-      { "etapa": 4, "titulo": "Transfer on-chain per lot", "transacao_ref": "T09", "caminho": "Exchange → Transfer → same final address", "taxa_percentual": 0, "descricao": "Same address for each lot." },
-      { "etapa": 5, "titulo": "USDT → USD conversion per lot", "transacao_ref": "T09", "caminho": "Off-ramp via partners", "taxa_percentual": 1.0, "descricao": "Each lot converts separately." }
+      {
+        "etapa": 1,
+        "titulo": "Receive BRL by lot",
+        "transacao_ref": "T01",
+        "caminho": "Payments Account (Brazilian mode with PIX) → PIX (Brazilian instant payment system) Deposit",
+        "taxa_percentual": 1,
+        "descricao": "Receive in lots (e.g., R$ 100k each)."
+      },
+      {
+        "etapa": 2,
+        "titulo": "Switch to Crypto Account (international mode with digital dollars)",
+        "transacao_ref": "T16",
+        "caminho": "Header → Crypto Account (international mode with digital dollars)",
+        "taxa_percentual": 0,
+        "descricao": "No fee (one-time)."
+      },
+      {
+        "etapa": 3,
+        "titulo": "Buy USDT (digital dollar) per lot",
+        "transacao_ref": "T07",
+        "caminho": "Exchange → Buy → USDT (digital dollar)",
+        "taxa_percentual": 1.5,
+        "descricao": "Buy on each lot."
+      },
+      {
+        "etapa": 4,
+        "titulo": "Transfer on-chain (over the international network) per lot",
+        "transacao_ref": "T09",
+        "caminho": "Exchange → Transfer → same final address",
+        "taxa_percentual": 0,
+        "descricao": "Same address for each lot."
+      },
+      {
+        "etapa": 5,
+        "titulo": "USDT (digital dollar) → USD conversion per lot",
+        "transacao_ref": "T09",
+        "caminho": "Off-ramp (exit to local currency) via partners",
+        "taxa_percentual": 1,
+        "descricao": "Each lot converts separately."
+      }
     ],
     "tempo_total": "~2 hours per lot",
     "custo_total_pct": 3.5,
@@ -321,27 +848,84 @@
       "valor_input": 200000,
       "moeda_input": "USD",
       "descricao_uso": "Total US$ 200,000 in 10 lots of US$ 20,000",
-      "breakdown": [{ "etapa": "Receive PIX 10× (1% on total)", "taxa_brl": 10000 }, { "etapa": "Buy USDT 10× (1.5% on total)", "taxa_brl": 14850 }, { "etapa": "On-chain network 10×", "taxa_brl": 300 }, { "etapa": "USDT → USD conversion 10× (1% on total)", "taxa_brl": 9750 }],
+      "breakdown": [
+        {
+          "etapa": "Receive PIX (Brazilian instant payment system) 10× (1% on total)",
+          "taxa_brl": 10000
+        },
+        {
+          "etapa": "Buy USDT (digital dollar) 10× (1.5% on total)",
+          "taxa_brl": 14850
+        },
+        {
+          "etapa": "on-chain (over the international network) network 10×",
+          "taxa_brl": 300
+        },
+        {
+          "etapa": "USDT (digital dollar) → USD conversion 10× (1% on total)",
+          "taxa_brl": 9750
+        }
+      ],
       "total_taxa_brl": 34900,
       "valor_final_destino": "≈ US$ 193,020 in destination account"
     },
-    "cuidados": ["Document all lots for accounting reconciliation", "Always use same destination address", "Maintain control spreadsheet"],
-    "dicas": ["Fits monthly swap limit (R$ 1M)", "Faster compliance per lot", "FX volatility dilution", "Allows distributing across months"],
+    "cuidados": [
+      "Document all lots for accounting reconciliation",
+      "Always use same destination address",
+      "Maintain control spreadsheet"
+    ],
+    "dicas": [
+      "Fits monthly swap (direct currency conversion) limit (R$ 1M)",
+      "Faster compliance (security verification) per lot",
+      "FX volatility dilution",
+      "Allows distributing across months"
+    ],
     "cta": "Open your account for free at evoluecash.com.br"
   },
   {
     "codigo": "OP13",
     "slug": "exportador-recebe-do-exterior",
-    "titulo": "Exporter receives from international client in USDT/USDC",
+    "titulo": "Exporter receives from international client in USDT (digital dollar)/USDC (digital dollar)",
     "emoji": "🌎",
     "para_quem": "Brazilian company selling products or services to foreign clients and receiving in hard currency.",
     "categoria": "recebimento-internacional",
-    "categoriaUI": ["receber", "internacional"],
+    "categoriaUI": [
+      "receber",
+      "internacional"
+    ],
     "fluxo": [
-      { "etapa": 1, "titulo": "Issue crypto invoice", "transacao_ref": "T17", "caminho": "Comex → Static Bolecripto", "taxa_percentual": 0, "descricao": "Settlement in USDT or USDC. Invoice in English or Spanish." },
-      { "etapa": 2, "titulo": "Client pays in USDT/USDC", "transacao_ref": "T17", "caminho": "Client pays via wallet or exchange", "taxa_percentual": 0, "descricao": "USDT/USDC arrives in wallet (2-60 min)." },
-      { "etapa": 3, "titulo": "Sell USDT/USDC for BRL", "transacao_ref": "T08", "caminho": "Exchange → Sell", "taxa_percentual": 1.5, "descricao": "Conversion to BRL." },
-      { "etapa": 4, "titulo": "Withdraw BRL", "transacao_ref": "T03", "caminho": "Payments Account → Withdrawals → PIX Transfer", "taxa_percentual": 1.0, "descricao": "Withdrawal to BR bank account." }
+      {
+        "etapa": 1,
+        "titulo": "Issue crypto invoice",
+        "transacao_ref": "T17",
+        "caminho": "Comex → Static Bolecripto (digital dollar charge, fixed amount)",
+        "taxa_percentual": 0,
+        "descricao": "Settlement in USDT (digital dollar) or USDC (digital dollar). Invoice in English or Spanish."
+      },
+      {
+        "etapa": 2,
+        "titulo": "Client pays in USDT (digital dollar)/USDC (digital dollar)",
+        "transacao_ref": "T17",
+        "caminho": "Client pays via wallet (receiving address) or exchange",
+        "taxa_percentual": 0,
+        "descricao": "USDT (digital dollar)/USDC (digital dollar) arrives in wallet (2-60 min)."
+      },
+      {
+        "etapa": 3,
+        "titulo": "Sell USDT (digital dollar)/USDC (digital dollar) for BRL",
+        "transacao_ref": "T08",
+        "caminho": "Exchange → Sell",
+        "taxa_percentual": 1.5,
+        "descricao": "Conversion to BRL."
+      },
+      {
+        "etapa": 4,
+        "titulo": "Withdraw BRL",
+        "transacao_ref": "T03",
+        "caminho": "Payments Account (Brazilian mode with PIX) → Withdrawals → PIX (Brazilian instant payment system) Transfer",
+        "taxa_percentual": 1,
+        "descricao": "Withdrawal to BR bank account."
+      }
     ],
     "tempo_total": "1 to 24 hours",
     "custo_total_pct": 2.5,
@@ -349,27 +933,75 @@
       "valor_input": 50000,
       "moeda_input": "USD",
       "descricao_uso": "Export US$ 50,000 (~R$ 250,000)",
-      "breakdown": [{ "etapa": "Sell USDT (1.5%)", "taxa_brl": 3750 }, { "etapa": "Withdraw PIX (1%)", "taxa_brl": 2462 }],
+      "breakdown": [
+        {
+          "etapa": "Sell USDT (digital dollar) (1.5%)",
+          "taxa_brl": 3750
+        },
+        {
+          "etapa": "Withdraw PIX (Brazilian instant payment system) (1%)",
+          "taxa_brl": 2462
+        }
+      ],
       "total_taxa_brl": 6212,
       "valor_final_destino": "≈ R$ 243,788 in bank account"
     },
-    "cuidados": ["Does not replace DU-E (Brazilian Export Declaration)", "Verify on-chain hash for each payment", "Document conversion for accounting"],
-    "dicas": ["Static Bolecripto fixes value — good for closed contracts", "For variable charges, use Dynamic Bolecripto (OP18)", "Can accumulate USDT and convert in larger lots"],
+    "cuidados": [
+      "Does not replace DU-E (Brazilian Export Declaration)",
+      "Verify on-chain (over the international network) hash (digital receipt) for each payment",
+      "Document conversion for accounting"
+    ],
+    "dicas": [
+      "Static Bolecripto (digital dollar charge, fixed amount) fixes value — good for closed contracts",
+      "For variable charges, use Dynamic Bolecripto (OP18)",
+      "Can accumulate USDT (digital dollar) and convert in larger lots"
+    ],
     "cta": "Open your account for free at evoluecash.com.br"
   },
   {
     "codigo": "OP14",
     "slug": "turismo-recebe-estrangeiros",
-    "titulo": "Tourism business receives foreign clients in USDT",
+    "titulo": "Tourism business receives foreign clients in USDT (digital dollar)",
     "emoji": "🏖️",
-    "para_quem": "Inn, hotel, tourism agency, guide, or operator receiving foreign clients in USDT/USDC.",
+    "para_quem": "Inn, hotel, tourism agency, guide, or operator receiving foreign clients in USDT (digital dollar)/USDC (digital dollar).",
     "categoria": "recebimento-internacional",
-    "categoriaUI": ["receber", "internacional"],
+    "categoriaUI": [
+      "receber",
+      "internacional"
+    ],
     "fluxo": [
-      { "etapa": 1, "titulo": "Issue Bolecripto", "transacao_ref": "T17", "caminho": "Comex → Static or Dynamic Bolecripto", "taxa_percentual": 0, "descricao": "Static for closed package, Dynamic for extras." },
-      { "etapa": 2, "titulo": "Guest pays in USDT/USDC", "transacao_ref": "T17", "caminho": "Client pays from wallet", "taxa_percentual": 0, "descricao": "USDT/USDC in wallet (2-60 min)." },
-      { "etapa": 3, "titulo": "Sell for BRL", "transacao_ref": "T08", "caminho": "Exchange → Sell", "taxa_percentual": 1.5, "descricao": "Conversion to BRL." },
-      { "etapa": 4, "titulo": "Withdraw BRL", "transacao_ref": "T03", "caminho": "Withdrawals → PIX Transfer", "taxa_percentual": 1.0, "descricao": "Withdrawal to bank account." }
+      {
+        "etapa": 1,
+        "titulo": "Issue Bolecripto (digital dollar charge)",
+        "transacao_ref": "T17",
+        "caminho": "Comex → Static or Dynamic Bolecripto (digital dollar charge, variable amount)",
+        "taxa_percentual": 0,
+        "descricao": "Static for closed package, Dynamic for extras."
+      },
+      {
+        "etapa": 2,
+        "titulo": "Guest pays in USDT (digital dollar)/USDC (digital dollar)",
+        "transacao_ref": "T17",
+        "caminho": "Client pays from wallet (receiving address)",
+        "taxa_percentual": 0,
+        "descricao": "USDT (digital dollar)/USDC (digital dollar) in wallet (2-60 min)."
+      },
+      {
+        "etapa": 3,
+        "titulo": "Sell for BRL",
+        "transacao_ref": "T08",
+        "caminho": "Exchange → Sell",
+        "taxa_percentual": 1.5,
+        "descricao": "Conversion to BRL."
+      },
+      {
+        "etapa": 4,
+        "titulo": "Withdraw BRL",
+        "transacao_ref": "T03",
+        "caminho": "Withdrawals → PIX (Brazilian instant payment system) Transfer",
+        "taxa_percentual": 1,
+        "descricao": "Withdrawal to bank account."
+      }
     ],
     "tempo_total": "1 to 24 hours",
     "custo_total_pct": 2.5,
@@ -377,12 +1009,29 @@
       "valor_input": 1500,
       "moeda_input": "USD",
       "descricao_uso": "US$ 1,500 hospitality package (~R$ 7,500)",
-      "breakdown": [{ "etapa": "Sell USDT (1.5%)", "taxa_brl": 112.5 }, { "etapa": "Withdraw PIX (1%)", "taxa_brl": 73.88 }],
+      "breakdown": [
+        {
+          "etapa": "Sell USDT (digital dollar) (1.5%)",
+          "taxa_brl": 112.5
+        },
+        {
+          "etapa": "Withdraw PIX (Brazilian instant payment system) (1%)",
+          "taxa_brl": 73.88
+        }
+      ],
       "total_taxa_brl": 186.38,
       "valor_final_destino": "≈ R$ 7,314 in your account"
     },
-    "cuidados": ["Configure invoice in English or Spanish", "Educate guest to use recognized exchange", "Crypto has no chargeback"],
-    "dicas": ["No international credit card fees (typical 4-6%)", "No chargeback", "Hold in USDT until ready to convert"],
+    "cuidados": [
+      "Configure invoice in English or Spanish",
+      "Educate guest to use recognized exchange",
+      "Crypto has no chargeback"
+    ],
+    "dicas": [
+      "No international credit card fees (typical 4-6%)",
+      "No chargeback",
+      "Hold in USDT (digital dollar) until ready to convert"
+    ],
     "cta": "Open your account for free at evoluecash.com.br"
   },
   {
@@ -392,12 +1041,43 @@
     "emoji": "🏠",
     "para_quem": "Real estate agency, broker, or property manager selling or renting to foreign client.",
     "categoria": "recebimento-internacional",
-    "categoriaUI": ["receber", "internacional"],
+    "categoriaUI": [
+      "receber",
+      "internacional"
+    ],
     "fluxo": [
-      { "etapa": 1, "titulo": "Issue Bolecripto", "transacao_ref": "T17", "caminho": "Comex → Static (purchase) or Dynamic (installments)", "taxa_percentual": 0, "descricao": "USDT or USDC settlement. English or Spanish." },
-      { "etapa": 2, "titulo": "Client pays", "transacao_ref": "T17", "caminho": "Wallet or exchange", "taxa_percentual": 0, "descricao": "USDT/USDC in wallet. Verify hash." },
-      { "etapa": 3, "titulo": "Sell for BRL", "transacao_ref": "T08", "caminho": "Exchange → Sell", "taxa_percentual": 1.5, "descricao": "Conversion." },
-      { "etapa": 4, "titulo": "Withdraw BRL for transfer to seller", "transacao_ref": "T03", "caminho": "Withdrawals → PIX Transfer", "taxa_percentual": 1.0, "descricao": "Transfer to seller/owner." }
+      {
+        "etapa": 1,
+        "titulo": "Issue Bolecripto (digital dollar charge)",
+        "transacao_ref": "T17",
+        "caminho": "Comex → Static (purchase) or Dynamic (installments)",
+        "taxa_percentual": 0,
+        "descricao": "USDT (digital dollar) or USDC (digital dollar) settlement. English or Spanish."
+      },
+      {
+        "etapa": 2,
+        "titulo": "Client pays",
+        "transacao_ref": "T17",
+        "caminho": "wallet (receiving address) or exchange",
+        "taxa_percentual": 0,
+        "descricao": "USDT (digital dollar)/USDC (digital dollar) in wallet (receiving address). Verify hash (digital receipt)."
+      },
+      {
+        "etapa": 3,
+        "titulo": "Sell for BRL",
+        "transacao_ref": "T08",
+        "caminho": "Exchange → Sell",
+        "taxa_percentual": 1.5,
+        "descricao": "Conversion."
+      },
+      {
+        "etapa": 4,
+        "titulo": "Withdraw BRL for transfer to seller",
+        "transacao_ref": "T03",
+        "caminho": "Withdrawals → PIX (Brazilian instant payment system) Transfer",
+        "taxa_percentual": 1,
+        "descricao": "Transfer to seller/owner."
+      }
     ],
     "tempo_total": "1 to 24 hours",
     "custo_total_pct": 2.5,
@@ -405,12 +1085,28 @@
       "valor_input": 200000,
       "moeda_input": "USD",
       "descricao_uso": "Property sale US$ 200,000 (~R$ 1,000,000)",
-      "breakdown": [{ "etapa": "Sell USDT (1.5%)", "taxa_brl": 15000 }, { "etapa": "Withdraw PIX (1%)", "taxa_brl": 9850 }],
+      "breakdown": [
+        {
+          "etapa": "Sell USDT (digital dollar) (1.5%)",
+          "taxa_brl": 15000
+        },
+        {
+          "etapa": "Withdraw PIX (Brazilian instant payment system) (1%)",
+          "taxa_brl": 9850
+        }
+      ],
       "total_taxa_brl": 24850,
       "valor_final_destino": "≈ R$ 975,150 in your account"
     },
-    "cuidados": ["Does not replace registry filing or ITBI tax", "Document conversion for accounting", "Maintain declared USD value and daily exchange rate"],
-    "dicas": ["For monthly rent, use Recurring Dynamic Bolecripto (OP30)", "Tenant pays every month at same address"],
+    "cuidados": [
+      "Does not replace registry filing or ITBI tax",
+      "Document conversion for accounting",
+      "Maintain declared USD value and daily exchange rate"
+    ],
+    "dicas": [
+      "For monthly rent, use Recurring Dynamic Bolecripto (OP30)",
+      "Tenant pays every month at same address"
+    ],
     "cta": "Open your account for free at evoluecash.com.br"
   },
   {
@@ -420,12 +1116,43 @@
     "emoji": "🎓",
     "para_quem": "Anyone selling courses, info-products, mentorship, or digital content to audiences outside Brazil.",
     "categoria": "recebimento-internacional",
-    "categoriaUI": ["receber", "internacional"],
+    "categoriaUI": [
+      "receber",
+      "internacional"
+    ],
     "fluxo": [
-      { "etapa": 1, "titulo": "Issue invoice", "transacao_ref": "T17", "caminho": "Comex → Static or Dynamic Bolecripto", "taxa_percentual": 0, "descricao": "Static for fixed price, Dynamic for recurring." },
-      { "etapa": 2, "titulo": "Buyer pays in USDT/USDC", "transacao_ref": "T17", "caminho": "Link in checkout/social", "taxa_percentual": 0, "descricao": "USDT/USDC in wallet." },
-      { "etapa": 3, "titulo": "Sell for BRL in lot", "transacao_ref": "T08", "caminho": "Exchange → Sell (accumulate and convert)", "taxa_percentual": 1.5, "descricao": "Can accumulate or convert monthly." },
-      { "etapa": 4, "titulo": "Withdraw BRL", "transacao_ref": "T03", "caminho": "Withdrawals → PIX Transfer", "taxa_percentual": 1.0, "descricao": "Withdrawal to BR bank account." }
+      {
+        "etapa": 1,
+        "titulo": "Issue invoice",
+        "transacao_ref": "T17",
+        "caminho": "Comex → Static or Dynamic Bolecripto (digital dollar charge, variable amount)",
+        "taxa_percentual": 0,
+        "descricao": "Static for fixed price, Dynamic for recurring."
+      },
+      {
+        "etapa": 2,
+        "titulo": "Buyer pays in USDT (digital dollar)/USDC (digital dollar)",
+        "transacao_ref": "T17",
+        "caminho": "Link in checkout/social",
+        "taxa_percentual": 0,
+        "descricao": "USDT (digital dollar)/USDC (digital dollar) in wallet (receiving address)."
+      },
+      {
+        "etapa": 3,
+        "titulo": "Sell for BRL in lot",
+        "transacao_ref": "T08",
+        "caminho": "Exchange → Sell (accumulate and convert)",
+        "taxa_percentual": 1.5,
+        "descricao": "Can accumulate or convert monthly."
+      },
+      {
+        "etapa": 4,
+        "titulo": "Withdraw BRL",
+        "transacao_ref": "T03",
+        "caminho": "Withdrawals → PIX (Brazilian instant payment system) Transfer",
+        "taxa_percentual": 1,
+        "descricao": "Withdrawal to BR bank account."
+      }
     ],
     "tempo_total": "1 to 24 hours per lot",
     "custo_total_pct": 2.5,
@@ -433,12 +1160,28 @@
       "valor_input": 5000,
       "moeda_input": "USD",
       "descricao_uso": "US$ 5,000 accumulated in sales (~R$ 25,000)",
-      "breakdown": [{ "etapa": "Sell USDT (1.5%)", "taxa_brl": 375 }, { "etapa": "Withdraw PIX (1%)", "taxa_brl": 246 }],
+      "breakdown": [
+        {
+          "etapa": "Sell USDT (digital dollar) (1.5%)",
+          "taxa_brl": 375
+        },
+        {
+          "etapa": "Withdraw PIX (Brazilian instant payment system) (1%)",
+          "taxa_brl": 246
+        }
+      ],
       "total_taxa_brl": 621,
       "valor_final_destino": "≈ R$ 24,379 in your account"
     },
-    "cuidados": ["Educate audience on how to pay in USDT", "For small sales (US$ 30-100), prefer Polygon or Tron"],
-    "dicas": ["No need to convert each sale immediately", "Accumulate in USDC and convert when rate is favorable", "Recurring Dynamic Bolecripto for subscriptions"],
+    "cuidados": [
+      "Educate audience on how to pay in USDT (digital dollar)",
+      "For small sales (US$ 30-100), prefer Polygon (low-fee network) or Tron (standard for Asian exchanges)"
+    ],
+    "dicas": [
+      "No need to convert each sale immediately",
+      "Accumulate in USDC (digital dollar) and convert when rate is favorable",
+      "Recurring Dynamic Bolecripto (digital dollar charge, variable amount) for subscriptions"
+    ],
     "cta": "Open your account for free at evoluecash.com.br"
   },
   {
@@ -448,12 +1191,43 @@
     "emoji": "📣",
     "para_quem": "Brazilian agency for marketing, design, performance, social media, or consulting serving international clients.",
     "categoria": "recebimento-internacional",
-    "categoriaUI": ["receber", "internacional"],
+    "categoriaUI": [
+      "receber",
+      "internacional"
+    ],
     "fluxo": [
-      { "etapa": 1, "titulo": "Issue invoice", "transacao_ref": "T17", "caminho": "Comex → Static or Dynamic Bolecripto", "taxa_percentual": 0, "descricao": "Static for project, Dynamic for monthly retainer." },
-      { "etapa": 2, "titulo": "Client pays", "transacao_ref": "T17", "caminho": "USDT or USDC", "taxa_percentual": 0, "descricao": "USDT/USDC in wallet." },
-      { "etapa": 3, "titulo": "Sell for BRL", "transacao_ref": "T08", "caminho": "Exchange → Sell", "taxa_percentual": 1.5, "descricao": "Conversion." },
-      { "etapa": 4, "titulo": "Withdraw BRL", "transacao_ref": "T03", "caminho": "Withdrawals → PIX Transfer", "taxa_percentual": 1.0, "descricao": "Monthly withdrawal." }
+      {
+        "etapa": 1,
+        "titulo": "Issue invoice",
+        "transacao_ref": "T17",
+        "caminho": "Comex → Static or Dynamic Bolecripto (digital dollar charge, variable amount)",
+        "taxa_percentual": 0,
+        "descricao": "Static for project, Dynamic for monthly retainer."
+      },
+      {
+        "etapa": 2,
+        "titulo": "Client pays",
+        "transacao_ref": "T17",
+        "caminho": "USDT (digital dollar) or USDC (digital dollar)",
+        "taxa_percentual": 0,
+        "descricao": "USDT (digital dollar)/USDC (digital dollar) in wallet (receiving address)."
+      },
+      {
+        "etapa": 3,
+        "titulo": "Sell for BRL",
+        "transacao_ref": "T08",
+        "caminho": "Exchange → Sell",
+        "taxa_percentual": 1.5,
+        "descricao": "Conversion."
+      },
+      {
+        "etapa": 4,
+        "titulo": "Withdraw BRL",
+        "transacao_ref": "T03",
+        "caminho": "Withdrawals → PIX (Brazilian instant payment system) Transfer",
+        "taxa_percentual": 1,
+        "descricao": "Monthly withdrawal."
+      }
     ],
     "tempo_total": "1 to 24 hours",
     "custo_total_pct": 2.5,
@@ -461,12 +1235,29 @@
       "valor_input": 8000,
       "moeda_input": "USD",
       "descricao_uso": "Monthly contract US$ 8,000 (~R$ 40,000)",
-      "breakdown": [{ "etapa": "Sell USDT (1.5%)", "taxa_brl": 600 }, { "etapa": "Withdraw PIX (1%)", "taxa_brl": 394 }],
+      "breakdown": [
+        {
+          "etapa": "Sell USDT (digital dollar) (1.5%)",
+          "taxa_brl": 600
+        },
+        {
+          "etapa": "Withdraw PIX (Brazilian instant payment system) (1%)",
+          "taxa_brl": 394
+        }
+      ],
       "total_taxa_brl": 994,
       "valor_final_destino": "≈ R$ 39,006 in your account (monthly)"
     },
-    "cuidados": ["Configure invoice in client's language", "Document each conversion for fiscal reconciliation", "Keep contract and invoice aligned"],
-    "dicas": ["Bill in USDC (more stable)", "Use Recurring Dynamic Bolecripto for monthly contracts", "Accumulate USDC reserve for slow months"],
+    "cuidados": [
+      "Configure invoice in client's language",
+      "Document each conversion for fiscal reconciliation",
+      "Keep contract and invoice aligned"
+    ],
+    "dicas": [
+      "Bill in USDC (digital dollar) (more stable)",
+      "Use Recurring Dynamic Bolecripto (digital dollar charge, variable amount) for monthly contracts",
+      "Accumulate USDC (digital dollar) reserve for slow months"
+    ],
     "cta": "Open your account for free at evoluecash.com.br"
   },
   {
@@ -476,12 +1267,43 @@
     "emoji": "🔄",
     "para_quem": "Brazilian SaaS, B2B platform, or software house charging monthly fees from foreign clients.",
     "categoria": "recebimento-internacional",
-    "categoriaUI": ["receber", "internacional"],
+    "categoriaUI": [
+      "receber",
+      "internacional"
+    ],
     "fluxo": [
-      { "etapa": 1, "titulo": "Issue Recurring Dynamic Bolecripto", "transacao_ref": "T18", "caminho": "Comex → Dynamic Bolecripto → Recurring: Yes", "taxa_percentual": 0, "descricao": "1-year validity. Client pays monthly at same address." },
-      { "etapa": 2, "titulo": "Receive monthly USDT/USDC", "transacao_ref": "T18", "caminho": "Track via COMEX panel", "taxa_percentual": 0, "descricao": "Each payment confirmed on-chain." },
-      { "etapa": 3, "titulo": "Sell for BRL in lot", "transacao_ref": "T08", "caminho": "Exchange → Sell (monthly or in lots)", "taxa_percentual": 1.5, "descricao": "Conversion." },
-      { "etapa": 4, "titulo": "Withdraw BRL", "transacao_ref": "T03", "caminho": "Withdrawals → PIX Transfer", "taxa_percentual": 1.0, "descricao": "Withdraw for operations." }
+      {
+        "etapa": 1,
+        "titulo": "Issue Recurring Dynamic Bolecripto (digital dollar charge, variable amount)",
+        "transacao_ref": "T18",
+        "caminho": "Comex → Dynamic Bolecripto (digital dollar charge, variable amount) → Recurring: Yes",
+        "taxa_percentual": 0,
+        "descricao": "1-year validity. Client pays monthly at same address."
+      },
+      {
+        "etapa": 2,
+        "titulo": "Receive monthly USDT (digital dollar)/USDC (digital dollar)",
+        "transacao_ref": "T18",
+        "caminho": "Track via COMEX (Foreign Trade) panel",
+        "taxa_percentual": 0,
+        "descricao": "Each payment confirmed on-chain (over the international network)."
+      },
+      {
+        "etapa": 3,
+        "titulo": "Sell for BRL in lot",
+        "transacao_ref": "T08",
+        "caminho": "Exchange → Sell (monthly or in lots)",
+        "taxa_percentual": 1.5,
+        "descricao": "Conversion."
+      },
+      {
+        "etapa": 4,
+        "titulo": "Withdraw BRL",
+        "transacao_ref": "T03",
+        "caminho": "Withdrawals → PIX (Brazilian instant payment system) Transfer",
+        "taxa_percentual": 1,
+        "descricao": "Withdraw for operations."
+      }
     ],
     "tempo_total": "1 to 24 hours per conversion",
     "custo_total_pct": 2.5,
@@ -489,12 +1311,29 @@
       "valor_input": 10000,
       "moeda_input": "USD",
       "descricao_uso": "20 clients × US$ 500/month = US$ 10,000/month",
-      "breakdown": [{ "etapa": "Sell USDT (1.5%)", "taxa_brl": 750 }, { "etapa": "Withdraw PIX (1%)", "taxa_brl": 493 }],
+      "breakdown": [
+        {
+          "etapa": "Sell USDT (digital dollar) (1.5%)",
+          "taxa_brl": 750
+        },
+        {
+          "etapa": "Withdraw PIX (Brazilian instant payment system) (1%)",
+          "taxa_brl": 493
+        }
+      ],
       "total_taxa_brl": 1243,
       "valor_final_destino": "≈ R$ 48,757 in your account (monthly)"
     },
-    "cuidados": ["Crypto payment doesn't auto-confirm value — verify hash for each charge", "Configure invoice language per client", "Have clear cancellation policy"],
-    "dicas": ["Recurring Dynamic Bolecripto with 1-year validity", "Filter expired charges via COMEX panel (T25)", "Maintain 1-2 months USDC reserve"],
+    "cuidados": [
+      "Crypto payment doesn't auto-confirm value — verify hash (digital receipt) for each charge",
+      "Configure invoice language per client",
+      "Have clear cancellation policy"
+    ],
+    "dicas": [
+      "Recurring Dynamic Bolecripto (digital dollar charge, variable amount) with 1-year validity",
+      "Filter expired charges via COMEX (Foreign Trade) panel (T25)",
+      "Maintain 1-2 months USDC (digital dollar) reserve"
+    ],
     "cta": "Open your account for free at evoluecash.com.br"
   },
   {
@@ -502,14 +1341,44 @@
     "slug": "pf-dolariza-poupanca",
     "titulo": "Individual converts savings to USD",
     "emoji": "👤💵",
-    "para_quem": "Individual with BRL savings wanting to hold in USDC (digital dollar, stable).",
+    "para_quem": "Individual with BRL savings wanting to hold in USDC (digital dollar) (digital dollar, stable).",
     "categoria": "dolarizacao",
-    "categoriaUI": ["dolarizacao"],
+    "categoriaUI": [
+      "dolarizacao"
+    ],
     "fluxo": [
-      { "etapa": 1, "titulo": "Deposit BRL", "transacao_ref": "T01", "caminho": "Payments Account → PIX Deposit", "taxa_percentual": 1.0, "descricao": "Pay from another bank." },
-      { "etapa": 2, "titulo": "Switch to Crypto Account", "transacao_ref": "T16", "caminho": "Header → Crypto Account", "taxa_percentual": 0, "descricao": "No fee." },
-      { "etapa": 3, "titulo": "Buy USDC", "transacao_ref": "T07", "caminho": "Exchange → Buy → USDC", "taxa_percentual": 1.5, "descricao": "Minimum R$ 10. Stablecoin 1:1 to USD." },
-      { "etapa": 4, "titulo": "Hold in wallet", "transacao_ref": "T22", "caminho": "Crypto Account → USDC Balance", "taxa_percentual": 0, "descricao": "No maintenance fee." }
+      {
+        "etapa": 1,
+        "titulo": "Deposit BRL",
+        "transacao_ref": "T01",
+        "caminho": "Payments Account (Brazilian mode with PIX) → PIX (Brazilian instant payment system) Deposit",
+        "taxa_percentual": 1,
+        "descricao": "Pay from another bank."
+      },
+      {
+        "etapa": 2,
+        "titulo": "Switch to Crypto Account (international mode with digital dollars)",
+        "transacao_ref": "T16",
+        "caminho": "Header → Crypto Account (international mode with digital dollars)",
+        "taxa_percentual": 0,
+        "descricao": "No fee."
+      },
+      {
+        "etapa": 3,
+        "titulo": "Buy USDC (digital dollar)",
+        "transacao_ref": "T07",
+        "caminho": "Exchange → Buy → USDC (digital dollar)",
+        "taxa_percentual": 1.5,
+        "descricao": "Minimum R$ 10. stablecoin (digital currency pegged to USD) 1:1 to USD."
+      },
+      {
+        "etapa": 4,
+        "titulo": "Hold in wallet (receiving address)",
+        "transacao_ref": "T22",
+        "caminho": "Crypto Account (international mode with digital dollars) → USDC (digital dollar) Balance",
+        "taxa_percentual": 0,
+        "descricao": "No maintenance fee."
+      }
     ],
     "tempo_total": "~5 minutes",
     "custo_total_pct": 2.5,
@@ -517,12 +1386,29 @@
       "valor_input": 30000,
       "moeda_input": "BRL",
       "descricao_uso": "R$ 30,000 reserve → full dollarization",
-      "breakdown": [{ "etapa": "Receive PIX (1%)", "taxa_brl": 300 }, { "etapa": "Buy USDC (1.5%)", "taxa_brl": 445.5 }],
+      "breakdown": [
+        {
+          "etapa": "Receive PIX (Brazilian instant payment system) (1%)",
+          "taxa_brl": 300
+        },
+        {
+          "etapa": "Buy USDC (digital dollar) (1.5%)",
+          "taxa_brl": 445.5
+        }
+      ],
       "total_taxa_brl": 745.5,
-      "valor_final_destino": "≈ US$ 5,851 in USDC"
+      "valor_final_destino": "≈ US$ 5,851 in USDC (digital dollar)"
     },
-    "cuidados": ["No automatic yield on USDC — store of value, not investment", "To reverse, do T08 (Sell) → T03 (Withdraw)", "Capital gains may apply on reversal"],
-    "dicas": ["USDC is more stable than BTC/ETH", "Like having 'digital dollars' parked in wallet", "Set clear policy"],
+    "cuidados": [
+      "No automatic yield on USDC (digital dollar) — store of value, not investment",
+      "To reverse, do T08 (Sell) → T03 (Withdraw)",
+      "Capital gains may apply on reversal"
+    ],
+    "dicas": [
+      "USDC (digital dollar) is more stable than BTC/ETH",
+      "Like having 'digital dollars' parked in wallet (receiving address)",
+      "Set clear policy"
+    ],
     "cta": "Open your account for free at evoluecash.com.br"
   },
   {
@@ -532,12 +1418,42 @@
     "emoji": "🏢💵",
     "para_quem": "Company with USD-linked costs (imports, foreign software, international freelancers) protecting cash against FX volatility.",
     "categoria": "dolarizacao",
-    "categoriaUI": ["dolarizacao"],
+    "categoriaUI": [
+      "dolarizacao"
+    ],
     "fluxo": [
-      { "etapa": 1, "titulo": "Deposit BRL from cash flow", "transacao_ref": "T01", "caminho": "Payments Account → PIX Deposit", "taxa_percentual": 1.0, "descricao": "BRL funding." },
-      { "etapa": 2, "titulo": "Switch to Crypto Account", "transacao_ref": "T16", "caminho": "Header → Crypto Account", "taxa_percentual": 0, "descricao": "No fee." },
-      { "etapa": 3, "titulo": "Buy partial USDC", "transacao_ref": "T07", "caminho": "Exchange → Buy → USDC", "taxa_percentual": 1.5, "descricao": "Buy only the portion to protect (e.g., 30-50%)." },
-      { "etapa": 4, "titulo": "Hold as reserve", "transacao_ref": "T22", "caminho": "Crypto Account → USDC Balance", "taxa_percentual": 0, "descricao": "Can be used for international payments." }
+      {
+        "etapa": 1,
+        "titulo": "Deposit BRL from cash flow",
+        "transacao_ref": "T01",
+        "caminho": "Payments Account (Brazilian mode with PIX) → PIX (Brazilian instant payment system) Deposit",
+        "taxa_percentual": 1,
+        "descricao": "BRL funding."
+      },
+      {
+        "etapa": 2,
+        "titulo": "Switch to Crypto Account (international mode with digital dollars)",
+        "transacao_ref": "T16",
+        "caminho": "Header → Crypto Account (international mode with digital dollars)",
+        "taxa_percentual": 0,
+        "descricao": "No fee."
+      },
+      {
+        "etapa": 3,
+        "titulo": "Buy partial USDC (digital dollar)",
+        "transacao_ref": "T07",
+        "caminho": "Exchange → Buy → USDC (digital dollar)",
+        "taxa_percentual": 1.5,
+        "descricao": "Buy only the portion to protect (e.g., 30-50%)."
+      },
+      {
+        "etapa": 4,
+        "titulo": "Hold as reserve",
+        "transacao_ref": "T22",
+        "caminho": "Crypto Account (international mode with digital dollars) → USDC (digital dollar) Balance",
+        "taxa_percentual": 0,
+        "descricao": "Can be used for international payments."
+      }
     ],
     "tempo_total": "~10 minutes",
     "custo_total_pct": 2.5,
@@ -545,89 +1461,190 @@
       "valor_input": 200000,
       "moeda_input": "BRL",
       "descricao_uso": "R$ 500,000 cash, 40% hedge (R$ 200,000)",
-      "breakdown": [{ "etapa": "Receive PIX (1%)", "taxa_brl": 2000 }, { "etapa": "Buy USDC (1.5%)", "taxa_brl": 2970 }],
+      "breakdown": [
+        {
+          "etapa": "Receive PIX (Brazilian instant payment system) (1%)",
+          "taxa_brl": 2000
+        },
+        {
+          "etapa": "Buy USDC (digital dollar) (1.5%)",
+          "taxa_brl": 2970
+        }
+      ],
       "total_taxa_brl": 4970,
-      "valor_final_destino": "≈ US$ 39,006 in USDC as reserve"
+      "valor_final_destino": "≈ US$ 39,006 in USDC (digital dollar) as reserve"
     },
-    "cuidados": ["Hedging is not speculation — define clear policy", "Document conversion for accounting", "Consult accountant on FX gain/loss impact"],
-    "dicas": ["Companies importing monthly: 1-3 months in USDC as buffer", "When BRL depreciates, reserve worth more", "When BRL appreciates, convert part"],
+    "cuidados": [
+      "Hedging is not speculation — define clear policy",
+      "Document conversion for accounting",
+      "Consult accountant on FX gain/loss impact"
+    ],
+    "dicas": [
+      "Companies importing monthly: 1-3 months in USDC (digital dollar) as buffer",
+      "When BRL depreciates, reserve worth more",
+      "When BRL appreciates, convert part"
+    ],
     "cta": "Open your account for free at evoluecash.com.br"
   },
   {
     "codigo": "OP21",
     "slug": "pf-reverte-dolarizacao",
-    "titulo": "Reverse dollarization (USDC → BRL)",
+    "titulo": "Reverse dollarization (USDC (digital dollar) → BRL)",
     "emoji": "💵→🇧🇷",
-    "para_quem": "Anyone holding USDC and wanting to convert back to BRL.",
+    "para_quem": "Anyone holding USDC (digital dollar) and wanting to convert back to BRL.",
     "categoria": "dolarizacao",
-    "categoriaUI": ["dolarizacao"],
+    "categoriaUI": [
+      "dolarizacao"
+    ],
     "fluxo": [
-      { "etapa": 1, "titulo": "Sell USDC for BRL", "transacao_ref": "T08", "caminho": "Crypto Account → Exchange → Sell → USDC", "taxa_percentual": 1.5, "descricao": "Conversion to BRL." },
-      { "etapa": 2, "titulo": "Switch to Payments Account", "transacao_ref": "T16", "caminho": "Header → Payments Account", "taxa_percentual": 0, "descricao": "Optional." },
-      { "etapa": 3, "titulo": "Withdraw BRL via PIX", "transacao_ref": "T03", "caminho": "Withdrawals → PIX Transfer", "taxa_percentual": 1.0, "descricao": "Withdrawal to bank account. Window: Mon-Fri 9am-5pm." }
+      {
+        "etapa": 1,
+        "titulo": "Sell USDC (digital dollar) for BRL",
+        "transacao_ref": "T08",
+        "caminho": "Crypto Account (international mode with digital dollars) → Exchange → Sell → USDC (digital dollar)",
+        "taxa_percentual": 1.5,
+        "descricao": "Conversion to BRL."
+      },
+      {
+        "etapa": 2,
+        "titulo": "Switch to Payments Account (Brazilian mode with PIX)",
+        "transacao_ref": "T16",
+        "caminho": "Header → Payments Account (Brazilian mode with PIX)",
+        "taxa_percentual": 0,
+        "descricao": "Optional."
+      },
+      {
+        "etapa": 3,
+        "titulo": "Withdraw BRL via PIX (Brazilian instant payment system)",
+        "transacao_ref": "T03",
+        "caminho": "Withdrawals → PIX (Brazilian instant payment system) Transfer",
+        "taxa_percentual": 1,
+        "descricao": "Withdrawal to bank account. Window: Mon-Fri 9am-5pm."
+      }
     ],
     "tempo_total": "~10 minutes",
     "custo_total_pct": 2.5,
     "exemplo_pratico": {
       "valor_input": 5000,
       "moeda_input": "USD",
-      "descricao_uso": "US$ 5,000 in USDC converted to BRL",
-      "breakdown": [{ "etapa": "Sell USDC (1.5%)", "taxa_brl": 375 }, { "etapa": "Withdraw PIX (1%)", "taxa_brl": 246 }],
+      "descricao_uso": "US$ 5,000 in USDC (digital dollar) converted to BRL",
+      "breakdown": [
+        {
+          "etapa": "Sell USDC (digital dollar) (1.5%)",
+          "taxa_brl": 375
+        },
+        {
+          "etapa": "Withdraw PIX (Brazilian instant payment system) (1%)",
+          "taxa_brl": 246
+        }
+      ],
       "total_taxa_brl": 621,
       "valor_final_destino": "≈ R$ 24,379 in bank account"
     },
-    "cuidados": ["PIX withdrawal only Mon-Fri 9am-5pm", "Rate changes continuously — confirm quickly", "Document for taxation (capital gains)"],
-    "dicas": ["Reverse when target price reached", "Reverse when needing BRL for expenses", "Portfolio reorganization is valid reason"],
+    "cuidados": [
+      "PIX (Brazilian instant payment system) withdrawal only Mon-Fri 9am-5pm",
+      "Rate changes continuously — confirm quickly",
+      "Document for taxation (capital gains)"
+    ],
+    "dicas": [
+      "Reverse when target price reached",
+      "Reverse when needing BRL for expenses",
+      "Portfolio reorganization is valid reason"
+    ],
     "cta": "Open your account for free at evoluecash.com.br"
   },
   {
     "codigo": "OP22",
     "slug": "trocar-btc-usdc",
-    "titulo": "Swap BTC for USDC (stabilize without going to BRL)",
+    "titulo": "swap (direct currency conversion) BTC for USDC (digital dollar) (stabilize without going to BRL)",
     "emoji": "₿→💵",
-    "para_quem": "Crypto investor wanting to realize Bitcoin profit in stable USD (USDC) without converting back to BRL.",
+    "para_quem": "Crypto investor wanting to realize Bitcoin profit in stable USD (USDC (digital dollar)) without converting back to BRL.",
     "categoria": "dolarizacao",
-    "categoriaUI": ["dolarizacao", "trader"],
+    "categoriaUI": [
+      "dolarizacao",
+      "trader"
+    ],
     "fluxo": [
-      { "etapa": 1, "titulo": "Swap BTC → USDC", "transacao_ref": "T10", "caminho": "Crypto Account → Exchange → Convert", "taxa_percentual": 1.55, "descricao": "Source BTC, destination USDC. Live quote." }
+      {
+        "etapa": 1,
+        "titulo": "swap (direct currency conversion) BTC → USDC (digital dollar)",
+        "transacao_ref": "T10",
+        "caminho": "Crypto Account (international mode with digital dollars) → Exchange → Convert",
+        "taxa_percentual": 1.55,
+        "descricao": "Source BTC, destination USDC (digital dollar). Live quote."
+      }
     ],
     "tempo_total": "2 to 60 minutes",
     "custo_total_pct": 1.55,
     "exemplo_pratico": {
       "valor_input": 30000,
       "moeda_input": "USD",
-      "descricao_uso": "0.5 BTC ≈ US$ 30,000 → swap to USDC",
-      "breakdown": [{ "etapa": "Swap BTC → USDC (1.55%)", "taxa_brl": 2325 }],
+      "descricao_uso": "0.5 BTC ≈ US$ 30,000 → swap (direct currency conversion) to USDC (digital dollar)",
+      "breakdown": [
+        {
+          "etapa": "swap (direct currency conversion) BTC → USDC (digital dollar) (1.55%)",
+          "taxa_brl": 2325
+        }
+      ],
       "total_taxa_brl": 2325,
-      "valor_final_destino": "≈ US$ 29,535 in USDC"
+      "valor_final_destino": "≈ US$ 29,535 in USDC (digital dollar)"
     },
-    "cuidados": ["Quote is estimated — confirm quickly", "Monthly swap limit: R$ 1 million", "Verify destination network"],
-    "dicas": ["Swap avoids 2 fees (Sell + Buy = ~3%; Swap = 1.55%)", "Useful to stabilize profit without BRL"],
+    "cuidados": [
+      "Quote is estimated — confirm quickly",
+      "Monthly swap (direct currency conversion) limit: R$ 1 million",
+      "Verify destination network"
+    ],
+    "dicas": [
+      "swap (direct currency conversion) avoids 2 fees (Sell + Buy = ~3%; Swap = 1.55%)",
+      "Useful to stabilize profit without BRL"
+    ],
     "cta": "Open your account for free at evoluecash.com.br"
   },
   {
     "codigo": "OP23",
     "slug": "migrar-usdt-entre-redes",
-    "titulo": "Migrate USDT between networks (TRON → Polygon, etc)",
+    "titulo": "Migrate USDT (digital dollar) between networks (Tron (standard for Asian exchanges) → Polygon (low-fee network), etc)",
     "emoji": "🔄",
-    "para_quem": "Anyone holding USDT/USDC on one network needing to move to another (save gas or match partner preference).",
+    "para_quem": "Anyone holding USDT (digital dollar)/USDC (digital dollar) on one network needing to move to another (save gas (network fee) or match partner preference).",
     "categoria": "dolarizacao",
-    "categoriaUI": ["dolarizacao"],
+    "categoriaUI": [
+      "dolarizacao"
+    ],
     "fluxo": [
-      { "etapa": 1, "titulo": "Swap between networks", "transacao_ref": "T10", "caminho": "Crypto Account → Exchange → Convert", "taxa_percentual": 1.55, "descricao": "Same token, different network." }
+      {
+        "etapa": 1,
+        "titulo": "swap (direct currency conversion) between networks",
+        "transacao_ref": "T10",
+        "caminho": "Crypto Account (international mode with digital dollars) → Exchange → Convert",
+        "taxa_percentual": 1.55,
+        "descricao": "Same token, different network."
+      }
     ],
     "tempo_total": "2 to 60 minutes",
     "custo_total_pct": 1.55,
     "exemplo_pratico": {
       "valor_input": 2000,
       "moeda_input": "USD",
-      "descricao_uso": "Migrate US$ 2,000 USDT from TRON to Polygon",
-      "breakdown": [{ "etapa": "Swap between networks (1.55%)", "taxa_brl": 155 }],
+      "descricao_uso": "Migrate US$ 2,000 USDT (digital dollar) from Tron (standard for Asian exchanges) to Polygon (low-fee network)",
+      "breakdown": [
+        {
+          "etapa": "swap (direct currency conversion) between networks (1.55%)",
+          "taxa_brl": 155
+        }
+      ],
       "total_taxa_brl": 155,
-      "valor_final_destino": "≈ US$ 1,969 in USDT on Polygon"
+      "valor_final_destino": "≈ US$ 1,969 in USDT (digital dollar) on Polygon (low-fee network)"
     },
-    "cuidados": ["Confirm destination network before migrating", "Wrong network = total loss", "Maintain history in crypto statement (T11)"],
-    "dicas": ["Polygon: low gas, good for small amounts", "Tron: standard for Asian exchanges", "Ethereum: high gas, only for large amounts"],
+    "cuidados": [
+      "Confirm destination network before migrating",
+      "Wrong network = total loss",
+      "Maintain history in crypto statement (T11)"
+    ],
+    "dicas": [
+      "Polygon (low-fee network): low gas (network fee), good for small amounts",
+      "Tron (standard for Asian exchanges): standard for Asian exchanges",
+      "Ethereum (most known network, higher fees): high gas (network fee), only for large amounts"
+    ],
     "cta": "Open your account for free at evoluecash.com.br"
   },
   {
@@ -635,24 +1652,45 @@
     "slug": "liberal-recebe-honorarios",
     "titulo": "Liberal professional receives fees",
     "emoji": "👨‍⚕️",
-    "para_quem": "Liberal professional (doctor, lawyer, consultant) serving Brazilian clients via PIX.",
+    "para_quem": "Liberal professional (doctor, lawyer, consultant) serving Brazilian clients via PIX (Brazilian instant payment system).",
     "categoria": "liberal",
-    "categoriaUI": ["receber", "liberal"],
+    "categoriaUI": [
+      "receber",
+      "liberal"
+    ],
     "fluxo": [
-      { "etapa": 1, "titulo": "Receive fees", "transacao_ref": "T01", "caminho": "Payments Account → PIX Deposit", "taxa_percentual": 1.0, "descricao": "Generate key/QR and send to patient/client." }
+      {
+        "etapa": 1,
+        "titulo": "Receive fees",
+        "transacao_ref": "T01",
+        "caminho": "Payments Account (Brazilian mode with PIX) → PIX (Brazilian instant payment system) Deposit",
+        "taxa_percentual": 1,
+        "descricao": "Generate key/QR and send to patient/client."
+      }
     ],
     "tempo_total": "Instant",
-    "custo_total_pct": 1.0,
+    "custo_total_pct": 1,
     "exemplo_pratico": {
       "valor_input": 500,
       "moeda_input": "BRL",
       "descricao_uso": "Medical fee R$ 500",
-      "breakdown": [{ "etapa": "Receive PIX (1%)", "taxa_brl": 5 }],
+      "breakdown": [
+        {
+          "etapa": "Receive PIX (Brazilian instant payment system) (1%)",
+          "taxa_brl": 5
+        }
+      ],
       "total_taxa_brl": 5,
       "valor_final_destino": "R$ 495 net in account"
     },
-    "cuidados": ["Maintain statement records (T05) for invoice and taxation", "Each statement line shows fee charged"],
-    "dicas": ["Use T22 (Consolidated Wallet) to send data via WhatsApp", "Configure recurring charges via Dynamic Bolepix (T13)"],
+    "cuidados": [
+      "Maintain statement records (T05) for invoice and taxation",
+      "Each statement line shows fee charged"
+    ],
+    "dicas": [
+      "Use T22 (Consolidated wallet (receiving address)) to send data via WhatsApp",
+      "Configure recurring charges via Dynamic Bolepix (T13)"
+    ],
     "cta": "Open your account for free at evoluecash.com.br"
   },
   {
@@ -662,11 +1700,36 @@
     "emoji": "👨‍⚕️💵",
     "para_quem": "Liberal professional receiving in BRL but building USD reserve.",
     "categoria": "liberal",
-    "categoriaUI": ["receber", "liberal", "dolarizacao"],
+    "categoriaUI": [
+      "receber",
+      "liberal",
+      "dolarizacao"
+    ],
     "fluxo": [
-      { "etapa": 1, "titulo": "Receive fees", "transacao_ref": "T01", "caminho": "Payments Account → PIX Deposit", "taxa_percentual": 1.0, "descricao": "Receive monthly fees." },
-      { "etapa": 2, "titulo": "Switch to Crypto Account", "transacao_ref": "T16", "caminho": "Header → Crypto Account", "taxa_percentual": 0, "descricao": "No fee." },
-      { "etapa": 3, "titulo": "Buy partial USDC", "transacao_ref": "T07", "caminho": "Exchange → Buy → USDC", "taxa_percentual": 1.5, "descricao": "Define % to dollarize (e.g., 30%)." }
+      {
+        "etapa": 1,
+        "titulo": "Receive fees",
+        "transacao_ref": "T01",
+        "caminho": "Payments Account (Brazilian mode with PIX) → PIX (Brazilian instant payment system) Deposit",
+        "taxa_percentual": 1,
+        "descricao": "Receive monthly fees."
+      },
+      {
+        "etapa": 2,
+        "titulo": "Switch to Crypto Account (international mode with digital dollars)",
+        "transacao_ref": "T16",
+        "caminho": "Header → Crypto Account (international mode with digital dollars)",
+        "taxa_percentual": 0,
+        "descricao": "No fee."
+      },
+      {
+        "etapa": 3,
+        "titulo": "Buy partial USDC (digital dollar)",
+        "transacao_ref": "T07",
+        "caminho": "Exchange → Buy → USDC (digital dollar)",
+        "taxa_percentual": 1.5,
+        "descricao": "Define % to dollarize (e.g., 30%)."
+      }
     ],
     "tempo_total": "~5 minutes",
     "custo_total_pct": 2.5,
@@ -674,12 +1737,29 @@
       "valor_input": 9000,
       "moeda_input": "BRL",
       "descricao_uso": "R$ 30,000 monthly revenue, 30% dollarized",
-      "breakdown": [{ "etapa": "Receive PIX (1%)", "taxa_brl": 90 }, { "etapa": "Buy USDC (1.5%)", "taxa_brl": 133.65 }],
+      "breakdown": [
+        {
+          "etapa": "Receive PIX (Brazilian instant payment system) (1%)",
+          "taxa_brl": 90
+        },
+        {
+          "etapa": "Buy USDC (digital dollar) (1.5%)",
+          "taxa_brl": 133.65
+        }
+      ],
       "total_taxa_brl": 223.65,
-      "valor_final_destino": "≈ US$ 1,755 in USDC + R$ 21,000 BRL"
+      "valor_final_destino": "≈ US$ 1,755 in USDC (digital dollar) + R$ 21,000 BRL"
     },
-    "cuidados": ["Set clear policy — not speculation", "Document each conversion for accounting", "Capital gains may apply on reversal"],
-    "dicas": ["Monthly routine: when received, dollarize X%", "In 12 months, USDC reserve without thinking", "When using, do OP21"],
+    "cuidados": [
+      "Set clear policy — not speculation",
+      "Document each conversion for accounting",
+      "Capital gains may apply on reversal"
+    ],
+    "dicas": [
+      "Monthly routine: when received, dollarize X%",
+      "In 12 months, USDC (digital dollar) reserve without thinking",
+      "When using, do OP21"
+    ],
     "cta": "Open your account for free at evoluecash.com.br"
   },
   {
@@ -689,12 +1769,44 @@
     "emoji": "👨‍⚕️🌎",
     "para_quem": "Brazilian doctor (telemedicine), lawyer, or consultant serving foreign clients.",
     "categoria": "liberal",
-    "categoriaUI": ["receber", "liberal", "internacional"],
+    "categoriaUI": [
+      "receber",
+      "liberal",
+      "internacional"
+    ],
     "fluxo": [
-      { "etapa": 1, "titulo": "Issue invoice", "transacao_ref": "T17", "caminho": "Comex → Static or Dynamic Bolecripto", "taxa_percentual": 0, "descricao": "Static for fixed price, Dynamic for hourly." },
-      { "etapa": 2, "titulo": "Client pays in USDT/USDC", "transacao_ref": "T17", "caminho": "Wallet or exchange", "taxa_percentual": 0, "descricao": "USDT/USDC in wallet (2-60 min)." },
-      { "etapa": 3, "titulo": "Sell for BRL", "transacao_ref": "T08", "caminho": "Exchange → Sell", "taxa_percentual": 1.5, "descricao": "Conversion." },
-      { "etapa": 4, "titulo": "Withdraw BRL", "transacao_ref": "T03", "caminho": "Withdrawals → PIX Transfer", "taxa_percentual": 1.0, "descricao": "Withdrawal to bank account." }
+      {
+        "etapa": 1,
+        "titulo": "Issue invoice",
+        "transacao_ref": "T17",
+        "caminho": "Comex → Static or Dynamic Bolecripto (digital dollar charge, variable amount)",
+        "taxa_percentual": 0,
+        "descricao": "Static for fixed price, Dynamic for hourly."
+      },
+      {
+        "etapa": 2,
+        "titulo": "Client pays in USDT (digital dollar)/USDC (digital dollar)",
+        "transacao_ref": "T17",
+        "caminho": "wallet (receiving address) or exchange",
+        "taxa_percentual": 0,
+        "descricao": "USDT (digital dollar)/USDC (digital dollar) in wallet (2-60 min)."
+      },
+      {
+        "etapa": 3,
+        "titulo": "Sell for BRL",
+        "transacao_ref": "T08",
+        "caminho": "Exchange → Sell",
+        "taxa_percentual": 1.5,
+        "descricao": "Conversion."
+      },
+      {
+        "etapa": 4,
+        "titulo": "Withdraw BRL",
+        "transacao_ref": "T03",
+        "caminho": "Withdrawals → PIX (Brazilian instant payment system) Transfer",
+        "taxa_percentual": 1,
+        "descricao": "Withdrawal to bank account."
+      }
     ],
     "tempo_total": "1 to 24 hours",
     "custo_total_pct": 2.5,
@@ -702,54 +1814,137 @@
       "valor_input": 300,
       "moeda_input": "USD",
       "descricao_uso": "International consultation US$ 300 (~R$ 1,500)",
-      "breakdown": [{ "etapa": "Sell USDT (1.5%)", "taxa_brl": 22.5 }, { "etapa": "Withdraw PIX (1%)", "taxa_brl": 14.78 }],
+      "breakdown": [
+        {
+          "etapa": "Sell USDT (digital dollar) (1.5%)",
+          "taxa_brl": 22.5
+        },
+        {
+          "etapa": "Withdraw PIX (Brazilian instant payment system) (1%)",
+          "taxa_brl": 14.78
+        }
+      ],
       "total_taxa_brl": 37.28,
       "valor_final_destino": "≈ R$ 1,463 in your account"
     },
-    "cuidados": ["Configure invoice in client's language", "Document receipt for invoice issuance", "Maintain control of effective daily exchange rate"],
-    "dicas": ["Doctor can serve Brazilians abroad", "Lawyer: Italian, American citizenship cases", "Consultant with international corporate client"],
+    "cuidados": [
+      "Configure invoice in client's language",
+      "Document receipt for invoice issuance",
+      "Maintain control of effective daily exchange rate"
+    ],
+    "dicas": [
+      "Doctor can serve Brazilians abroad",
+      "Lawyer: Italian, American citizenship cases",
+      "Consultant with international corporate client"
+    ],
     "cta": "Open your account for free at evoluecash.com.br"
   },
   {
     "codigo": "OP27",
     "slug": "cobrar-cliente-nacional-pix",
-    "titulo": "Bill Brazilian client via PIX (replace boleto)",
+    "titulo": "Bill Brazilian client via PIX (Brazilian instant payment system) (replace boleto)",
     "emoji": "🇧🇷",
     "para_quem": "Company professionalizing billing without traditional bank boleto.",
     "categoria": "comex-cobranca",
-    "categoriaUI": ["cobranca"],
-    "fluxo": [
-      { "etapa": 1, "titulo": "Issue Bolepix", "transacao_ref": "T12", "caminho": "Comex → Static or Dynamic Bolepix", "taxa_percentual": 0, "descricao": "Static (fixed value) or Dynamic (variable)." },
-      { "etapa": 2, "titulo": "Client pays via PIX", "transacao_ref": "T12", "caminho": "Client pays from their bank", "taxa_percentual": 1.0, "descricao": "PIX automatically credited." },
-      { "etapa": 3, "titulo": "Track via panel", "transacao_ref": "T14", "caminho": "Comex → billing panel", "taxa_percentual": 0, "descricao": "Status updates in real time." }
+    "categoriaUI": [
+      "cobranca"
     ],
-    "tempo_total": "Instant after PIX",
-    "custo_total_pct": 1.0,
+    "fluxo": [
+      {
+        "etapa": 1,
+        "titulo": "Issue Bolepix (PIX charge)",
+        "transacao_ref": "T12",
+        "caminho": "Comex → Static or Dynamic Bolepix (PIX charge, variable amount)",
+        "taxa_percentual": 0,
+        "descricao": "Static (fixed value) or Dynamic (variable)."
+      },
+      {
+        "etapa": 2,
+        "titulo": "Client pays via PIX (Brazilian instant payment system)",
+        "transacao_ref": "T12",
+        "caminho": "Client pays from their bank",
+        "taxa_percentual": 1,
+        "descricao": "PIX (Brazilian instant payment system) automatically credited."
+      },
+      {
+        "etapa": 3,
+        "titulo": "Track via panel",
+        "transacao_ref": "T14",
+        "caminho": "Comex → billing panel",
+        "taxa_percentual": 0,
+        "descricao": "Status updates in real time."
+      }
+    ],
+    "tempo_total": "Instant after PIX (Brazilian instant payment system)",
+    "custo_total_pct": 1,
     "exemplo_pratico": {
       "valor_input": 5000,
       "moeda_input": "BRL",
-      "descricao_uso": "Bill client R$ 5,000 via Bolepix",
-      "breakdown": [{ "etapa": "Receive PIX (1%)", "taxa_brl": 50 }],
+      "descricao_uso": "Bill client R$ 5,000 via Bolepix (PIX charge)",
+      "breakdown": [
+        {
+          "etapa": "Receive PIX (Brazilian instant payment system) (1%)",
+          "taxa_brl": 50
+        }
+      ],
       "total_taxa_brl": 50,
       "valor_final_destino": "R$ 4,950 net"
     },
-    "cuidados": ["Static Bolepix = fixed value. Dynamic = client defines", "Dynamic Bolepix validity: 1 year"],
-    "dicas": ["No issuance fee (vs ~R$ 3-5 for bank boleto)", "Instant payment (vs D+1 or D+2)", "Professional PDF invoice"],
+    "cuidados": [
+      "Static Bolepix (PIX charge, fixed amount) = fixed value. Dynamic = client defines",
+      "Dynamic Bolepix (PIX charge, variable amount) validity: 1 year"
+    ],
+    "dicas": [
+      "No issuance fee (vs ~R$ 3-5 for bank boleto)",
+      "Instant payment (vs D+1 (next business day) or D+2)",
+      "Professional PDF invoice"
+    ],
     "cta": "Open your account for free at evoluecash.com.br"
   },
   {
     "codigo": "OP28",
     "slug": "cobrar-cliente-internacional-cripto",
-    "titulo": "Bill international client via crypto (replace SWIFT)",
+    "titulo": "Bill international client via crypto (replace SWIFT (traditional international banking system))",
     "emoji": "🌎",
-    "para_quem": "Brazilian company selling to foreign clients without using SWIFT.",
+    "para_quem": "Brazilian company selling to foreign clients without using SWIFT (traditional international banking system).",
     "categoria": "comex-cobranca",
-    "categoriaUI": ["cobranca", "internacional"],
+    "categoriaUI": [
+      "cobranca",
+      "internacional"
+    ],
     "fluxo": [
-      { "etapa": 1, "titulo": "Issue Bolecripto", "transacao_ref": "T17", "caminho": "Comex → Static or Dynamic Bolecripto", "taxa_percentual": 0, "descricao": "USDT or USDC settlement. English or Spanish." },
-      { "etapa": 2, "titulo": "Client pays in USDT/USDC", "transacao_ref": "T17", "caminho": "Wallet or exchange", "taxa_percentual": 0, "descricao": "USDT/USDC in wallet. Verify hash." },
-      { "etapa": 3, "titulo": "Track via panel", "transacao_ref": "T14", "caminho": "Comex → panel", "taxa_percentual": 0, "descricao": "Status, received amount." },
-      { "etapa": 4, "titulo": "Sell and withdraw when needed", "transacao_ref": "T08", "caminho": "Exchange → Sell → Withdraw PIX", "taxa_percentual": 2.5, "descricao": "Conversion to BRL (1.5% + 1%)." }
+      {
+        "etapa": 1,
+        "titulo": "Issue Bolecripto (digital dollar charge)",
+        "transacao_ref": "T17",
+        "caminho": "Comex → Static or Dynamic Bolecripto (digital dollar charge, variable amount)",
+        "taxa_percentual": 0,
+        "descricao": "USDT (digital dollar) or USDC (digital dollar) settlement. English or Spanish."
+      },
+      {
+        "etapa": 2,
+        "titulo": "Client pays in USDT (digital dollar)/USDC (digital dollar)",
+        "transacao_ref": "T17",
+        "caminho": "wallet (receiving address) or exchange",
+        "taxa_percentual": 0,
+        "descricao": "USDT (digital dollar)/USDC (digital dollar) in wallet (receiving address). Verify hash (digital receipt)."
+      },
+      {
+        "etapa": 3,
+        "titulo": "Track via panel",
+        "transacao_ref": "T14",
+        "caminho": "Comex → panel",
+        "taxa_percentual": 0,
+        "descricao": "Status, received amount."
+      },
+      {
+        "etapa": 4,
+        "titulo": "Sell and withdraw when needed",
+        "transacao_ref": "T08",
+        "caminho": "Exchange → Sell → Withdraw PIX (Brazilian instant payment system)",
+        "taxa_percentual": 2.5,
+        "descricao": "Conversion to BRL (1.5% + 1%)."
+      }
     ],
     "tempo_total": "1 to 24 hours",
     "custo_total_pct": 2.5,
@@ -757,12 +1952,28 @@
       "valor_input": 10000,
       "moeda_input": "USD",
       "descricao_uso": "International sale US$ 10,000",
-      "breakdown": [{ "etapa": "Sell USDT (1.5%)", "taxa_brl": 750 }, { "etapa": "Withdraw PIX (1%)", "taxa_brl": 493 }],
+      "breakdown": [
+        {
+          "etapa": "Sell USDT (digital dollar) (1.5%)",
+          "taxa_brl": 750
+        },
+        {
+          "etapa": "Withdraw PIX (Brazilian instant payment system) (1%)",
+          "taxa_brl": 493
+        }
+      ],
       "total_taxa_brl": 1243,
       "valor_final_destino": "≈ R$ 48,757 in your account"
     },
-    "cuidados": ["Crypto payment doesn't auto-confirm value — verify hash", "Does not replace DU-E in Siscomex if applicable"],
-    "dicas": ["No need for foreign account", "No SWIFT fee (~US$ 50 to US$ 150)", "Time: minutes vs 3-5 business days"],
+    "cuidados": [
+      "Crypto payment doesn't auto-confirm value — verify hash (digital receipt)",
+      "Does not replace DU-E (Brazilian Export Declaration) in Siscomex (Brazilian Federal Revenue system) if applicable"
+    ],
+    "dicas": [
+      "No need for foreign account",
+      "No SWIFT (traditional international banking system) fee (~US$ 50 to US$ 150)",
+      "Time: minutes vs 3-5 business days"
+    ],
     "cta": "Open your account for free at evoluecash.com.br"
   },
   {
@@ -772,24 +1983,58 @@
     "emoji": "🔁🇧🇷",
     "para_quem": "Brazilian company with recurring revenue: SaaS, school, gym, condo, rent, mentorship, health plan.",
     "categoria": "comex-cobranca",
-    "categoriaUI": ["cobranca"],
+    "categoriaUI": [
+      "cobranca"
+    ],
     "fluxo": [
-      { "etapa": 1, "titulo": "Issue Recurring Dynamic Bolepix", "transacao_ref": "T13", "caminho": "Comex → Dynamic Bolepix → Recurring: Yes", "taxa_percentual": 0, "descricao": "1-year validity. Client pays monthly to same key." },
-      { "etapa": 2, "titulo": "Client pays recurring PIX", "transacao_ref": "T01", "caminho": "Client pays monthly", "taxa_percentual": 1.0, "descricao": "Each payment lands in your account." },
-      { "etapa": 3, "titulo": "Track payments", "transacao_ref": "T14", "caminho": "Comex → panel + filters (T25)", "taxa_percentual": 0, "descricao": "Filter by status and payer." }
+      {
+        "etapa": 1,
+        "titulo": "Issue Recurring Dynamic Bolepix (PIX charge, variable amount)",
+        "transacao_ref": "T13",
+        "caminho": "Comex → Dynamic Bolepix (PIX charge, variable amount) → Recurring: Yes",
+        "taxa_percentual": 0,
+        "descricao": "1-year validity. Client pays monthly to same key."
+      },
+      {
+        "etapa": 2,
+        "titulo": "Client pays recurring PIX (Brazilian instant payment system)",
+        "transacao_ref": "T01",
+        "caminho": "Client pays monthly",
+        "taxa_percentual": 1,
+        "descricao": "Each payment lands in your account."
+      },
+      {
+        "etapa": 3,
+        "titulo": "Track payments",
+        "transacao_ref": "T14",
+        "caminho": "Comex → panel + filters (T25)",
+        "taxa_percentual": 0,
+        "descricao": "Filter by status and payer."
+      }
     ],
     "tempo_total": "Instant per payment",
-    "custo_total_pct": 1.0,
+    "custo_total_pct": 1,
     "exemplo_pratico": {
       "valor_input": 10000,
       "moeda_input": "BRL",
       "descricao_uso": "50 students × R$ 200/month = R$ 10,000 monthly",
-      "breakdown": [{ "etapa": "Receive PIX (1% on total)", "taxa_brl": 100 }],
+      "breakdown": [
+        {
+          "etapa": "Receive PIX (Brazilian instant payment system) (1% on total)",
+          "taxa_brl": 100
+        }
+      ],
       "total_taxa_brl": 100,
       "valor_final_destino": "R$ 9,900 net monthly"
     },
-    "cuidados": ["Dynamic Bolepix has 1-year validity — renew before", "Communicate fixed PIX key to clients"],
-    "dicas": ["Use COMEX panel filter (T25) for delinquencies", "Identify in seconds who's late and how much"],
+    "cuidados": [
+      "Dynamic Bolepix (PIX charge, variable amount) has 1-year validity — renew before",
+      "Communicate fixed PIX (Brazilian instant payment system) key to clients"
+    ],
+    "dicas": [
+      "Use COMEX (Foreign Trade) panel filter (T25) for delinquencies",
+      "Identify in seconds who's late and how much"
+    ],
     "cta": "Open your account for free at evoluecash.com.br"
   },
   {
@@ -799,12 +2044,43 @@
     "emoji": "🔁🌎",
     "para_quem": "Brazilian company with recurring revenue from international clients.",
     "categoria": "comex-cobranca",
-    "categoriaUI": ["cobranca", "internacional"],
+    "categoriaUI": [
+      "cobranca",
+      "internacional"
+    ],
     "fluxo": [
-      { "etapa": 1, "titulo": "Issue Recurring Dynamic Bolecripto", "transacao_ref": "T18", "caminho": "Comex → Dynamic Bolecripto → Recurring: Yes", "taxa_percentual": 0, "descricao": "1-year validity." },
-      { "etapa": 2, "titulo": "Client pays monthly", "transacao_ref": "T18", "caminho": "Same address every month", "taxa_percentual": 0, "descricao": "USDT/USDC in wallet." },
-      { "etapa": 3, "titulo": "Track panel", "transacao_ref": "T14", "caminho": "Comex → panel + filters", "taxa_percentual": 0, "descricao": "Status: Paid, Overdue, Partial." },
-      { "etapa": 4, "titulo": "Convert and withdraw", "transacao_ref": "T08", "caminho": "Exchange → Sell → Withdraw PIX", "taxa_percentual": 2.5, "descricao": "Can accumulate or convert monthly." }
+      {
+        "etapa": 1,
+        "titulo": "Issue Recurring Dynamic Bolecripto (digital dollar charge, variable amount)",
+        "transacao_ref": "T18",
+        "caminho": "Comex → Dynamic Bolecripto (digital dollar charge, variable amount) → Recurring: Yes",
+        "taxa_percentual": 0,
+        "descricao": "1-year validity."
+      },
+      {
+        "etapa": 2,
+        "titulo": "Client pays monthly",
+        "transacao_ref": "T18",
+        "caminho": "Same address every month",
+        "taxa_percentual": 0,
+        "descricao": "USDT (digital dollar)/USDC (digital dollar) in wallet (receiving address)."
+      },
+      {
+        "etapa": 3,
+        "titulo": "Track panel",
+        "transacao_ref": "T14",
+        "caminho": "Comex → panel + filters",
+        "taxa_percentual": 0,
+        "descricao": "Status: Paid, Overdue, Partial."
+      },
+      {
+        "etapa": 4,
+        "titulo": "Convert and withdraw",
+        "transacao_ref": "T08",
+        "caminho": "Exchange → Sell → Withdraw PIX (Brazilian instant payment system)",
+        "taxa_percentual": 2.5,
+        "descricao": "Can accumulate or convert monthly."
+      }
     ],
     "tempo_total": "Per client's payment policy",
     "custo_total_pct": 2.5,
@@ -812,12 +2088,28 @@
       "valor_input": 6000,
       "moeda_input": "USD",
       "descricao_uso": "30 clients × US$ 200/month = US$ 6,000",
-      "breakdown": [{ "etapa": "Sell USDT (1.5%)", "taxa_brl": 450 }, { "etapa": "Withdraw PIX (1%)", "taxa_brl": 296 }],
+      "breakdown": [
+        {
+          "etapa": "Sell USDT (digital dollar) (1.5%)",
+          "taxa_brl": 450
+        },
+        {
+          "etapa": "Withdraw PIX (Brazilian instant payment system) (1%)",
+          "taxa_brl": 296
+        }
+      ],
       "total_taxa_brl": 746,
       "valor_final_destino": "≈ R$ 29,254 monthly"
     },
-    "cuidados": ["Crypto payment doesn't auto-confirm value — verify hash", "If client stops paying, communicate cancellation"],
-    "dicas": ["Recurring Dynamic Bolecripto with 1-year validity", "Renew before expiration", "Accumulate USDC and convert in lots"],
+    "cuidados": [
+      "Crypto payment doesn't auto-confirm value — verify hash (digital receipt)",
+      "If client stops paying, communicate cancellation"
+    ],
+    "dicas": [
+      "Recurring Dynamic Bolecripto (digital dollar charge, variable amount) with 1-year validity",
+      "Renew before expiration",
+      "Accumulate USDC (digital dollar) and convert in lots"
+    ],
     "cta": "Open your account for free at evoluecash.com.br"
   },
   {
@@ -825,13 +2117,36 @@
     "slug": "acompanhar-inadimplencia",
     "titulo": "Track delinquencies (filter overdue by client)",
     "emoji": "🔍",
-    "para_quem": "Any company with COMEX charges needing to control who paid, who's late, and how much.",
+    "para_quem": "Any company with COMEX (Foreign Trade) charges needing to control who paid, who's late, and how much.",
     "categoria": "comex-cobranca",
-    "categoriaUI": ["cobranca"],
+    "categoriaUI": [
+      "cobranca"
+    ],
     "fluxo": [
-      { "etapa": 1, "titulo": "Access COMEX Panel", "transacao_ref": "T14", "caminho": "Comex", "taxa_percentual": 0, "descricao": "Top KPIs." },
-      { "etapa": 2, "titulo": "Apply filter", "transacao_ref": "T25", "caminho": "Comex → Filter", "taxa_percentual": 0, "descricao": "Mark Status=Overdue, Payer=specific." },
-      { "etapa": 3, "titulo": "Analyze and act", "transacao_ref": "T14", "caminho": "Resulting list", "taxa_percentual": 0, "descricao": "Identify patterns, contact client, renegotiate." }
+      {
+        "etapa": 1,
+        "titulo": "Access COMEX (Foreign Trade) Panel",
+        "transacao_ref": "T14",
+        "caminho": "Comex",
+        "taxa_percentual": 0,
+        "descricao": "Top KPIs."
+      },
+      {
+        "etapa": 2,
+        "titulo": "Apply filter",
+        "transacao_ref": "T25",
+        "caminho": "Comex → Filter",
+        "taxa_percentual": 0,
+        "descricao": "Mark Status=Overdue, Payer=specific."
+      },
+      {
+        "etapa": 3,
+        "titulo": "Analyze and act",
+        "transacao_ref": "T14",
+        "caminho": "Resulting list",
+        "taxa_percentual": 0,
+        "descricao": "Identify patterns, contact client, renegotiate."
+      }
     ],
     "tempo_total": "A few seconds",
     "custo_total_pct": 0,
@@ -839,12 +2154,24 @@
       "valor_input": 0,
       "moeda_input": "BRL",
       "descricao_uso": "SaaS with 100 clients filters overdue",
-      "breakdown": [{ "etapa": "No fee (consultation)", "taxa_brl": 0 }],
+      "breakdown": [
+        {
+          "etapa": "No fee (consultation)",
+          "taxa_brl": 0
+        }
+      ],
       "total_taxa_brl": 0,
       "valor_final_destino": "Identifies 12 clients with R$ 24,000 in arrears"
     },
-    "cuidados": ["Status 'Partially Paid' only in Dynamic charges", "Always apply filters before exporting"],
-    "dicas": ["Every Monday: filter overdue", "Every Thursday: list partially paid", "Monthly: export CSV for reconciliation"],
+    "cuidados": [
+      "Status 'Partially Paid' only in Dynamic charges",
+      "Always apply filters before exporting"
+    ],
+    "dicas": [
+      "Every Monday: filter overdue",
+      "Every Thursday: list partially paid",
+      "Monthly: export CSV for reconciliation"
+    ],
     "cta": "Open your account for free at evoluecash.com.br"
   },
   {
@@ -854,12 +2181,42 @@
     "emoji": "₿",
     "para_quem": "Individual or company buying Bitcoin as long-term investment.",
     "categoria": "trader",
-    "categoriaUI": ["trader"],
+    "categoriaUI": [
+      "trader"
+    ],
     "fluxo": [
-      { "etapa": 1, "titulo": "Deposit BRL", "transacao_ref": "T01", "caminho": "Payments Account → PIX Deposit", "taxa_percentual": 1.0, "descricao": "BRL funding." },
-      { "etapa": 2, "titulo": "Switch to Crypto Account", "transacao_ref": "T16", "caminho": "Header → Crypto Account", "taxa_percentual": 0, "descricao": "No fee." },
-      { "etapa": 3, "titulo": "Buy BTC", "transacao_ref": "T07", "caminho": "Exchange → Buy → BTC", "taxa_percentual": 1.5, "descricao": "Minimum R$ 10. Maximum US$ 10 million per operation." },
-      { "etapa": 4, "titulo": "Hold or transfer to wallet", "transacao_ref": "T22", "caminho": "Crypto Account → BTC Balance or T09", "taxa_percentual": 0, "descricao": "Hold on EvolueCash or transfer to hardware wallet." }
+      {
+        "etapa": 1,
+        "titulo": "Deposit BRL",
+        "transacao_ref": "T01",
+        "caminho": "Payments Account (Brazilian mode with PIX) → PIX (Brazilian instant payment system) Deposit",
+        "taxa_percentual": 1,
+        "descricao": "BRL funding."
+      },
+      {
+        "etapa": 2,
+        "titulo": "Switch to Crypto Account (international mode with digital dollars)",
+        "transacao_ref": "T16",
+        "caminho": "Header → Crypto Account (international mode with digital dollars)",
+        "taxa_percentual": 0,
+        "descricao": "No fee."
+      },
+      {
+        "etapa": 3,
+        "titulo": "Buy BTC",
+        "transacao_ref": "T07",
+        "caminho": "Exchange → Buy → BTC",
+        "taxa_percentual": 1.5,
+        "descricao": "Minimum R$ 10. Maximum US$ 10 million per operation."
+      },
+      {
+        "etapa": 4,
+        "titulo": "Hold or transfer to wallet (receiving address)",
+        "transacao_ref": "T22",
+        "caminho": "Crypto Account (international mode with digital dollars) → BTC Balance or T09",
+        "taxa_percentual": 0,
+        "descricao": "Hold on EvolueCash or transfer to hardware wallet (receiving address)."
+      }
     ],
     "tempo_total": "5 to 60 minutes",
     "custo_total_pct": 2.5,
@@ -867,12 +2224,29 @@
       "valor_input": 5000,
       "moeda_input": "BRL",
       "descricao_uso": "Purchase R$ 5,000 in BTC",
-      "breakdown": [{ "etapa": "Receive PIX (1%)", "taxa_brl": 50 }, { "etapa": "Buy BTC (1.5%)", "taxa_brl": 74.25 }],
+      "breakdown": [
+        {
+          "etapa": "Receive PIX (Brazilian instant payment system) (1%)",
+          "taxa_brl": 50
+        },
+        {
+          "etapa": "Buy BTC (1.5%)",
+          "taxa_brl": 74.25
+        }
+      ],
       "total_taxa_brl": 124.25,
       "valor_final_destino": "≈ R$ 4,876 in BTC"
     },
-    "cuidados": ["Bitcoin is volatile — only allocate what you can hold for 4+ years", "For maximum security, transfer to hardware wallet (T09)", "Document each purchase for tax accounting"],
-    "dicas": ["DCA strategy: fixed monthly amount, day X of month", "In 12-24 months dilutes price volatility", "Don't watch price daily — long-term hold"],
+    "cuidados": [
+      "Bitcoin is volatile — only allocate what you can hold for 4+ years",
+      "For maximum security, transfer to hardware wallet (T09)",
+      "Document each purchase for tax accounting"
+    ],
+    "dicas": [
+      "DCA strategy: fixed monthly amount, day X of month",
+      "In 12-24 months dilutes price volatility",
+      "Don't watch price daily — long-term hold"
+    ],
     "cta": "Open your account for free at evoluecash.com.br"
   },
   {
@@ -880,11 +2254,20 @@
     "slug": "trader-move-cripto-exchanges",
     "titulo": "Trader moves crypto between exchanges",
     "emoji": "🔄",
-    "para_quem": "Trader, active investor, or DeFi user moving crypto from EvolueCash to another exchange or wallet.",
+    "para_quem": "Trader, active investor, or DeFi user moving crypto from EvolueCash to another exchange or wallet (receiving address).",
     "categoria": "trader",
-    "categoriaUI": ["trader"],
+    "categoriaUI": [
+      "trader"
+    ],
     "fluxo": [
-      { "etapa": 1, "titulo": "Transfer on-chain", "transacao_ref": "T09", "caminho": "Crypto Account → Exchange → Transfer", "taxa_percentual": 0, "descricao": "Select token, compatible network, destination address." }
+      {
+        "etapa": 1,
+        "titulo": "Transfer on-chain (over the international network)",
+        "transacao_ref": "T09",
+        "caminho": "Crypto Account (international mode with digital dollars) → Exchange → Transfer",
+        "taxa_percentual": 0,
+        "descricao": "Select token, compatible network, destination address."
+      }
     ],
     "tempo_total": "2 to 60 minutes (depends on network)",
     "custo_total_pct": 0,
@@ -892,12 +2275,26 @@
       "valor_input": 30000,
       "moeda_input": "USD",
       "descricao_uso": "Move 1 ETH (~US$ 30,000) to MetaMask",
-      "breakdown": [{ "etapa": "Ethereum network fee (~US$ 5-30)", "taxa_brl": 75 }],
+      "breakdown": [
+        {
+          "etapa": "Ethereum (most known network, higher fees) network fee (~US$ 5-30)",
+          "taxa_brl": 75
+        }
+      ],
       "total_taxa_brl": 75,
       "valor_final_destino": "≈ 0.998 ETH on MetaMask"
     },
-    "cuidados": ["ON-CHAIN TRANSFER IS IRREVERSIBLE", "Verify 3× before confirming: TOKEN, NETWORK, ADDRESS", "Mistake = total loss"],
-    "dicas": ["Polygon: cents in gas", "Tron: low gas, Asian standard", "Ethereum: high gas, only for large amounts", "No crypto withdrawal limit"],
+    "cuidados": [
+      "on-chain (over the international network) TRANSFER IS IRREVERSIBLE",
+      "Verify 3× before confirming: TOKEN, NETWORK, ADDRESS",
+      "Mistake = total loss"
+    ],
+    "dicas": [
+      "Polygon (low-fee network): cents in gas (network fee)",
+      "Tron (standard for Asian exchanges): low gas (network fee), Asian standard",
+      "Ethereum (most known network, higher fees): high gas (network fee), only for large amounts",
+      "No crypto withdrawal limit"
+    ],
     "cta": "Open your account for free at evoluecash.com.br"
   },
   {
@@ -905,26 +2302,66 @@
     "slug": "realizar-lucro-cripto-brl",
     "titulo": "Take profit: sell crypto and convert to BRL",
     "emoji": "💰",
-    "para_quem": "Crypto investor taking profit from a position (BTC, ETH, USDT, USDC) into BRL bank account.",
+    "para_quem": "Crypto investor taking profit from a position (BTC, ETH, USDT (digital dollar), USDC (digital dollar)) into BRL bank account.",
     "categoria": "trader",
-    "categoriaUI": ["trader"],
+    "categoriaUI": [
+      "trader"
+    ],
     "fluxo": [
-      { "etapa": 1, "titulo": "Sell crypto for BRL", "transacao_ref": "T08", "caminho": "Crypto Account → Exchange → Sell", "taxa_percentual": 1.5, "descricao": "Select token and quantity, simulate quote, confirm." },
-      { "etapa": 2, "titulo": "Switch to Payments Account", "transacao_ref": "T16", "caminho": "Header → Payments Account", "taxa_percentual": 0, "descricao": "Optional." },
-      { "etapa": 3, "titulo": "Withdraw BRL via PIX", "transacao_ref": "T03", "caminho": "Withdrawals → PIX Transfer", "taxa_percentual": 1.0, "descricao": "Paste your usual bank PIX key." }
+      {
+        "etapa": 1,
+        "titulo": "Sell crypto for BRL",
+        "transacao_ref": "T08",
+        "caminho": "Crypto Account (international mode with digital dollars) → Exchange → Sell",
+        "taxa_percentual": 1.5,
+        "descricao": "Select token and quantity, simulate quote, confirm."
+      },
+      {
+        "etapa": 2,
+        "titulo": "Switch to Payments Account (Brazilian mode with PIX)",
+        "transacao_ref": "T16",
+        "caminho": "Header → Payments Account (Brazilian mode with PIX)",
+        "taxa_percentual": 0,
+        "descricao": "Optional."
+      },
+      {
+        "etapa": 3,
+        "titulo": "Withdraw BRL via PIX (Brazilian instant payment system)",
+        "transacao_ref": "T03",
+        "caminho": "Withdrawals → PIX (Brazilian instant payment system) Transfer",
+        "taxa_percentual": 1,
+        "descricao": "Paste your usual bank PIX (Brazilian instant payment system) key."
+      }
     ],
     "tempo_total": "5 to 70 minutes",
     "custo_total_pct": 2.5,
     "exemplo_pratico": {
       "valor_input": 5000,
       "moeda_input": "USD",
-      "descricao_uso": "Realize US$ 5,000 in USDC (~R$ 25,000)",
-      "breakdown": [{ "etapa": "Sell USDC (1.5%)", "taxa_brl": 375 }, { "etapa": "Withdraw PIX (1%)", "taxa_brl": 246 }],
+      "descricao_uso": "Realize US$ 5,000 in USDC (digital dollar) (~R$ 25,000)",
+      "breakdown": [
+        {
+          "etapa": "Sell USDC (digital dollar) (1.5%)",
+          "taxa_brl": 375
+        },
+        {
+          "etapa": "Withdraw PIX (Brazilian instant payment system) (1%)",
+          "taxa_brl": 246
+        }
+      ],
       "total_taxa_brl": 621,
       "valor_final_destino": "≈ R$ 24,379 in bank account"
     },
-    "cuidados": ["Capital gains apply on profit — document purchase and sale prices", "PIX withdrawal only Mon-Fri 9am-5pm", "Quote changes continuously"],
-    "dicas": ["Realize when target price reached", "Realize when needing BRL for another allocation", "Portfolio reorganization is valid reason"],
+    "cuidados": [
+      "Capital gains apply on profit — document purchase and sale prices",
+      "PIX (Brazilian instant payment system) withdrawal only Mon-Fri 9am-5pm",
+      "Quote changes continuously"
+    ],
+    "dicas": [
+      "Realize when target price reached",
+      "Realize when needing BRL for another allocation",
+      "Portfolio reorganization is valid reason"
+    ],
     "cta": "Open your account for free at evoluecash.com.br"
   }
 ]

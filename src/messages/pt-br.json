@@ -16,8 +16,8 @@
     "searchPlaceholder": "Buscar transação ou operação...",
     "heroChips": {
       "payAbroad": "Pagar fornecedor no exterior",
-      "receiveAbroad": "Receber cliente do exterior",
-      "saveDollar": "Guardar em dólar",
+      "receiveAbroad": "Receber do exterior",
+      "brPix": "Brasil via PIX",
       "calculate": "Calcular custo"
     },
     "whatToDo": {
@@ -33,6 +33,53 @@
       "trader": { "title": "Investir em cripto", "sub": "Comprar BTC, ETH ou stablecoins", "fee": "A partir de 1,5%", "count": "3 situações" },
       "billing": { "title": "Cobrar clientes", "sub": "Substitua boleto e SWIFT por cobrança via PIX ou USDT", "fee": "Sem custo de emissão", "count": "5 situações" },
       "calculate": { "title": "Calcular custo", "sub": "Veja quanto vai pagar na sua próxima operação", "fee": "Calculadora gratuita", "count": "Abrir calculadora" }
+    },
+    "cards": {
+      "principal": {
+        "pagar_exterior": {
+          "titulo": "Pagar fornecedor no exterior",
+          "descricao": "Câmbio + envio internacional. Importação, dívida em USD, equipamento, freelancer.",
+          "taxa": "A partir de 3,5%",
+          "modos": ["💵 Cripto"]
+        },
+        "receber_exterior": {
+          "titulo": "Receber do exterior",
+          "descricao": "Exportador, turismo, info-produtor, agência, SaaS recebendo cliente estrangeiro.",
+          "taxa": "A partir de 2,5%",
+          "modos": ["💵 Cripto"]
+        },
+        "br_pix": {
+          "titulo": "Receber e pagar no Brasil via PIX",
+          "descricao": "Cliente brasileiro, fornecedor BR, boletos, folha, cobrança nacional.",
+          "taxa": "A partir de 1%",
+          "modos": ["🇧🇷 Pagamentos"]
+        },
+        "calcular": {
+          "titulo": "Calcular meu custo",
+          "descricao": "Veja quanto vai pagar na sua próxima operação. Simulação em segundos.",
+          "taxa": "Grátis",
+          "cta": "Abrir calculadora"
+        }
+      },
+      "outras": {
+        "toggle": "Ver outras situações",
+        "guardar_dolar": {
+          "titulo": "Guardar em dólar",
+          "descricao": "Proteja seu caixa da variação cambial."
+        },
+        "liberal": {
+          "titulo": "Profissional liberal",
+          "descricao": "Médico, advogado, consultor — receba honorários."
+        },
+        "cripto": {
+          "titulo": "Investir em cripto",
+          "descricao": "Comprar BTC, ETH ou stablecoins."
+        },
+        "cobrar": {
+          "titulo": "Cobrar clientes",
+          "descricao": "Substitua boleto e SWIFT por cobrança via PIX/USDT."
+        }
+      }
     },
     "situationModes": {
       "payments": "Pagamentos",

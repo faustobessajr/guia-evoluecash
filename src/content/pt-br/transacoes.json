@@ -7,10 +7,15 @@
     "descricao": "Gere uma chave PIX para receber depósitos na sua conta EvolueCash",
     "caminho": "Depósitos > Depósito PIX",
     "modo": "ambos",
-    "taxa": { "percentual": 1, "descricao": "1% sobre o valor recebido" },
+    "taxa": {
+      "percentual": 1,
+      "descricao": "1% sobre o valor recebido"
+    },
     "tempo": "Imediato",
     "horario": "24/7",
-    "limites": { "min": "R$ 1,00" },
+    "limites": {
+      "min": "R$ 1,00"
+    },
     "passos": [
       "Digite o valor que quer receber",
       "Clique 'Próximo'",
@@ -20,7 +25,10 @@
     ],
     "dica": "A taxa é descontada do valor recebido. Se você quer R$ 100 líquidos, peça pro pagador enviar ≈ R$ 101,02.",
     "categoria": "pagamentos-br",
-    "relacionadas": ["T03", "T05"]
+    "relacionadas": [
+      "T03",
+      "T05"
+    ]
   },
   {
     "codigo": "T02",
@@ -30,7 +38,10 @@
     "descricao": "Pague boletos bancários diretamente pela plataforma EvolueCash",
     "caminho": "Pagamentos > Boleto",
     "modo": "pagamentos",
-    "taxa": { "percentual": 1.75, "descricao": "1,75% sobre o valor do boleto" },
+    "taxa": {
+      "percentual": 1.75,
+      "descricao": "1,75% sobre o valor do boleto"
+    },
     "tempo": "1-3 dias úteis",
     "horario": "Seg-Sex 9h-17h",
     "passos": [
@@ -41,7 +52,9 @@
     ],
     "dica": "Use o ícone de colar pra evitar erro. Boletos vencidos podem ter juros recalculados.",
     "categoria": "pagamentos-br",
-    "relacionadas": ["T05"]
+    "relacionadas": [
+      "T05"
+    ]
   },
   {
     "codigo": "T03",
@@ -51,10 +64,15 @@
     "descricao": "Envie PIX para qualquer chave cadastrada a partir da sua conta",
     "caminho": "Saques > Saque/Transferência Pix",
     "modo": "ambos",
-    "taxa": { "percentual": 1, "descricao": "1% sobre o valor enviado" },
+    "taxa": {
+      "percentual": 1,
+      "descricao": "1% sobre o valor enviado"
+    },
     "tempo": "Imediato",
     "horario": "24/7",
-    "limites": { "max": "R$ 50 milhões" },
+    "limites": {
+      "max": "R$ 50 milhões"
+    },
     "passos": [
       "Leia o aviso e clique 'Próximo'",
       "Selecione chave PIX cadastrada",
@@ -62,10 +80,14 @@
       "Confira simulação",
       "Confirme"
     ],
-    "dica": "No modo Conta de Pagamentos você tem total liberdade pra enviar pra qualquer titular.",
-    "cuidado": "No modo Conta Cripto, PIX pra terceiro pode ser estornado. Use chave do mesmo CNPJ/CPF.",
+    "dica": "No modo Conta de Pagamentos (modo brasileiro com PIX) você tem total liberdade pra enviar pra qualquer titular.",
+    "cuidado": "No modo Conta Cripto (modo internacional com dólar digital), PIX pra terceiro pode ser estornado. Use chave do mesmo CNPJ/CPF.",
     "categoria": "pagamentos-br",
-    "relacionadas": ["T01", "T04", "T23"]
+    "relacionadas": [
+      "T01",
+      "T04",
+      "T23"
+    ]
   },
   {
     "codigo": "T04",
@@ -75,7 +97,10 @@
     "descricao": "Cadastre uma chave PIX vinculada ao seu CNPJ para receber e enviar",
     "caminho": "Avatar > Adicionar Conta",
     "modo": "ambos",
-    "taxa": { "percentual": 0, "descricao": "Gratuito" },
+    "taxa": {
+      "percentual": 0,
+      "descricao": "Gratuito"
+    },
     "tempo": "Imediato",
     "horario": "24/7",
     "passos": [
@@ -86,7 +111,10 @@
     ],
     "atencao": "A chave precisa estar registrada num banco com o MESMO CNPJ. Chave de terceiro não é aceita.",
     "categoria": "config",
-    "relacionadas": ["T15", "T03"]
+    "relacionadas": [
+      "T15",
+      "T03"
+    ]
   },
   {
     "codigo": "T05",
@@ -96,7 +124,10 @@
     "descricao": "Consulte e exporte o extrato da sua conta em reais",
     "caminho": "Extrato > Conta Real Brasileira",
     "modo": "ambos",
-    "taxa": { "percentual": 0, "descricao": "Gratuito" },
+    "taxa": {
+      "percentual": 0,
+      "descricao": "Gratuito"
+    },
     "tempo": "Imediato",
     "horario": "24/7",
     "passos": [
@@ -106,7 +137,9 @@
     ],
     "dica": "Cada linha do extrato já mostra a taxa cobrada — útil pra reconciliação.",
     "categoria": "pagamentos-br",
-    "relacionadas": ["T11"]
+    "relacionadas": [
+      "T11"
+    ]
   },
   {
     "codigo": "T06",
@@ -116,19 +149,26 @@
     "descricao": "Receba criptomoedas na sua carteira EvolueCash",
     "caminho": "Depósitos > Depósito Crypto",
     "modo": "ambos",
-    "taxa": { "percentual": 0, "descricao": "Gratuito" },
+    "taxa": {
+      "percentual": 0,
+      "descricao": "Gratuito"
+    },
     "tempo": "2-60 min",
     "horario": "24/7",
     "passos": [
-      "Selecione o token (BTC, ETH, USDT, USDC)",
+      "Selecione o token (BTC, ETH, USDT (dólar digital), USDC (dólar digital))",
       "Escolha a rede",
       "Copie o endereço",
       "Envie ao pagador",
       "Clique 'Receber' pra confirmar"
     ],
-    "cuidado": "Confira sempre TOKEN + REDE. Receber USDC numa rede diferente pode resultar em perda total — não há estorno.",
+    "cuidado": "Confira sempre TOKEN + REDE. Receber USDC (dólar digital) numa rede diferente pode resultar em perda total — não há estorno.",
     "categoria": "cripto",
-    "relacionadas": ["T07", "T09", "T11"]
+    "relacionadas": [
+      "T07",
+      "T09",
+      "T11"
+    ]
   },
   {
     "codigo": "T07",
@@ -138,10 +178,16 @@
     "descricao": "Compre criptomoedas usando o saldo em reais da sua conta",
     "caminho": "Exchange > Comprar",
     "modo": "cripto",
-    "taxa": { "percentual": 1.5, "descricao": "1,5% sobre o valor da compra" },
+    "taxa": {
+      "percentual": 1.5,
+      "descricao": "1,5% sobre o valor da compra"
+    },
     "tempo": "Imediato",
     "horario": "24/7",
-    "limites": { "min": "R$ 10", "max": "US$ 10 milhões" },
+    "limites": {
+      "min": "R$ 10",
+      "max": "US$ 10 milhões"
+    },
     "passos": [
       "Selecione o token",
       "Confira a carteira",
@@ -151,7 +197,10 @@
     ],
     "dica": "Confirme rápido depois de simular — a cotação muda continuamente.",
     "categoria": "cripto",
-    "relacionadas": ["T08", "T10"]
+    "relacionadas": [
+      "T08",
+      "T10"
+    ]
   },
   {
     "codigo": "T08",
@@ -161,10 +210,15 @@
     "descricao": "Venda criptomoedas e converta para reais na sua conta",
     "caminho": "Exchange > Vender",
     "modo": "cripto",
-    "taxa": { "percentual": 1.5, "descricao": "1,5% sobre o valor da venda" },
+    "taxa": {
+      "percentual": 1.5,
+      "descricao": "1,5% sobre o valor da venda"
+    },
     "tempo": "Imediato",
     "horario": "24/7",
-    "limites": { "max": "US$ 10 milhões" },
+    "limites": {
+      "max": "US$ 10 milhões"
+    },
     "passos": [
       "Selecione o token",
       "Confira saldo",
@@ -174,7 +228,10 @@
     ],
     "atencao": "Pra sacar BRL pra conta bancária, T03 só roda seg-sex 9h-17h.",
     "categoria": "cripto",
-    "relacionadas": ["T07", "T03"]
+    "relacionadas": [
+      "T07",
+      "T03"
+    ]
   },
   {
     "codigo": "T09",
@@ -184,7 +241,10 @@
     "descricao": "Transfira criptomoedas para carteiras externas via blockchain",
     "caminho": "Exchange > Transferir",
     "modo": "cripto",
-    "taxa": { "percentual": 0, "descricao": "0% + taxa da rede" },
+    "taxa": {
+      "percentual": 0,
+      "descricao": "0% + taxa da rede"
+    },
     "tempo": "Variável",
     "horario": "Seg-Sex 9h-17h",
     "passos": [
@@ -194,32 +254,43 @@
       "Escolha rede de destino",
       "Cole endereço e clique 'Transferir'"
     ],
-    "dica": "Use 'Favoritos' pra endereços recorrentes. Valores elevados podem demorar 20 min a 7 dias por compliance.",
-    "cuidado": "Transferência on-chain é IRREVERSÍVEL. Confira 3x TOKEN, REDE e ENDEREÇO. Erro = perda total.",
+    "dica": "Use 'Favoritos' pra endereços recorrentes. Valores elevados podem demorar 20 min a 7 dias por compliance (verificação de segurança).",
+    "cuidado": "Transferência on-chain (na rede internacional) é IRREVERSÍVEL. Confira 3x TOKEN, REDE e ENDEREÇO. Erro = perda total.",
     "categoria": "cripto",
-    "relacionadas": ["T06", "T10"]
+    "relacionadas": [
+      "T06",
+      "T10"
+    ]
   },
   {
     "codigo": "T10",
     "slug": "converter-cripto",
-    "titulo": "Como converter cripto (Swap)",
+    "titulo": "Como converter cripto (swap (conversão direta entre moedas))",
     "emoji": "🔁",
     "descricao": "Converta entre criptomoedas sem passar por reais",
     "caminho": "Exchange > Converter",
     "modo": "cripto",
-    "taxa": { "percentual": 1.55, "descricao": "1,55% sobre o valor convertido" },
+    "taxa": {
+      "percentual": 1.55,
+      "descricao": "1,55% sobre o valor convertido"
+    },
     "tempo": "Imediato",
     "horario": "24/7",
-    "limites": { "max": "R$ 1 milhão/mês" },
+    "limites": {
+      "max": "R$ 1 milhão/mês"
+    },
     "passos": [
       "Em 'Você está enviando' escolha token + rede + qtd",
       "Em 'Você receberá' escolha destino",
       "Confira 'Visualização'",
       "Clique 'CONVERTER'"
     ],
-    "dica": "Útil pra trocar BTC → USDT sem ter que vender pra real e comprar de novo.",
+    "dica": "Útil pra trocar BTC → USDT (dólar digital) sem ter que vender pra real e comprar de novo.",
     "categoria": "cripto",
-    "relacionadas": ["T07", "T08"]
+    "relacionadas": [
+      "T07",
+      "T08"
+    ]
   },
   {
     "codigo": "T11",
@@ -229,27 +300,35 @@
     "descricao": "Consulte e exporte o histórico de transações cripto",
     "caminho": "Extrato > Área Cripto",
     "modo": "cripto",
-    "taxa": { "percentual": 0, "descricao": "Gratuito" },
+    "taxa": {
+      "percentual": 0,
+      "descricao": "Gratuito"
+    },
     "tempo": "Imediato",
     "horario": "24/7",
     "passos": [
       "Selecione token/rede",
-      "Veja a lista (Rede, Valor, Hash, De, Para)",
+      "Veja a lista (Rede, Valor, hash (comprovante digital), De, Para)",
       "Clique 'Exportar CSV'"
     ],
-    "dica": "As hashes são clicáveis — abrem o explorer da rede pra auditar on-chain.",
+    "dica": "As hash (comprovante digital)es são clicáveis — abrem o explorer da rede pra auditar on-chain (na rede internacional).",
     "categoria": "cripto",
-    "relacionadas": ["T05"]
+    "relacionadas": [
+      "T05"
+    ]
   },
   {
     "codigo": "T12",
     "slug": "bolepix-estatico",
-    "titulo": "Como emitir Bolepix Estático",
+    "titulo": "Como emitir Bolepix Estático (cobrança PIX com valor fixo)",
     "emoji": "🧾",
     "descricao": "Emita cobranças com valor fixo que podem ser pagas via PIX",
-    "caminho": "Comex > Gerar nova cobrança > Bolepix Estático",
+    "caminho": "Comex > Gerar nova cobrança > Bolepix Estático (cobrança PIX com valor fixo)",
     "modo": "ambos",
-    "taxa": { "percentual": 1, "descricao": "1% no recebimento" },
+    "taxa": {
+      "percentual": 1,
+      "descricao": "1% no recebimento"
+    },
     "tempo": "Variável",
     "horario": "24/7",
     "passos": [
@@ -259,19 +338,26 @@
       "Clique 'Gerir cobranças'"
     ],
     "dica": "Use quando o valor é fechado. Antes de emitir, confira NCM/HS dos itens.",
-    "atencao": "Não substitui obrigações aduaneiras. Pode exigir DI/DUIMP ou DU-E.",
+    "atencao": "Não substitui obrigações aduaneiras. Pode exigir DI/DUIMP (documentação aduaneira) ou DU-E (Declaração Única de Exportação).",
     "categoria": "comex",
-    "relacionadas": ["T13", "T14", "T25"]
+    "relacionadas": [
+      "T13",
+      "T14",
+      "T25"
+    ]
   },
   {
     "codigo": "T13",
     "slug": "bolepix-dinamico",
-    "titulo": "Como emitir Bolepix Dinâmico",
+    "titulo": "Como emitir Bolepix Dinâmico (cobrança PIX com valor variável)",
     "emoji": "📨",
     "descricao": "Emita cobranças com valor variável pagas via PIX, validade de 1 ano",
-    "caminho": "Comex > Bolepix Dinâmico",
+    "caminho": "Comex > Bolepix Dinâmico (cobrança PIX com valor variável)",
     "modo": "ambos",
-    "taxa": { "percentual": 1, "descricao": "1% no recebimento" },
+    "taxa": {
+      "percentual": 1,
+      "descricao": "1% no recebimento"
+    },
     "tempo": "Variável",
     "horario": "24/7",
     "passos": [
@@ -282,17 +368,23 @@
     ],
     "dica": "Use quando o valor varia (cobrança recorrente). O pagador define o valor.",
     "categoria": "comex",
-    "relacionadas": ["T12", "T14"]
+    "relacionadas": [
+      "T12",
+      "T14"
+    ]
   },
   {
     "codigo": "T14",
     "slug": "painel-comex",
     "titulo": "Painel de gestão de cobranças",
     "emoji": "📊",
-    "descricao": "Gerencie todas as cobranças COMEX num único painel",
+    "descricao": "Gerencie todas as cobranças COMEX (Comércio Exterior) num único painel",
     "caminho": "Comex",
     "modo": "ambos",
-    "taxa": { "percentual": 0, "descricao": "Gratuito" },
+    "taxa": {
+      "percentual": 0,
+      "descricao": "Gratuito"
+    },
     "tempo": "Imediato",
     "horario": "24/7",
     "passos": [
@@ -304,7 +396,11 @@
     ],
     "dica": "'Usar template' repete cobrança recorrente sem refazer campos.",
     "categoria": "comex",
-    "relacionadas": ["T12", "T13", "T25"]
+    "relacionadas": [
+      "T12",
+      "T13",
+      "T25"
+    ]
   },
   {
     "codigo": "T15",
@@ -314,7 +410,10 @@
     "descricao": "Visualize e copie suas chaves PIX cadastradas",
     "caminho": "Avatar > Chaves Pix",
     "modo": "ambos",
-    "taxa": { "percentual": 0, "descricao": "Gratuito" },
+    "taxa": {
+      "percentual": 0,
+      "descricao": "Gratuito"
+    },
     "tempo": "Imediato",
     "horario": "24/7",
     "passos": [
@@ -325,60 +424,77 @@
     ],
     "dica": "Pra adicionar nova chave use T04. Pra excluir, faça pelo banco emissor.",
     "categoria": "config",
-    "relacionadas": ["T04"]
+    "relacionadas": [
+      "T04"
+    ]
   },
   {
     "codigo": "T16",
     "slug": "alternar-tipo-conta",
-    "titulo": "Como alternar entre Conta Cripto e Conta de Pagamentos",
+    "titulo": "Como alternar entre Conta Cripto (modo internacional com dólar digital) e Conta de Pagamentos (modo brasileiro com PIX)",
     "emoji": "🔀",
-    "descricao": "Troque entre os modos Conta Cripto e Conta de Pagamentos",
-    "caminho": "Header > Conta Cripto/Pagamentos",
+    "descricao": "Troque entre os modos Conta Cripto (modo internacional com dólar digital) e Conta de Pagamentos (modo brasileiro com PIX)",
+    "caminho": "Header > Conta Cripto (modo internacional com dólar digital)/Pagamentos",
     "modo": "ambos",
-    "taxa": { "percentual": 0, "descricao": "Gratuito" },
+    "taxa": {
+      "percentual": 0,
+      "descricao": "Gratuito"
+    },
     "tempo": "Imediato",
     "horario": "24/7",
     "passos": [
-      "Clique em 'Conta Cripto ⌄'",
+      "Clique em 'Conta Cripto (modo internacional com dólar digital) ⌄'",
       "Escolha modo",
       "Confirme em 'Continuar'"
     ],
-    "dica": "Use Conta Cripto pra Exchange e Conta de Pagamentos pra dia a dia BRL.",
+    "dica": "Use Conta Cripto (modo internacional com dólar digital) pra Exchange e Conta de Pagamentos (modo brasileiro com PIX) pra dia a dia BRL.",
     "atencao": "A troca interrompe qualquer fluxo em andamento.",
     "categoria": "plataforma",
-    "relacionadas": ["T07", "T03"]
+    "relacionadas": [
+      "T07",
+      "T03"
+    ]
   },
   {
     "codigo": "T17",
     "slug": "bolecripto-estatico",
-    "titulo": "Como emitir Bolecripto Estático",
+    "titulo": "Como emitir Bolecripto Estático (cobrança em dólar digital, valor fixo)",
     "emoji": "🪙",
     "descricao": "Emita cobranças em cripto com valor fixo para clientes internacionais",
-    "caminho": "Comex > Bolecripto Estático",
+    "caminho": "Comex > Bolecripto Estático (cobrança em dólar digital, valor fixo)",
     "modo": "ambos",
-    "taxa": { "percentual": 2.5, "descricao": "Conversão posterior 1,5% + 1%" },
+    "taxa": {
+      "percentual": 2.5,
+      "descricao": "Conversão posterior 1,5% + 1%"
+    },
     "tempo": "Variável",
     "horario": "24/7",
     "passos": [
-      "Tela 1: Detalhes + USDT/USDC",
+      "Tela 1: Detalhes + USDT (dólar digital)/USDC (dólar digital)",
       "Tela 2: Pagador + Rede + Carteira",
       "Tela 3: Itens",
       "Clique 'Gerir cobranças'"
     ],
     "dica": "Antes de emitir, cadastre carteira pra cada rede (Minha carteira). Ideal pra cliente fora do Brasil.",
-    "atencao": "Pagamento em cripto não confirma valor automaticamente. Confira hash on-chain.",
+    "atencao": "Pagamento em cripto não confirma valor automaticamente. Confira hash (comprovante digital) on-chain (na rede internacional).",
     "categoria": "comex",
-    "relacionadas": ["T18", "T06"]
+    "relacionadas": [
+      "T18",
+      "T06"
+    ]
   },
   {
     "codigo": "T18",
     "slug": "bolecripto-dinamico",
-    "titulo": "Como emitir Bolecripto Dinâmico",
+    "titulo": "Como emitir Bolecripto Dinâmico (cobrança em dólar digital, valor variável)",
     "emoji": "📡",
     "descricao": "Emita cobranças em cripto com valor variável, validade de 1 ano",
-    "caminho": "Comex > Bolecripto Dinâmico",
+    "caminho": "Comex > Bolecripto Dinâmico (cobrança em dólar digital, valor variável)",
     "modo": "ambos",
-    "taxa": { "percentual": 2.5, "descricao": "Conversão posterior 1,5% + 1%" },
+    "taxa": {
+      "percentual": 2.5,
+      "descricao": "Conversão posterior 1,5% + 1%"
+    },
     "tempo": "Variável",
     "horario": "24/7",
     "passos": [
@@ -389,7 +505,10 @@
     ],
     "dica": "Use quando o valor varia (royalties variáveis, serviços por hora). Validade 1 ano.",
     "categoria": "comex",
-    "relacionadas": ["T17", "T14"]
+    "relacionadas": [
+      "T17",
+      "T14"
+    ]
   },
   {
     "codigo": "T19",
@@ -399,7 +518,10 @@
     "descricao": "Troque entre tema claro e escuro na plataforma",
     "caminho": "Header > toggle ⚙/🌙",
     "modo": "ambos",
-    "taxa": { "percentual": 0, "descricao": "Gratuito" },
+    "taxa": {
+      "percentual": 0,
+      "descricao": "Gratuito"
+    },
     "tempo": "Imediato",
     "horario": "24/7",
     "passos": [
@@ -417,7 +539,10 @@
     "descricao": "Mude o idioma da plataforma EvolueCash",
     "caminho": "Header > bandeira",
     "modo": "ambos",
-    "taxa": { "percentual": 0, "descricao": "Gratuito" },
+    "taxa": {
+      "percentual": 0,
+      "descricao": "Gratuito"
+    },
     "tempo": "Imediato",
     "horario": "24/7",
     "passos": [
@@ -425,7 +550,7 @@
       "Escolha entre Inglês, Português, Espanhol, Chinês ou Árabe",
       "Interface muda na hora"
     ],
-    "dica": "O idioma da interface não afeta o idioma da fatura nas cobranças COMEX.",
+    "dica": "O idioma da interface não afeta o idioma da fatura nas cobranças COMEX (Comércio Exterior).",
     "categoria": "plataforma"
   },
   {
@@ -436,7 +561,10 @@
     "descricao": "Entre em contato com o suporte EvolueCash via WhatsApp",
     "caminho": "Ícone 🎧 (canto inferior direito)",
     "modo": "ambos",
-    "taxa": { "percentual": 0, "descricao": "Gratuito" },
+    "taxa": {
+      "percentual": 0,
+      "descricao": "Gratuito"
+    },
     "tempo": "Variável",
     "horario": "Horário comercial",
     "passos": [
@@ -455,7 +583,10 @@
     "descricao": "Veja todos os seus dados de carteira e pagamento num só lugar",
     "caminho": "Botão 'Ver minha carteira'",
     "modo": "ambos",
-    "taxa": { "percentual": 0, "descricao": "Gratuito" },
+    "taxa": {
+      "percentual": 0,
+      "descricao": "Gratuito"
+    },
     "tempo": "Imediato",
     "horario": "24/7",
     "passos": [
@@ -475,7 +606,10 @@
     "descricao": "Salve chaves PIX favoritas para agilizar transferências",
     "caminho": "Saques > Saque Pix > tela 2 > '⭐ Meus Favoritos'",
     "modo": "ambos",
-    "taxa": { "percentual": 0, "descricao": "Gratuito" },
+    "taxa": {
+      "percentual": 0,
+      "descricao": "Gratuito"
+    },
     "tempo": "Imediato",
     "horario": "24/7",
     "passos": [
@@ -486,7 +620,10 @@
     ],
     "dica": "Salve fornecedores e funcionários como favoritos. Reduz erro de digitação.",
     "categoria": "config",
-    "relacionadas": ["T03", "T24"]
+    "relacionadas": [
+      "T03",
+      "T24"
+    ]
   },
   {
     "codigo": "T24",
@@ -496,7 +633,10 @@
     "descricao": "Use chaves PIX recentes para transferências rápidas",
     "caminho": "Saques > Transferência Pix",
     "modo": "pagamentos",
-    "taxa": { "percentual": 1, "descricao": "1% sobre o valor" },
+    "taxa": {
+      "percentual": 1,
+      "descricao": "1% sobre o valor"
+    },
     "tempo": "Imediato",
     "horario": "24/7",
     "passos": [
@@ -507,17 +647,23 @@
     ],
     "dica": "Clique na ⭐ ao lado da chave recente pra salvar como Favorito.",
     "categoria": "pagamentos-br",
-    "relacionadas": ["T23", "T03"]
+    "relacionadas": [
+      "T23",
+      "T03"
+    ]
   },
   {
     "codigo": "T25",
     "slug": "filtrar-cobrancas",
-    "titulo": "Como filtrar cobranças no COMEX",
+    "titulo": "Como filtrar cobranças no COMEX (Comércio Exterior)",
     "emoji": "🔍",
-    "descricao": "Filtre e encontre cobranças específicas no painel COMEX",
+    "descricao": "Filtre e encontre cobranças específicas no painel COMEX (Comércio Exterior)",
     "caminho": "Comex > Filtro",
     "modo": "ambos",
-    "taxa": { "percentual": 0, "descricao": "Gratuito" },
+    "taxa": {
+      "percentual": 0,
+      "descricao": "Gratuito"
+    },
     "tempo": "Imediato",
     "horario": "24/7",
     "passos": [
@@ -527,8 +673,11 @@
       "Filtro aplica em tempo real",
       "'Limpar Filtros'"
     ],
-    "dica": "Status 'Pago Parcialmente' só aparece em Bolepix Dinâmico. Combine 'Status=Vencido' + 'Pagador=X' pra inadimplência por cliente.",
+    "dica": "Status 'Pago Parcialmente' só aparece em Bolepix Dinâmico (cobrança PIX com valor variável). Combine 'Status=Vencido' + 'Pagador=X' pra inadimplência por cliente.",
     "categoria": "comex",
-    "relacionadas": ["T14", "T12"]
+    "relacionadas": [
+      "T14",
+      "T12"
+    ]
   }
 ]

@@ -2,10 +2,10 @@
   {
     "codigo": "T01",
     "slug": "receber-pix",
-    "titulo": "How to receive via PIX",
-    "descricao": "Generate a PIX key to receive deposits",
+    "titulo": "How to receive via PIX (Brazilian instant payment system)",
+    "descricao": "Generate a PIX (Brazilian instant payment system) key to receive deposits",
     "emoji": "📥",
-    "caminho": "Depositos > Deposito PIX",
+    "caminho": "Depositos > Deposito PIX (Brazilian instant payment system)",
     "modo": "ambos",
     "taxa": {
       "percentual": 1,
@@ -25,7 +25,10 @@
     ],
     "dica": "The fee is deducted from the received amount. If you want R$ 100 net, ask the payer to send ≈ R$ 101.02.",
     "categoria": "pagamentos-br",
-    "relacionadas": ["T03", "T05"]
+    "relacionadas": [
+      "T03",
+      "T05"
+    ]
   },
   {
     "codigo": "T02",
@@ -49,13 +52,15 @@
     ],
     "dica": "Use the paste icon to avoid errors. Expired slips may have recalculated interest.",
     "categoria": "pagamentos-br",
-    "relacionadas": ["T05"]
+    "relacionadas": [
+      "T05"
+    ]
   },
   {
     "codigo": "T03",
     "slug": "enviar-pix",
-    "titulo": "How to send PIX",
-    "descricao": "Send PIX to any registered key from your account",
+    "titulo": "How to send PIX (Brazilian instant payment system)",
+    "descricao": "Send PIX (Brazilian instant payment system) to any registered key from your account",
     "emoji": "📤",
     "caminho": "Saques > Saque/Transferencia Pix",
     "modo": "ambos",
@@ -70,21 +75,25 @@
     },
     "passos": [
       "Read the notice and click \"Next\"",
-      "Select registered PIX key",
+      "Select registered PIX (Brazilian instant payment system) key",
       "Enter the amount",
       "Check simulation",
       "Confirm"
     ],
-    "atencao": "In Crypto Account mode, PIX to third parties may be reversed. Use a key with the same CNPJ/CPF.",
-    "dica": "In Payments Account mode you have full freedom to send to any holder.",
+    "atencao": "In Crypto Account (international mode with digital dollars) mode, PIX (Brazilian instant payment system) to third parties may be reversed. Use a key with the same CNPJ/CPF.",
+    "dica": "In Payments Account (Brazilian mode with PIX) mode you have full freedom to send to any holder.",
     "categoria": "pagamentos-br",
-    "relacionadas": ["T01", "T04", "T23"]
+    "relacionadas": [
+      "T01",
+      "T04",
+      "T23"
+    ]
   },
   {
     "codigo": "T04",
     "slug": "cadastrar-chave-pix",
-    "titulo": "How to register a PIX key",
-    "descricao": "Register a PIX key linked to your CNPJ",
+    "titulo": "How to register a PIX (Brazilian instant payment system) key",
+    "descricao": "Register a PIX (Brazilian instant payment system) key linked to your CNPJ",
     "emoji": "🔑",
     "caminho": "Avatar > Adicionar Conta",
     "modo": "ambos",
@@ -102,7 +111,10 @@
     ],
     "atencao": "The key must be registered at a bank with the SAME CNPJ. Third-party keys are not accepted.",
     "categoria": "config",
-    "relacionadas": ["T15", "T03"]
+    "relacionadas": [
+      "T15",
+      "T03"
+    ]
   },
   {
     "codigo": "T05",
@@ -125,13 +137,15 @@
     ],
     "dica": "Each statement line already shows the fee charged — useful for reconciliation.",
     "categoria": "pagamentos-br",
-    "relacionadas": ["T11"]
+    "relacionadas": [
+      "T11"
+    ]
   },
   {
     "codigo": "T06",
     "slug": "receber-cripto",
     "titulo": "How to receive crypto",
-    "descricao": "Receive cryptocurrencies in your EvolueCash wallet",
+    "descricao": "Receive cryptocurrencies in your EvolueCash wallet (receiving address)",
     "emoji": "📩",
     "caminho": "Depositos > Deposito Crypto",
     "modo": "ambos",
@@ -142,15 +156,19 @@
     "tempo": "2-60 min",
     "horario": "24/7",
     "passos": [
-      "Select the token (BTC, ETH, USDT, USDC)",
+      "Select the token (BTC, ETH, USDT (digital dollar), USDC (digital dollar))",
       "Choose the network",
       "Copy the address",
       "Send to payer",
       "Click \"Receive\" to confirm"
     ],
-    "atencao": "Always check TOKEN + NETWORK. Receiving USDC on a different network may result in total loss — there is no reversal.",
+    "atencao": "Always check TOKEN + NETWORK. Receiving USDC (digital dollar) on a different network may result in total loss — there is no reversal.",
     "categoria": "cripto",
-    "relacionadas": ["T07", "T09", "T11"]
+    "relacionadas": [
+      "T07",
+      "T09",
+      "T11"
+    ]
   },
   {
     "codigo": "T07",
@@ -172,14 +190,17 @@
     },
     "passos": [
       "Select the token",
-      "Check the wallet",
+      "Check the wallet (receiving address)",
       "Enter the amount",
       "Click \"Simulate Quote\"",
       "Confirm with \"Buy\""
     ],
     "dica": "Confirm quickly after simulating — the quote changes continuously.",
     "categoria": "cripto",
-    "relacionadas": ["T08", "T10"]
+    "relacionadas": [
+      "T08",
+      "T10"
+    ]
   },
   {
     "codigo": "T08",
@@ -207,13 +228,16 @@
     ],
     "atencao": "To withdraw BRL to a bank account, T03 only runs Mon-Fri 9am-5pm.",
     "categoria": "cripto",
-    "relacionadas": ["T07", "T03"]
+    "relacionadas": [
+      "T07",
+      "T03"
+    ]
   },
   {
     "codigo": "T09",
     "slug": "transferir-cripto",
     "titulo": "How to transfer crypto",
-    "descricao": "Transfer cryptocurrencies to external wallets via blockchain",
+    "descricao": "Transfer cryptocurrencies to external wallet (receiving address)s via blockchain",
     "emoji": "🔗",
     "caminho": "Exchange > Transferir",
     "modo": "cripto",
@@ -225,20 +249,23 @@
     "horario": "Mon-Fri 9am-5pm",
     "passos": [
       "Select token",
-      "Check source wallet",
+      "Check source wallet (receiving address)",
       "Enter quantity",
       "Choose destination network",
       "Paste address and click \"Transfer\""
     ],
-    "cuidado": "On-chain transfer is IRREVERSIBLE. Check 3x TOKEN, NETWORK and ADDRESS. Error = total loss.",
-    "dica": "Use \"Favorites\" for recurring addresses. Large amounts may take 20 min to 7 days for compliance.",
+    "cuidado": "on-chain (over the international network) transfer is IRREVERSIBLE. Check 3x TOKEN, NETWORK and ADDRESS. Error = total loss.",
+    "dica": "Use \"Favorites\" for recurring addresses. Large amounts may take 20 min to 7 days for compliance (security verification).",
     "categoria": "cripto",
-    "relacionadas": ["T06", "T10"]
+    "relacionadas": [
+      "T06",
+      "T10"
+    ]
   },
   {
     "codigo": "T10",
     "slug": "converter-cripto",
-    "titulo": "How to convert crypto (Swap)",
+    "titulo": "How to convert crypto (swap (direct currency conversion))",
     "descricao": "Convert between cryptocurrencies without going through BRL",
     "emoji": "🔄",
     "caminho": "Exchange > Converter",
@@ -258,9 +285,12 @@
       "Check \"Preview\"",
       "Click \"CONVERT\""
     ],
-    "dica": "Useful for swapping BTC → USDT without having to sell to BRL and buy again.",
+    "dica": "Useful for swap (direct currency conversion)ping BTC → USDT (digital dollar) without having to sell to BRL and buy again.",
     "categoria": "cripto",
-    "relacionadas": ["T07", "T08"]
+    "relacionadas": [
+      "T07",
+      "T08"
+    ]
   },
   {
     "codigo": "T11",
@@ -278,20 +308,22 @@
     "horario": "24/7",
     "passos": [
       "Select token/network",
-      "View the list (Network, Amount, Hash, From, To)",
+      "View the list (Network, Amount, hash (digital receipt), From, To)",
       "Click \"Export CSV\""
     ],
-    "dica": "Hashes are clickable — they open the network explorer for on-chain auditing.",
+    "dica": "hash (digital receipt)es are clickable — they open the network explorer for on-chain (over the international network) auditing.",
     "categoria": "cripto",
-    "relacionadas": ["T05"]
+    "relacionadas": [
+      "T05"
+    ]
   },
   {
     "codigo": "T12",
     "slug": "emitir-bolepix-estatico",
-    "titulo": "How to issue Static Bolepix",
-    "descricao": "Issue fixed-value invoices payable via PIX",
+    "titulo": "How to issue Static Bolepix (PIX charge, fixed amount)",
+    "descricao": "Issue fixed-value invoices payable via PIX (Brazilian instant payment system)",
     "emoji": "📄",
-    "caminho": "Comex > Gerar nova cobranca > Bolepix Estatico",
+    "caminho": "Comex > Gerar nova cobranca > Bolepix (PIX charge) Estatico",
     "modo": "ambos",
     "taxa": {
       "percentual": 1,
@@ -301,22 +333,26 @@
     "horario": "24/7",
     "passos": [
       "Screen 1: Fill in invoice details",
-      "Screen 2: Payer data + PIX key + Foreign Trade",
+      "Screen 2: Payer data + PIX (Brazilian instant payment system) key + Foreign Trade",
       "Screen 3: Items, NCM, amount",
       "Click \"Manage invoices\""
     ],
-    "atencao": "Does not replace customs obligations. May require DI/DUIMP or DU-E.",
+    "atencao": "Does not replace customs obligations. May require DI/DUIMP (Brazilian customs documentation) or DU-E (Brazilian Export Declaration).",
     "dica": "Use when the amount is fixed. Before issuing, check NCM/HS of items.",
     "categoria": "comex",
-    "relacionadas": ["T13", "T14", "T25"]
+    "relacionadas": [
+      "T13",
+      "T14",
+      "T25"
+    ]
   },
   {
     "codigo": "T13",
     "slug": "emitir-bolepix-dinamico",
-    "titulo": "How to issue Dynamic Bolepix",
-    "descricao": "Issue variable-value invoices payable via PIX, valid for 1 year",
+    "titulo": "How to issue Dynamic Bolepix (PIX charge, variable amount)",
+    "descricao": "Issue variable-value invoices payable via PIX (Brazilian instant payment system), valid for 1 year",
     "emoji": "📃",
-    "caminho": "Comex > Bolepix Dinamico",
+    "caminho": "Comex > Bolepix (PIX charge) Dinamico",
     "modo": "ambos",
     "taxa": {
       "percentual": 1,
@@ -326,19 +362,22 @@
     "horario": "24/7",
     "passos": [
       "Screen 1: Fill in details",
-      "Screen 2: Payer + PIX key",
+      "Screen 2: Payer + PIX (Brazilian instant payment system) key",
       "Screen 3: Descriptive items",
       "Click \"Manage invoices\""
     ],
     "dica": "Use when the amount varies (recurring billing). The payer defines the amount.",
     "categoria": "comex",
-    "relacionadas": ["T12", "T14"]
+    "relacionadas": [
+      "T12",
+      "T14"
+    ]
   },
   {
     "codigo": "T14",
     "slug": "painel-cobrancas",
     "titulo": "Invoice management dashboard",
-    "descricao": "Manage all COMEX invoices in a single dashboard",
+    "descricao": "Manage all COMEX (Foreign Trade) invoices in a single dashboard",
     "emoji": "🗂️",
     "caminho": "Comex",
     "modo": "ambos",
@@ -357,13 +396,17 @@
     ],
     "dica": "\"Use template\" repeats recurring invoices without redoing fields.",
     "categoria": "comex",
-    "relacionadas": ["T12", "T13", "T25"]
+    "relacionadas": [
+      "T12",
+      "T13",
+      "T25"
+    ]
   },
   {
     "codigo": "T15",
     "slug": "gerenciar-chaves-pix",
-    "titulo": "How to manage PIX keys",
-    "descricao": "View and copy your registered PIX keys",
+    "titulo": "How to manage PIX (Brazilian instant payment system) keys",
+    "descricao": "View and copy your registered PIX (Brazilian instant payment system) keys",
     "emoji": "🗝️",
     "caminho": "Avatar > Chaves Pix",
     "modo": "ambos",
@@ -375,19 +418,21 @@
     "horario": "24/7",
     "passos": [
       "Click on avatar",
-      "Click \"PIX Keys\"",
+      "Click \"PIX (Brazilian instant payment system) Keys\"",
       "Modal opens with list",
-      "Menu (⋮) → \"Copy PIX key\""
+      "Menu (⋮) → \"Copy PIX (Brazilian instant payment system) key\""
     ],
     "dica": "To add a new key use T04. To delete, do it through the issuing bank.",
     "categoria": "config",
-    "relacionadas": ["T04"]
+    "relacionadas": [
+      "T04"
+    ]
   },
   {
     "codigo": "T16",
     "slug": "alternar-conta",
-    "titulo": "How to switch between Crypto and Payments Account",
-    "descricao": "Switch between Crypto Account and Payments Account modes",
+    "titulo": "How to switch between Crypto and Payments Account (Brazilian mode with PIX)",
+    "descricao": "Switch between Crypto Account (international mode with digital dollars) and Payments Account (Brazilian mode with PIX) modes",
     "emoji": "🔀",
     "caminho": "Header > Conta Cripto/Pagamentos",
     "modo": "ambos",
@@ -398,22 +443,25 @@
     "tempo": "Immediate",
     "horario": "24/7",
     "passos": [
-      "Click \"Crypto Account ⌄\"",
+      "Click \"Crypto Account (international mode with digital dollars) ⌄\"",
       "Choose mode",
       "Confirm with \"Continue\""
     ],
     "atencao": "Switching interrupts any ongoing flow.",
-    "dica": "Use Crypto Account for Exchange and Payments Account for daily BRL operations.",
+    "dica": "Use Crypto Account (international mode with digital dollars) for Exchange and Payments Account (Brazilian mode with PIX) for daily BRL operations.",
     "categoria": "plataforma",
-    "relacionadas": ["T07", "T03"]
+    "relacionadas": [
+      "T07",
+      "T03"
+    ]
   },
   {
     "codigo": "T17",
     "slug": "emitir-bolecripto-estatico",
-    "titulo": "How to issue Static Bolecripto",
+    "titulo": "How to issue Static Bolecripto (digital dollar charge, fixed amount)",
     "descricao": "Issue fixed-value crypto invoices for international clients",
     "emoji": "🪙",
-    "caminho": "Comex > Bolecripto Estatico",
+    "caminho": "Comex > Bolecripto (digital dollar charge) Estatico",
     "modo": "ambos",
     "taxa": {
       "percentual": 2.5,
@@ -422,23 +470,26 @@
     "tempo": "Variable",
     "horario": "24/7",
     "passos": [
-      "Screen 1: Details + USDT/USDC",
-      "Screen 2: Payer + Network + Wallet",
+      "Screen 1: Details + USDT (digital dollar)/USDC (digital dollar)",
+      "Screen 2: Payer + Network + wallet (receiving address)",
       "Screen 3: Items",
       "Click \"Manage invoices\""
     ],
-    "atencao": "Crypto payment does not automatically confirm the amount. Check hash on-chain.",
-    "dica": "Before issuing, register a wallet for each network (My wallet). Ideal for clients outside Brazil.",
+    "atencao": "Crypto payment does not automatically confirm the amount. Check hash (digital receipt) on-chain (over the international network).",
+    "dica": "Before issuing, register a wallet (receiving address) for each network (My wallet). Ideal for clients outside Brazil.",
     "categoria": "comex",
-    "relacionadas": ["T18", "T06"]
+    "relacionadas": [
+      "T18",
+      "T06"
+    ]
   },
   {
     "codigo": "T18",
     "slug": "emitir-bolecripto-dinamico",
-    "titulo": "How to issue Dynamic Bolecripto",
+    "titulo": "How to issue Dynamic Bolecripto (digital dollar charge, variable amount)",
     "descricao": "Issue variable-value crypto invoices, valid for 1 year",
     "emoji": "🪙",
-    "caminho": "Comex > Bolecripto Dinamico",
+    "caminho": "Comex > Bolecripto (digital dollar charge) Dinamico",
     "modo": "ambos",
     "taxa": {
       "percentual": 2.5,
@@ -448,13 +499,16 @@
     "horario": "24/7",
     "passos": [
       "Screen 1: Fill in details",
-      "Screen 2: Payer + network + wallet",
+      "Screen 2: Payer + network + wallet (receiving address)",
       "Screen 3: Items (no fixed value)",
       "Click \"Manage invoices\""
     ],
     "dica": "Use when the amount varies (variable royalties, hourly services). Valid for 1 year.",
     "categoria": "comex",
-    "relacionadas": ["T17", "T14"]
+    "relacionadas": [
+      "T17",
+      "T14"
+    ]
   },
   {
     "codigo": "T19",
@@ -496,7 +550,7 @@
       "Choose between English, Portuguese, Spanish, Chinese or Arabic",
       "Interface changes instantly"
     ],
-    "dica": "The interface language does not affect the invoice language in COMEX billings.",
+    "dica": "The interface language does not affect the invoice language in COMEX (Foreign Trade) billings.",
     "categoria": "plataforma"
   },
   {
@@ -524,8 +578,8 @@
   {
     "codigo": "T22",
     "slug": "ver-carteira",
-    "titulo": "View consolidated wallet",
-    "descricao": "See all your wallet and payment data in one place",
+    "titulo": "View consolidated wallet (receiving address)",
+    "descricao": "See all your wallet (receiving address) and payment data in one place",
     "emoji": "👛",
     "caminho": "Botao 'Ver minha carteira'",
     "modo": "ambos",
@@ -536,9 +590,9 @@
     "tempo": "Immediate",
     "horario": "24/7",
     "passos": [
-      "Click \"View my wallet\"",
+      "Click \"View my wallet (receiving address)\"",
       "Modal opens with dropdown",
-      "Choose \"Crypto Wallets\" or \"Payment Data\"",
+      "Choose \"Crypto wallet (receiving address)s\" or \"Payment Data\"",
       "Copy using the icon"
     ],
     "dica": "Fastest shortcut to send data to a new client. Everything in one modal.",
@@ -547,8 +601,8 @@
   {
     "codigo": "T23",
     "slug": "favoritos-pix",
-    "titulo": "How to use PIX favorites",
-    "descricao": "Save favorite PIX keys to speed up transfers",
+    "titulo": "How to use PIX (Brazilian instant payment system) favorites",
+    "descricao": "Save favorite PIX (Brazilian instant payment system) keys to speed up transfers",
     "emoji": "⭐",
     "caminho": "Saques > Saque Pix > tela 2 > '⭐ Meus Favoritos'",
     "modo": "ambos",
@@ -566,13 +620,16 @@
     ],
     "dica": "Save suppliers and employees as favorites. Reduces typing errors.",
     "categoria": "config",
-    "relacionadas": ["T03", "T24"]
+    "relacionadas": [
+      "T03",
+      "T24"
+    ]
   },
   {
     "codigo": "T24",
     "slug": "chave-recente-pix",
-    "titulo": "How to use recent PIX key",
-    "descricao": "Use recent PIX keys for quick transfers",
+    "titulo": "How to use recent PIX (Brazilian instant payment system) key",
+    "descricao": "Use recent PIX (Brazilian instant payment system) keys for quick transfers",
     "emoji": "🕐",
     "caminho": "Saques > Transferencia Pix",
     "modo": "pagamentos",
@@ -590,13 +647,16 @@
     ],
     "dica": "Click the ⭐ next to the recent key to save as Favorite.",
     "categoria": "pagamentos-br",
-    "relacionadas": ["T23", "T03"]
+    "relacionadas": [
+      "T23",
+      "T03"
+    ]
   },
   {
     "codigo": "T25",
     "slug": "filtrar-cobrancas-comex",
-    "titulo": "How to filter COMEX invoices",
-    "descricao": "Filter and find specific invoices in the COMEX dashboard",
+    "titulo": "How to filter COMEX (Foreign Trade) invoices",
+    "descricao": "Filter and find specific invoices in the COMEX (Foreign Trade) dashboard",
     "emoji": "🔍",
     "caminho": "Comex > Filtro",
     "modo": "ambos",
@@ -613,8 +673,11 @@
       "Filter applies in real time",
       "\"Clear Filters\""
     ],
-    "dica": "\"Partially Paid\" status only appears in Dynamic Bolepix. Combine \"Status=Overdue\" + \"Payer=X\" for delinquency by client.",
+    "dica": "\"Partially Paid\" status only appears in Dynamic Bolepix (PIX charge, variable amount). Combine \"Status=Overdue\" + \"Payer=X\" for delinquency by client.",
     "categoria": "comex",
-    "relacionadas": ["T14", "T12"]
+    "relacionadas": [
+      "T14",
+      "T12"
+    ]
   }
 ]

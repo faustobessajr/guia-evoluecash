@@ -59,3 +59,37 @@ export function getOperacoesByCategoriaUI(
     o.categoriaUI?.includes(categoriaUI)
   );
 }
+
+export function contarOps(locale: Locale, ...categorias: CategoriaUI[]): number {
+  return getOperacoes(locale).filter((op) =>
+    categorias.every((cat) => op.categoriaUI?.includes(cat))
+  ).length;
+}
+
+export function contarOpsBR(locale: Locale): number {
+  return getOperacoes(locale).filter((op) => {
+    const cats = op.categoriaUI ?? [];
+    return (
+      (cats.includes("receber") || cats.includes("pagar") || cats.includes("cobranca")) &&
+      !cats.includes("internacional")
+    );
+  }).length;
+}
+
+export function filtrarOpsPorCategorias(
+  locale: Locale,
+  categorias: string[]
+): Operacao[] {
+  if (categorias.includes("receber-pagar-br")) {
+    return getOperacoes(locale).filter((op) => {
+      const cats = op.categoriaUI ?? [];
+      return (
+        (cats.includes("receber") || cats.includes("pagar") || cats.includes("cobranca")) &&
+        !cats.includes("internacional")
+      );
+    });
+  }
+  return getOperacoes(locale).filter((op) =>
+    categorias.every((cat) => op.categoriaUI?.includes(cat as CategoriaUI))
+  );
+}

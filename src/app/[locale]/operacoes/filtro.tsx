@@ -16,6 +16,22 @@ const validCategories: CategoriaUI[] = [
   "cobranca",
 ];
 
+function filterOperacoes(operacoes: Operacao[], categorias: string[]): Operacao[] {
+  if (categorias.length === 0) return operacoes;
+  if (categorias.includes("receber-pagar-br")) {
+    return operacoes.filter((op) => {
+      const cats = op.categoriaUI ?? [];
+      return (
+        (cats.includes("receber") || cats.includes("pagar") || cats.includes("cobranca")) &&
+        !cats.includes("internacional")
+      );
+    });
+  }
+  return operacoes.filter((op) =>
+    categorias.every((cat) => op.categoriaUI?.includes(cat as CategoriaUI))
+  );
+}
+
 export function OperacoesFiltro({
   operacoes,
   locale,
@@ -30,16 +46,18 @@ export function OperacoesFiltro({
   viewSteps: string;
 }) {
   const searchParams = useSearchParams();
-  const catParam = searchParams.get("categoria") as CategoriaUI | null;
-  const active = validCategories.includes(catParam as CategoriaUI)
-    ? catParam!
+  // Support multiple ?categoria= params
+  const catParams = searchParams.getAll("categoria");
+  // For single-category active chip highlight
+  const singleCat = catParams.length === 1 && validCategories.includes(catParams[0] as CategoriaUI)
+    ? catParams[0] as CategoriaUI
     : null;
+  const active = catParams.length > 0 ? catParams : null;
 
-  const filtered = active
-    ? operacoes.filter((o) => o.categoriaUI?.includes(active))
-    : operacoes;
+  const filtered = active ? filterOperacoes(operacoes, active) : operacoes;
 
-  const meta = active ? categoryMeta[active] : categoryMeta["all"];
+  // Meta: use singleCat for known categories, fall back to "all"
+  const meta = singleCat ? categoryMeta[singleCat] : categoryMeta["all"];
 
   return (
     <div>
@@ -49,6 +67,8 @@ export function OperacoesFiltro({
       {!active && (
         <Callout variant="dica">{banner}</Callout>
       )}
+
+
 
       {/* Filter chips */}
       <div className="flex flex-wrap gap-2 mb-6">
@@ -67,7 +87,7 @@ export function OperacoesFiltro({
             key={cat}
             href={`/${locale}/operacoes?categoria=${cat}`}
             className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
-              active === cat
+              singleCat === cat
                 ? "bg-brand text-white"
                 : "bg-navy-light text-text-secondary border border-navy-border hover:border-brand/50"
             }`}

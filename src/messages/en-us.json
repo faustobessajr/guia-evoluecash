@@ -16,8 +16,8 @@
     "searchPlaceholder": "Search transaction or operation...",
     "heroChips": {
       "payAbroad": "Pay supplier abroad",
-      "receiveAbroad": "Receive client abroad",
-      "saveDollar": "Save in USD",
+      "receiveAbroad": "Receive from abroad",
+      "brPix": "Brazil via PIX",
       "calculate": "Calculate cost"
     },
     "whatToDo": {
@@ -33,6 +33,53 @@
       "trader": { "title": "Invest in crypto", "sub": "Buy BTC, ETH, or stablecoins", "fee": "From 1.5%", "count": "3 situations" },
       "billing": { "title": "Bill your clients", "sub": "Replace boleto and SWIFT with PIX or USDT billing", "fee": "No issuance cost", "count": "5 situations" },
       "calculate": { "title": "Calculate cost", "sub": "See exactly what you'll pay", "fee": "Free calculator", "count": "Open calculator" }
+    },
+    "cards": {
+      "principal": {
+        "pagar_exterior": {
+          "titulo": "Pay foreign supplier",
+          "descricao": "FX + international transfer. Imports, USD debt, equipment, freelancers.",
+          "taxa": "From 3.5%",
+          "modos": ["💵 Crypto"]
+        },
+        "receber_exterior": {
+          "titulo": "Receive from abroad",
+          "descricao": "Exporter, tourism, content creator, agency, SaaS receiving from foreign clients.",
+          "taxa": "From 2.5%",
+          "modos": ["💵 Crypto"]
+        },
+        "br_pix": {
+          "titulo": "Receive and pay in Brazil via PIX",
+          "descricao": "Brazilian clients, BR suppliers, boletos, payroll, domestic billing.",
+          "taxa": "From 1%",
+          "modos": ["🇧🇷 Payments"]
+        },
+        "calcular": {
+          "titulo": "Calculate my cost",
+          "descricao": "See how much you'll pay on your next operation. Simulate in seconds.",
+          "taxa": "Free",
+          "cta": "Open calculator"
+        }
+      },
+      "outras": {
+        "toggle": "See other situations",
+        "guardar_dolar": {
+          "titulo": "Hold in USD",
+          "descricao": "Protect your cash from currency volatility."
+        },
+        "liberal": {
+          "titulo": "Liberal professional",
+          "descricao": "Doctor, lawyer, consultant — receive professional fees."
+        },
+        "cripto": {
+          "titulo": "Invest in crypto",
+          "descricao": "Buy BTC, ETH or stablecoins."
+        },
+        "cobrar": {
+          "titulo": "Bill clients",
+          "descricao": "Replace boleto and SWIFT with PIX/USDT charges."
+        }
+      }
     },
     "situationModes": {
       "payments": "Payments",

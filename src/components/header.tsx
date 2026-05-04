@@ -70,7 +70,7 @@ export function Header({
 
         <div className="flex items-center gap-2">
           <a
-            href="https://evoluecash.com.br/cadastro"
+            href="https://app.evoluecash.com.br/account-creation"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-brand text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-brand-dark transition-colors"

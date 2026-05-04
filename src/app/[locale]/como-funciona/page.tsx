@@ -132,7 +132,7 @@ export default async function ComoFuncionaPage({
       <section className="text-center space-y-4">
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <a
-            href="https://evoluecash.com.br/cadastro"
+            href="https://app.evoluecash.com.br/account-creation"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-brand text-white font-semibold px-8 py-3 rounded-xl hover:bg-brand-dark transition-colors text-center"
