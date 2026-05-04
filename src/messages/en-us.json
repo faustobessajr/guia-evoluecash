@@ -13,12 +13,16 @@
   "home": {
     "heroTitle": "Move your money with intelligence",
     "heroSubtitle": "BRL, USD, and crypto in one account. Pay in Brazil or abroad in minutes with transparent fees.",
-    "searchPlaceholder": "Search transaction or operation...",
+    "searchPlaceholder": "Type a keyword...",
     "heroChips": {
       "payAbroad": "Pay supplier abroad",
       "receiveAbroad": "Receive from abroad",
       "brPix": "Brazil via PIX",
       "calculate": "Calculate cost"
+    },
+    "searchSection": {
+      "title": "Didn't find your situation?",
+      "subtitle": "Search by keyword (e.g., pay supplier, USDT, import)"
     },
     "whatToDo": {
       "title": "What do you need to do?",

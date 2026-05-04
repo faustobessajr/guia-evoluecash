@@ -78,7 +78,6 @@ export default async function HomePage({
     },
   };
 
-  // Card counts (computed server-side)
   const l = locale as Locale;
   const countPagarInternacional = contarOps(l, "pagar", "internacional");
   const countReceberInternacional = contarOps(l, "receber", "internacional");
@@ -91,43 +90,24 @@ export default async function HomePage({
   const cards = t.raw("cards") as Record<string, unknown>;
   const principal = (cards as any).principal;
   const outras = (cards as any).outras;
+  const contagemLabel = locale === "pt-br" ? "situações" : "situations";
 
   return (
     <div className="space-y-12">
-      {/* SECTION A — HERO */}
-      <section className="text-center space-y-5 pt-8">
+
+      {/* 1. HERO — título + subtítulo apenas */}
+      <section className="text-center space-y-4 pt-8">
         <h1 className="text-3xl md:text-5xl font-bold">
           {t("heroTitle")}
         </h1>
         <p className="text-text-secondary text-lg max-w-2xl mx-auto">
           {t("heroSubtitle")}
         </p>
-        <BuscaBar
-          transacoes={transacoes}
-          operacoes={operacoes}
-          locale={locale}
-          placeholder={t("searchPlaceholder")}
-          labels={{
-            transacao: searchT("transacao"),
-            operacao: searchT("operacao"),
-          }}
-        />
-        <div className="flex flex-wrap justify-center gap-2 pt-2">
-          {heroChipLinks.map((chip) => (
-            <Link
-              key={chip.key}
-              href={`/${locale}${chip.href}`}
-              className="bg-navy-light border border-navy-border rounded-lg px-3 py-1.5 min-h-[44px] flex items-center text-xs text-text-secondary hover:border-brand/50 hover:text-brand transition-colors"
-            >
-              {t(`heroChips.${chip.key}`)}
-            </Link>
-          ))}
-        </div>
       </section>
 
       <AsciiDivider />
 
-      {/* SECTION B — WHAT DO YOU NEED TO DO */}
+      {/* 2. CARDS — O que você precisa fazer? */}
       <section>
         <div className="text-center mb-8">
           <h2 className="text-xl md:text-2xl font-bold mb-2">
@@ -146,7 +126,7 @@ export default async function HomePage({
             descricao={principal.pagar_exterior.descricao}
             taxa={principal.pagar_exterior.taxa}
             contagem={countPagarInternacional}
-            contagemLabel={locale === "pt-br" ? "situações" : "situations"}
+            contagemLabel={contagemLabel}
             href={`/${locale}/operacoes?categoria=pagar&categoria=internacional`}
             modos={principal.pagar_exterior.modos}
           />
@@ -156,7 +136,7 @@ export default async function HomePage({
             descricao={principal.receber_exterior.descricao}
             taxa={principal.receber_exterior.taxa}
             contagem={countReceberInternacional}
-            contagemLabel={locale === "pt-br" ? "situações" : "situations"}
+            contagemLabel={contagemLabel}
             href={`/${locale}/operacoes?categoria=receber&categoria=internacional`}
             modos={principal.receber_exterior.modos}
           />
@@ -166,7 +146,7 @@ export default async function HomePage({
             descricao={principal.br_pix.descricao}
             taxa={principal.br_pix.taxa}
             contagem={countBR}
-            contagemLabel={locale === "pt-br" ? "situações" : "situations"}
+            contagemLabel={contagemLabel}
             href={`/${locale}/operacoes?categoria=receber-pagar-br`}
             modos={principal.br_pix.modos}
           />
@@ -223,7 +203,40 @@ export default async function HomePage({
 
       <AsciiDivider />
 
-      {/* SECTION C — HOW YOUR ACCOUNT WORKS */}
+      {/* 3. SEARCH — recurso de recuperação */}
+      <section className="max-w-2xl mx-auto text-center space-y-4">
+        <h2 className="text-xl font-bold">
+          {t("searchSection.title")}
+        </h2>
+        <p className="text-text-secondary text-sm">
+          {t("searchSection.subtitle")}
+        </p>
+        <BuscaBar
+          transacoes={transacoes}
+          operacoes={operacoes}
+          locale={locale}
+          placeholder={t("searchPlaceholder")}
+          labels={{
+            transacao: searchT("transacao"),
+            operacao: searchT("operacao"),
+          }}
+        />
+        <div className="flex flex-wrap justify-center gap-2 pt-1 overflow-x-auto">
+          {heroChipLinks.map((chip) => (
+            <Link
+              key={chip.key}
+              href={`/${locale}${chip.href}`}
+              className="bg-navy-light border border-navy-border rounded-lg px-3 py-1.5 min-h-[44px] flex items-center text-xs text-text-secondary hover:border-brand/50 hover:text-brand transition-colors whitespace-nowrap"
+            >
+              {t(`heroChips.${chip.key}`)}
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <AsciiDivider />
+
+      {/* 4. HOW YOUR ACCOUNT WORKS */}
       <section>
         <div className="text-center mb-8">
           <h2 className="text-xl md:text-2xl font-bold mb-2">
@@ -238,7 +251,7 @@ export default async function HomePage({
 
       <AsciiDivider />
 
-      {/* SECTION D — FAQ */}
+      {/* 5. FAQ */}
       <section className="max-w-3xl mx-auto">
         <h2 className="text-xl md:text-2xl font-bold mb-6 text-center">
           {t("faq.title")}
@@ -248,7 +261,7 @@ export default async function HomePage({
 
       <AsciiDivider />
 
-      {/* SECTION E — CTA FINAL */}
+      {/* 6. CTA FINAL */}
       <section className="text-center space-y-4">
         <h2 className="text-xl md:text-2xl font-bold">
           {t("ctaFinal.title")}
@@ -278,7 +291,7 @@ export default async function HomePage({
 
       <AsciiDivider />
 
-      {/* SECTION F — SEE ALL */}
+      {/* 7. SEE ALL */}
       <section className="text-center space-y-3">
         <h3 className="text-lg font-semibold text-text-secondary">
           {t("seeAll.title")}
@@ -298,6 +311,7 @@ export default async function HomePage({
           </Link>
         </div>
       </section>
+
     </div>
   );
 }

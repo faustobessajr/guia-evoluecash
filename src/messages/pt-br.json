@@ -13,12 +13,16 @@
   "home": {
     "heroTitle": "Movimente seu dinheiro com inteligência",
     "heroSubtitle": "BRL, dólar e cripto na mesma conta. Pague no Brasil ou no exterior em minutos, com taxa transparente.",
-    "searchPlaceholder": "Buscar transação ou operação...",
+    "searchPlaceholder": "Digite uma palavra-chave...",
     "heroChips": {
       "payAbroad": "Pagar fornecedor no exterior",
       "receiveAbroad": "Receber do exterior",
       "brPix": "Brasil via PIX",
       "calculate": "Calcular custo"
+    },
+    "searchSection": {
+      "title": "Não achou sua situação?",
+      "subtitle": "Busque por palavra-chave (ex: pagar fornecedor, USDT, importar)"
     },
     "whatToDo": {
       "title": "O que você precisa fazer?",
